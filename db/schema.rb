@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_115013) do
+ActiveRecord::Schema.define(version: 2021_09_13_122958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_09_13_115013) do
     t.string "preview_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["adam_id"], name: "index_tracks_on_adam_id", unique: true
+    t.index ["preview_url"], name: "index_tracks_on_preview_url", unique: true
   end
 
   add_foreign_key "room_tracks", "tracks"
