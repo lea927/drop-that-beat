@@ -15,6 +15,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'hamlit-rails'
+gem 'rexml', '>= 3.2.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -28,6 +29,9 @@ group :development do
 end
 
 group :test do
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
   gem 'rspec-rails'
   gem 'database_rewinder'
   gem 'factory_bot_rails'
