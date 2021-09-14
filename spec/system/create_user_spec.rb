@@ -23,14 +23,9 @@ RSpec.describe 'Creating an Account', type: :system do
     it 'fills out form with valid details' do
       visit new_user_registration_path
       fillout_form
-      expect(page).to have_content('Welcome! You have signed up successfully.')
+      expect(page).to have_current_path(root_path)
     end
 
-    it 'redirects to home page' do
-      visit new_user_registration_path
-      fillout_form
-      expect(page).to have_current_path(home_page_index_path)
-    end
   end
 
   describe 'Creating an invalid account' do
