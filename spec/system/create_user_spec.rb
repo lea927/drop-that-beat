@@ -25,7 +25,6 @@ RSpec.describe 'Creating an Account', type: :system do
       fillout_form
       expect(page).to have_current_path(root_path)
     end
-
   end
 
   describe 'Creating an invalid account' do
