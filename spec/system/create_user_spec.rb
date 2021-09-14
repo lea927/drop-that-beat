@@ -1,6 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'Creating an Account', type: :system, driver: :selenium_chrome, js: true do
+RSpec.describe 'Creating an Account', type: :system do
+  before do
+    driven_by(:rack_test)
+  end
+
   let(:fillout_form) do
     fill_in 'user_username', with: 'johndoe'
     fill_in 'user_email', with: 'johndoe@example.com'
