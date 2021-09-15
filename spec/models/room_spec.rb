@@ -7,6 +7,7 @@ RSpec.describe Room, type: :model do
     it { is_expected.to be_valid }
     it { is_expected.to respond_to :tracks }
     it { is_expected.to respond_to :users }
+    it { is_expected.to have_attributes(rounds: 1) }
   end
 
   context 'with invalid attributes' do
