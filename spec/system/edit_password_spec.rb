@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Editing an Account', type: :system do
+RSpec.describe 'Edit Password', type: :system do
   let(:fillout_form) do
     fill_in 'user_password', with: 'password123'
     fill_in 'user_password_confirmation', with: 'password123'
@@ -20,36 +20,25 @@ RSpec.describe 'Editing an Account', type: :system do
     fillout_form
   end
 
-  # let(:login_user) do
-  #   user = create(:user)
-  #   user.confirmed_at = Time.current
-  #   user.save
-  #   visit root_path
-  #   click_link 'Log In'
-  #   fill_in 'user_email', with: user.email
-  #   fill_in 'user_password', with: user.password
-  #   click_on 'Log in'
-  # end
-
-  it 'can access edit user page' do
-    expect(page).to have_current_path(edit_user_registration_path)
-  end
-
-  describe 'with valid current password' do
-    it 'successfully updates account password' do
-      # fillout_form
-      fill_in 'user_current_password', with: 'password'
-      click_on 'Update'
-      expect(page).to have_content('Your account has been updated successfully.')
+  describe 'Updating password' do
+    it 'can access edit user page' do
+      expect(page).to have_current_path(edit_user_registration_path)
     end
-  end
 
-  describe 'with invalid current password' do
-    it 'unsuccessfully updates account password' do
-      # fillout_form
-      fill_in 'user_current_password', with: 'password098'
-      click_on 'Update'
-      expect(page).to have_content('Current password is invalid')
+    context 'with valid current password' do
+      it 'displays success message' do
+        fill_in 'user_current_password', with: 'password'
+        click_on 'Update'
+        expect(page).to have_content('Your account has been updated successfully.')
+      end
+    end
+
+    context 'with invalid current password' do
+      it 'displays error message' do
+        fill_in 'user_current_password', with: 'password098'
+        click_on 'Update'
+        expect(page).to have_content('Current password is invalid')
+      end
     end
   end
 end
