@@ -25,10 +25,11 @@ RSpec.describe 'Creating an Account', type: :system do
       fillout_form
       expect(page).to have_current_path(root_path)
     end
+
     it 'displays unconfirmed email message' do
       visit new_user_registration_path
       fillout_form
-      expect(page).to have_content("A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.")
+      expect(page).to have_content('A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
     end
   end
 
