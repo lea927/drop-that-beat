@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'LoginUsers', type: :system do
-  let(:user) { create(:user) }
+  let(:user) { build(:user) }
 
   before do
     driven_by(:rack_test)
+    user.skip_confirmation!
+    user.save
     visit root_path
     click_link 'Log In'
   end
@@ -32,9 +34,9 @@ RSpec.describe 'LoginUsers', type: :system do
   end
 
   context 'with invalid username' do
-    let(:user) { build(:user, username: 'janedoe') }
+    let(:invalid_user) { build(:user, username: 'janedoe') }
 
-    before { fillout_form(user) }
+    before { fillout_form(invalid_user) }
 
     it 'cannot access account' do
       expect(page).not_to have_content(user.username)
@@ -46,9 +48,9 @@ RSpec.describe 'LoginUsers', type: :system do
   end
 
   context 'with invalid password' do
-    let(:user) { build(:user, password: 'johndoe') }
+    let(:invalid_user) { build(:user, password: 'johndoe') }
 
-    before { fillout_form(user) }
+    before { fillout_form(invalid_user) }
 
     it 'cannot access account' do
       expect(page).not_to have_content(user.username)
