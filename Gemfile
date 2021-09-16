@@ -18,6 +18,7 @@ gem 'hamlit-rails'
 gem 'rexml', '>= 3.2.5'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'httparty'
+gem 'hirb'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
