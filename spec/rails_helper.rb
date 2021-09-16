@@ -30,6 +30,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include FactoryBot::Syntax::Methods
+  # Include test helpers
+  config.include Devise::Test::IntegrationHelpers, type: :system
 
   config.before(:suite) do
     DatabaseRewinder.clean_all
