@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Track, type: :model do
-  subject { build(:room) }
-
   context 'with transactional examples' do
     it 'has none to begin with' do
       expect(described_class.count).to eq 0
