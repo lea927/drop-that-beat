@@ -1,3 +1,11 @@
 %p
   ="Welcome,"
   = current_user.username
+%p
+  = current_user.points
+  ='points'
+= link_to 'CREATE A ROOM', new_room_path
+%ul
+  - current_user.rooms.each do |room|
+    %li
+      = link_to room.name, edit_room_path(room)
