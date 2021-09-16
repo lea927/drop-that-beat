@@ -1,21 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Track, type: :model do
-  subject { build(:room)}
+  subject { build(:room) }
 
-  context 'runs transactional examples' do
+  context 'with transactional examples' do
     it 'has none to begin with' do
-      expect(Track.count).to eq 0
+      expect(described_class.count).to eq 0
     end
-  
+
     it 'has one after adding one' do
-      Track.create
-      expect(Track.count).to eq 1
-    end
-  
-    it 'has none after one was created in a previous example' do
-      expect(Track.count).to eq 0
+      described_class.create
+      expect(described_class.count).to eq 1
     end
   end
 
+  context 'with transaction example after create' do
+    it 'has none after one was created in a previous example' do
+      expect(described_class.count).to eq 0
+    end
+  end
 end
