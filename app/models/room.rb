@@ -14,7 +14,7 @@ class Room < ApplicationRecord
         nil
       end
       # then the rooms with the searched track are all returned through the room_track
-      RoomTrack.find_by(track_id: track.id).track.rooms if track
+      Track.where(artist: search).map(&:rooms).flatten if track
     else
       ''
     end
