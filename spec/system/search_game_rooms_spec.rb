@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'SearchGameRooms', type: :system do
   let(:user) { build(:user, points: 100) }
-  let(:track) { create(:track) }
+  let(:track) { create(:track, artist: 'dua lipa') }
   let(:room) { create(:room) }
 
   before do
@@ -18,7 +18,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
 
   context 'when user is logged in and views all rooms' do
     it 'shows list of rooms created' do
-      expect(page).to have_content(room.name)
+      expect(page).to have_content(/#{room.name}/i)
     end
 
     it 'shows search bar' do
@@ -30,7 +30,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
     it 'shows rooms with associated query' do
       fill_in 'search',	with: track.artist
       click_on 'Search'
-      expect(page).to have_content(room.name)
+      expect(page).to have_content(/#{room.name}/i)
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
     it 'does not show rooms without associated query' do
       fill_in 'search',	with: 'Bruno Mars'
       click_on 'Search'
-      expect(page).not_to have_content(room.name)
+      expect(page).not_to have_content(/#{room.name}/i)
     end
 
     it 'displays error message' do
@@ -50,7 +50,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
     it 'shows all rooms' do
       fill_in 'search',	with: ''
       click_on 'Search'
-      expect(page).to have_content(room.name)
+      expect(page).to have_content(/#{room.name}/i)
     end
 
     it 'displays error message' do
