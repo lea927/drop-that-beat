@@ -52,7 +52,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
       click_on 'Search'
       expect(page).to have_content(room.name)
     end
-    
+
     it 'displays error message' do
       click_on 'Search'
       expect(page).to have_content('Please enter an artist to search')
