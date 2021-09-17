@@ -1,9 +1,13 @@
 class TracksController < ApplicationController
   include ApplicationHelper
 
-  def index; end
+  def index
+    @tracks = Track.all
+    @tracks = @tracks.search(params[:query]) if params[:query].present?
+  end
 
-  def search_track
-    search_track('new+rules+dua+lipa')
+  def search
+    @tracks = search_track(params[:term])
+    render 'index'
   end
 end

@@ -4,6 +4,8 @@ module ApplicationHelper
   include HTTParty
 
   def search_track(term)
-    HTTParty.get(ENV['BASE_URL'] + "term=#{term}&media=music&limit=5")
+    term.gsub(/ /, '+')
+    response = HTTParty.get(ENV['BASE_URL'] + "term=#{term}&media=music&limit=5")
+    JSON.parse(response)
   end
 end
