@@ -5,16 +5,18 @@ class Room < ApplicationRecord
   has_many :users, through: :user_rooms
   validates :name, presence: true
 
+  before_save
+
   def self.search(search)
     # If the argument search not nil, then a block is run where the track object is found based on params[:search]
     if search.present?
       begin
-        track = Track.find_by(artist: search).rooms.first
+        track = Track.find_by(artist: search.downcase).rooms.first
       rescue StandardError
         nil
       end
       # then the rooms with the searched track are all returned through the room_track
-      Track.where(artist: search).map(&:rooms).flatten if track
+      Track.where(artist: search.downcase).map(&:rooms).flatten if track
     else
       ''
     end
