@@ -7,7 +7,7 @@ RSpec.describe Track, type: :model do
     end
 
     it 'has one after adding one' do
-      described_class.create
+      create(:track)
       expect(described_class.count).to eq 1
     end
   end
