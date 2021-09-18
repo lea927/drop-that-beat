@@ -1,15 +1,13 @@
 class TracksController < ApplicationController
-  require 'dotenv'
-  require 'httparty'
-  include HTTParty
+  include ApplicationHelper
 
   def index
-    search_track
+    @tracks = Track.all
+    @tracks = @tracks.search(params[:query]) if params[:query].present?
   end
 
-  def search_track
-    term = 'levitating+dua+lipa'
-    request = HTTParty.get(ENV['BASE_URL'] + "term=#{term}&media=music&limit=5")
-    @request_hash = JSON.parse(request)
+  def search
+    @tracks = search_track(params[:term])
+    render 'index'
   end
 end
