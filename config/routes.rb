@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home_page#landing'
   get 'home_page/index'
-  get 'tracks/index'
+  get 'tracks/index', to: 'tracks#index
   get '/search', to: 'tracks#search', as: :search
   devise_for :users
   resources :rooms
