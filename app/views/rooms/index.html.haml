@@ -1,0 +1,11 @@
+%h1 All Music Rooms
+%p search for rooms to play
+= form_tag rooms_path, method: :get, role: "search" do
+  %p
+    = text_field_tag :search, params[:search], placeholder: 'Enter artist'
+    = submit_tag "Search"
+%ul
+  - if @rooms
+    - @rooms.each do |room|
+      %li 
+        = room.name
