@@ -3,16 +3,13 @@ require 'rails_helper'
 RSpec.describe 'SearchGameRooms', type: :system do
   let(:user) { build(:user, points: 100) }
   let(:track) { create(:track, artist: 'dua lipa') }
-  let(:room) { create(:room) }
+  let!(:room) { create(:room, tracks: [track]) }
 
   before do
     driven_by(:rack_test)
     user.skip_confirmation!
     user.save!
     sign_in user
-    room
-    track
-    room.tracks << track
     visit rooms_path
   end
 
@@ -42,7 +39,9 @@ RSpec.describe 'SearchGameRooms', type: :system do
     end
 
     it 'displays error message' do
-      expect(page).not_to have_content('Cannot find rooms with associated artist')
+      fill_in 'search',	with: 'Bruno Mars'
+      click_on 'Search'
+      expect(page).to have_content('Cannot find rooms with associated artist')
     end
   end
 
