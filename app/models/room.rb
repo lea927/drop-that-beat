@@ -5,8 +5,6 @@ class Room < ApplicationRecord
   has_many :users, through: :user_rooms
   validates :name, presence: true
 
-  before_save
-
   def self.search(search)
     # If the argument search not nil, then a block is run where the track object is found based on params[:search]
     if search.present?
