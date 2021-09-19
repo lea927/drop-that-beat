@@ -1,16 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'CreateGameRooms', type: :system do
-  include_context 'when user is logged in'
+  include_context 'when user creates a game room'
 
   before do
     driven_by(:rack_test)
     visit root_path
-  end
-
-  def submit_form(room_name)
-    fill_in 'Enter room name', with: room_name
-    click_on 'Create Room'
   end
 
   context 'with valid attributes' do
@@ -23,6 +18,10 @@ RSpec.describe 'CreateGameRooms', type: :system do
     it 'shows game setup details', :aggregate_failures do
       expect(page).to have_content 'Create a Playlist'
       expect(page).to have_content 'Set Rounds'
+    end
+
+    it 'saves data' do
+      expect(room).to have_attributes(name: 'animal')
     end
   end
 
