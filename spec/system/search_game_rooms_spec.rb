@@ -1,15 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'SearchGameRooms', type: :system do
-  let(:user) { build(:user, points: 100) }
+  include_context 'when user is logged in'
   let(:track) { create(:track, artist: 'dua lipa') }
   let!(:room) { create(:room, tracks: [track]) }
 
   before do
     driven_by(:rack_test)
-    user.skip_confirmation!
-    user.save!
-    sign_in user
     visit rooms_path
   end
 
