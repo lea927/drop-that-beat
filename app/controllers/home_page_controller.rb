@@ -5,5 +5,8 @@ class HomePageController < ApplicationController
     redirect_to home_page_index_path if user_signed_in?
   end
 
-  def index; end
+  def index
+    @rooms = current_user.rooms
+    @room = Room.new
+  end
 end

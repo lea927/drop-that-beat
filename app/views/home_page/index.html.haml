@@ -5,7 +5,14 @@
   = current_user.points
   ='points'
 = link_to 'CREATE A ROOM', new_room_path
-%ul
-  - current_user.rooms.each do |room|
-    %li
-      = link_to room.name, edit_room_path(room)
+- if @rooms.any?
+  %ul
+    - @rooms.each do |room|
+      %li
+        = link_to room.name, edit_room_path(room)
+
+= form_with model: @room, local: true do |f|
+  = render partial: 'devise/shared/error_messages', locals: { resource: @room }
+  = f.label :name, 'Enter room name'
+  = f.text_field :name, required: true
+  = f.submit 'Create Room'
