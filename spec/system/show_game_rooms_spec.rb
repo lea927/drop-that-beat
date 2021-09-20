@@ -12,7 +12,7 @@ RSpec.describe 'ShowGameRooms', type: :system do
 
   context 'when is user logged in and joins a room' do
     it 'is on the correct path' do
-      expect(page).to have_current_path(new_user_registration_path)
+      expect(page).to have_current_path(rooms_path)
     end
 
     it 'visits all rooms page' do
