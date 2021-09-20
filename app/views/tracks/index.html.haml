@@ -1,3 +1,6 @@
-= form_tag search_path, method: :get do
-  = text_field_tag :term, params[:term]
-  = submit_tag 'Search'
+= form_with url: search_path, method: :get, local: false, id: 'track_results_form' do |f|
+  = f.label 'Search track'
+  = f.text_field :term, required: true
+  = f.submit 'Search'
+#track_results
+  - render 'track'
