@@ -3,9 +3,7 @@
   = 'ROOM'
 %h3 STEP 1
 %h3 Search a Song
-= form_with local: false do |f|
-  = f.text_field :name, required: true
-  = f.submit 'Search'
+= render 'tracks/search_tracks'
 %h3 STEP 2
 %h3 Create a Playlist
 - if @room.tracks.any?
