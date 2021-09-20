@@ -30,7 +30,7 @@ class RoomsController < ApplicationController
 
   def update
     if @room.update(room_params)
-      redirect_to home_page_index_path, notice: 'Game was setup successfully'
+      redirect_to home_path, notice: 'Game was setup successfully'
     else
       render :edit
     end
