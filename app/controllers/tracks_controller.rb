@@ -3,11 +3,16 @@ class TracksController < ApplicationController
 
   def index
     @tracks = Track.all
-    @tracks = @tracks.search(params[:query]) if params[:query].present?
   end
 
   def search
-    @tracks = search_track(params[:term])
-    render 'index'
+    if params[:term].blank?
+      flash.now[:notice] = 'Please enter valid track'
+    else
+      @tracks = new_track(search_track(params[:term]))
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 end
