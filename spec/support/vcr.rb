@@ -6,4 +6,5 @@ VCR.configure do |c|
   c.ignore_localhost = true
   c.configure_rspec_metadata!
   c.allow_http_connections_when_no_cassette = true
+  c.filter_sensitive_data('test-itunes-api-base-url') { ENV['BASE_URL'] }
 end

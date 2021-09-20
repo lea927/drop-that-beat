@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: test-itunes-api-base-urllimit=5&media=music&term=asdfkjhasdflkjhas
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Apple-Jingle-Correlation-Key:
+      - 52CYDLBOMP3SCHWI3IRIID4F7M
+      X-Apple-Request-Uuid:
+      - ee8581ac-2e63-f721-1ec8-da22840f85fb
+      X-Apple-Translated-Wo-Url:
+      - "/WebObjects/MZStoreServices.woa/ws/wsSearch?term=asdfkjhasdflkjhas&media=music&limit=5&urlDesc="
+      Apple-Tk:
+      - 'false'
+      X-B3-Spanid:
+      - eb28a9930fca4455
+      Content-Type:
+      - text/javascript; charset=utf-8
+      B3:
+      - ee8581ac2e63f7211ec8da22840f85fb-eb28a9930fca4455
+      X-Content-Type-Options:
+      - nosniff
+      X-B3-Traceid:
+      - ee8581ac2e63f7211ec8da22840f85fb
+      X-Webobjects-Loadaverage:
+      - '0'
+      X-Responding-Instance:
+      - 'MZStoreServices:2007019:::'
+      Apple-Seq:
+      - '0'
+      Content-Disposition:
+      - attachment; filename=1.txt
+      Apple-Originating-System:
+      - MZStoreServices
+      X-Apple-Orig-Url:
+      - http://mzstoreservices-int-st.itunes.apple.com/search?term=asdfkjhasdflkjhas&media=music&limit=5
+      X-Apple-Application-Site:
+      - ST11
+      Apple-Timing-App:
+      - 79 ms
+      X-Apple-Application-Instance:
+      - '2007019'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - max-age=85833
+      Date:
+      - Mon, 20 Sep 2021 08:11:27 GMT
+      Content-Length:
+      - '42'
+      X-Cache:
+      - TCP_MISS from a202-138-183-46.deploy.akamaitechnologies.com (AkamaiGHost/10.4.4-34529956)
+        (-)
+      X-True-Cache-Key:
+      - "/L/itunes.apple.com/search vcd=2897 ci2=limit=5&media=music&term=asdfkjhasdflkjhas///"
+      Connection:
+      - keep-alive
+      X-Cache-Remote:
+      - TCP_HIT from a122-2-209-92.deploy.akamaitechnologies.com (AkamaiGHost/10.4.4-34529956)
+        (-)
+      X-Apple-Partner:
+      - origin.0
+    body:
+      encoding: UTF-8
+      string: |2+
+
+
+
+        {
+         "resultCount":0,
+         "results": []
+        }
+
+
+  recorded_at: Mon, 20 Sep 2021 08:11:26 GMT
+recorded_with: VCR 6.0.0
+...
