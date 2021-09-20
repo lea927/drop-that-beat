@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[edit update]
+  before_action :set_room, only: %i[edit update show]
 
   def index
     if params[:search].present? && Room.search(params[:search])
@@ -11,6 +11,10 @@ class RoomsController < ApplicationController
       @rooms = Room.all # if rooms_path or blank search
       flash.now[:notice] = 'Please enter an artist to search' if params[:search] == ''
     end
+  end
+
+  def show
+    @tracks = @room.tracks
   end
 
   def new; end
