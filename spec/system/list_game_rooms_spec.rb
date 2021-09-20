@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'ListGameRooms', type: :system do
+  include_context 'when user is logged in'
+
   let(:user) { build(:user, points: 100, rooms: [room]) }
   let(:room) { create(:room) }
 
   before do
     driven_by(:rack_test)
-    user.skip_confirmation!
-    user.save!
-    sign_in user
     visit root_path
   end
 

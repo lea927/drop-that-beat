@@ -14,5 +14,21 @@ RSpec.describe Room, type: :model do
     it 'is not valid without name' do
       expect(build(:room, name: ' ')).not_to be_valid
     end
+
+    it 'is not valid with blank rounds' do
+      expect(build(:room, rounds: ' ')).not_to be_valid
+    end
+
+    it 'is not valid with letter rounds' do
+      expect(build(:room, rounds: 'ABC')).not_to be_valid
+    end
+
+    it 'is not valid with zero or negative rounds' do
+      expect(build(:room, rounds: -1)).not_to be_valid
+    end
+
+    it 'is not valid with decimal rounds' do
+      expect(build(:room, rounds: 1.5)).not_to be_valid
+    end
   end
 end
