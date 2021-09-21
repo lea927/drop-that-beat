@@ -17,7 +17,7 @@ class TracksController < ApplicationController
   end
 
   def create
-    @track = Track.search_db(track_params) || Track.new(track_params)
+    @track = Track.search_db(params[:adam_id]) || Track.new(track_params)
     @track.save
   end
 
