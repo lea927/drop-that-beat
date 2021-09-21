@@ -15,4 +15,15 @@ class TracksController < ApplicationController
       end
     end
   end
+
+  def create
+    @track = Track.search_db(params[:adam_id]) || Track.new(track_params)
+    @track.save
+  end
+
+  private
+
+  def track_params
+    params.permit(:room_id, :name, :artist, :adam_id, :preview_url)
+  end
 end
