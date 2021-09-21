@@ -32,7 +32,7 @@ RSpec.describe 'ShowGameRooms', type: :system do
     end
 
     it 'tells user if the room url is invalid' do
-      visit room_path(room.id+1)
+      visit room_path(room.id + 1)
       expect(page).to have_content 'Room doesn\'t exist.'
     end
   end

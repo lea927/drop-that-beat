@@ -44,9 +44,9 @@ class RoomsController < ApplicationController
 
   def set_room
     @room = Room.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      flash[:notice] = "Room doesn't exist."
-      render :index
+  rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "Room doesn't exist."
+    render :index
   end
 
   def room_params
