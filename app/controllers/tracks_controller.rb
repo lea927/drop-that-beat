@@ -21,7 +21,7 @@ class TracksController < ApplicationController
     @track.save
   end
 
-private
+  private
 
   def track_params
     params.permit(:room_id, :name, :artist, :adam_id, :preview_url)
