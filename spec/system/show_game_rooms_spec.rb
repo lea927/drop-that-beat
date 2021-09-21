@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'ShowGameRooms', type: :system do
   include_context 'when user is logged in'
-  let(:user) { build(:user) }
   let(:track) { create(:track) }
   let!(:room) { create(:room, tracks: [track]) }
 
