@@ -50,3 +50,7 @@ jobs:
         DATABASE_USERNAME: 'postgres'
         DATABASE_PASSWORD: 'test'
         RAILS_TEST_KEY: ${{ secrets.RAILS_TEST_KEY }}
+        BASE_URL: ${{ secrets.BASE_URL }}
+        MAILER_EMAIL: ${{ secrets.MAILER_EMAIL }}
+        MAILER_PASSWORD: ${{ secrets.MAILER_PASSWORD }}
+        MAILER_USERNAME: ${{ secrets.MAILER_USERNAME }}
