@@ -1,5 +1,6 @@
 class TracksController < ApplicationController
   include ApplicationHelper
+  before_action :set_room, only: %i[create]
 
   def index
     @tracks = Track.all
@@ -9,6 +10,7 @@ class TracksController < ApplicationController
     if params[:term].blank?
       flash.now[:notice] = 'Please enter valid track'
     else
+      @room = Room.find(params[:room_id])
       @tracks = new_track(search_track(params[:term]))
       respond_to do |format|
         format.js
@@ -19,11 +21,19 @@ class TracksController < ApplicationController
   def create
     @track = Track.search_db(params[:adam_id]) || Track.new(track_params)
     @track.save
+    @room.tracks << @track
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
 
+  def set_room
+    @room = Room.find(params[:room_id])
+  end
+
   def track_params
-    params.permit(:room_id, :name, :artist, :adam_id, :preview_url)
+    params.permit(:name, :artist, :adam_id, :preview_url)
   end
 end
