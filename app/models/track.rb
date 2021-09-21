@@ -9,4 +9,8 @@ class Track < ApplicationRecord
     name.downcase!
     artist.downcase!
   end
+
+  def self.search_db(track)
+    find_by(track)
+  end
 end
