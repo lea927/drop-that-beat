@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'SearchGameRooms', type: :system do
   include_context 'when user is logged in'
   let(:track) { create(:track, artist: 'dua lipa') }
-  let!(:room) { create(:room, tracks: [track]) }
+  let(:track2) { create(:track, artist: 'dua lipa', name: 'idgaf', adam_id: '1228739604', preview_url: 'https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/dd/7c/f8/dd7cf8bf-61f2-45e3-9a52-63b7734d5ef1/mzaf_1015632960633637742.plus.aac.p.m4a') }
+  let!(:room) { create(:room, tracks: [track, track2]) }
 
   before do
     driven_by(:rack_test)
@@ -12,7 +13,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
 
   context 'when user is logged in and views all rooms' do
     it 'shows list of rooms created' do
-      expect(page).to have_content(/#{room.name}/i)
+      expect(page).to have_content(/#{room.name}/i).once
     end
 
     it 'shows search bar' do
@@ -24,7 +25,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
     it 'shows rooms with associated query' do
       fill_in 'search',	with: track.artist
       click_on 'Search'
-      expect(page).to have_content(/#{room.name}/i)
+      expect(page).to have_content(/#{room.name}/i).once
     end
   end
 
