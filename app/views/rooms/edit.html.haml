@@ -17,7 +17,7 @@
   = form_with model: @room, local: false do |f|
     = render partial: 'devise/shared/error_messages', locals: { resource: @room }
     = f.label :rounds
-    = f.number_field :rounds, min: 1, step: 1, required: true
+    = f.select :rounds, options_for_select([[1, 1], [2, 2], [3, 3] ], @room.rounds)
     %br
     = f.submit 'Finish setup'
 :javascript
