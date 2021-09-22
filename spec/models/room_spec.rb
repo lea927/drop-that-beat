@@ -30,5 +30,9 @@ RSpec.describe Room, type: :model do
     it 'is not valid with decimal rounds' do
       expect(build(:room, rounds: 1.5)).not_to be_valid
     end
+
+    it 'is not valid with more than 3 rounds' do
+      expect(build(:room, rounds: 4)).not_to be_valid
+    end
   end
 end
