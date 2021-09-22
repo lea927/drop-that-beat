@@ -1,2 +1,2 @@
-document.querySelector('#track_results').innerHTML = "<%= j render 'track' %>"
+document.querySelector("#track_results").innerHTML = "<%= j render 'track', tracks: @tracks %>"
 document.querySelector('#track_results_form').reset()

@@ -5,7 +5,7 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     trait :rooms do
-      rooms { [association(:rooms)] }
+      rooms { [association(:room)] }
     end
   end
 end

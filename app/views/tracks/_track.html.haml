@@ -1,6 +1,6 @@
-- if @tracks
-  - @tracks.each do |track|
-    %div 
+- if tracks
+  - tracks.each do |track|
+    %div{data: { track: track.id }}
       %div
         %p
           %strong
@@ -8,8 +8,10 @@
           = 'by'
           = track.artist
         %audio{ controls: true }
-          %source{ src: track.preview_url, type: 'audio/mp4' }
-      = link_to 'Add Song', tracks_path(name: track.name, artist: track.artist, adam_id: track.adam_id, preview_url: track.preview_url), |
-        method: 'POST', remote: true
+          %source{ src: track.preview_url, type: 'audio/mp4' }    
+      - if track.id.nil?
+        = link_to 'Add Song', tracks_path(track.attributes.merge(room_id: @room.id)), method: :post, remote: true, data: { animate: 'fadeOut', target: 'parent' }
+      - else
+        = link_to 'Remove Song', '#', data: { animate: 'fadeOut', target: 'parent' }
 - else
   %p No tracks found
