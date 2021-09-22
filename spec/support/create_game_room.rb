@@ -8,7 +8,7 @@ RSpec.shared_context 'when user creates a game room' do
   end
 
   def update_rounds(rounds)
-    fill_in 'Rounds', with: rounds
+    select rounds, from: 'Rounds'
     click_on 'Finish setup'
   end
 end

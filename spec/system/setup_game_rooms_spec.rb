@@ -20,18 +20,4 @@ RSpec.describe 'SetupGameRooms', type: :system do
       expect(page).to have_content 'Game was setup successfully'
     end
   end
-
-  context 'with rounds less than 1' do
-    it 'generates error message' do
-      update_rounds(0)
-      expect(page).to have_content 'Rounds must be greater than or equal to 1'
-    end
-  end
-
-  context 'with nil rounds' do
-    it 'generates error message' do
-      update_rounds(' ')
-      expect(page).to have_content 'Rounds can\'t be blank'
-    end
-  end
 end
