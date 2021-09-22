@@ -2,3 +2,5 @@
 
 - if @tracks.empty?
   %p No tracks available
+%br
+= link_to 'Start game', tracks_json_path(@room), method: :get, remote: true, data: { type: 'json' }

@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[edit update show]
+  before_action :set_room, only: %i[edit update show tracks_json]
 
   def index
     if params[:search].present? && Room.search(params[:search])
@@ -15,6 +15,11 @@ class RoomsController < ApplicationController
 
   def show
     @tracks = @room.tracks
+  end
+
+  def tracks_json
+    @tracks = @room.tracks
+    render json: @tracks
   end
 
   def new; end
