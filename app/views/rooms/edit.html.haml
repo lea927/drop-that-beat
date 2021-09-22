@@ -26,7 +26,10 @@
     $(this).fadeOut(200, () => {
       $(this).parent().remove();
     });
-  }
+  };
   $(document).on('ajax:success', () => {
     $("a[data-animate='fadeOut']").on('click', removeParentElem);
-  })
+  });
+  $(document).on('turbolinks:load', () => {
+    $("a[data-animate='fadeOut']").on('click', removeParentElem);
+  });
