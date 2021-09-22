@@ -10,6 +10,9 @@
     - @rooms.each do |room|
       %li
         = link_to room.name, edit_room_path(room)
+        = link_to "Delete", room_path(room.id), |
+      method: :delete, |
+      data: { confirm: "Are you sure you want to delete #{room.name}?" }
 
 = form_with model: @room, local: true do |f|
   = render partial: 'devise/shared/error_messages', locals: { resource: @room }

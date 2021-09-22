@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[edit update]
+  before_action :set_room, only: %i[edit update destroy]
 
   def index
     if params[:search].present? && Room.search(params[:search])
@@ -34,6 +34,13 @@ class RoomsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def show; end
+
+  def destroy
+    @room.destroy
+    redirect_to home_path, notice: 'Room was successfully deleted.'
   end
 
   private
