@@ -10,7 +10,6 @@ RSpec.shared_examples 'assigns tracks to rooms and render js' do
   it 'renders JS' do
     post tracks_path, params: track.attributes.merge(room_id: room.id), xhr: true
     expect(response.media_type).to eq 'text/javascript'
-    # expect(response.body).to include track.name
   end
 end
 
@@ -40,6 +39,19 @@ RSpec.describe TracksController, type: :request do
       end
 
       include_examples 'assigns tracks to rooms and render js'
+    end
+
+    context 'when track and room is already saved' do
+      before do
+        track.save
+        room.tracks.push(track)
+      end
+
+      it 'no change in room tracks table' do
+        expect do
+          post tracks_path, params: track.attributes.merge(room_id: room.id), xhr: true
+        end.not_to change(RoomTrack, :count)
+      end
     end
   end
 

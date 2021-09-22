@@ -19,12 +19,15 @@ class TracksController < ApplicationController
   end
 
   def create
-    @track = Track.search_db(params[:adam_id]) || Track.new(track_params)
+    @track = Track.search_db(params[:adam_id]) || Track.new(track_params.except(:room_id))
     @track.save
     @room.tracks << @track
     respond_to do |format|
       format.js
     end
+  rescue ActiveRecord::RecordInvalid => e
+    logger.info e.record.errors.full_messages
+    render js: ''
   end
 
   def destroy
@@ -39,6 +42,6 @@ class TracksController < ApplicationController
   end
 
   def track_params
-    params.permit(:name, :artist, :adam_id, :preview_url)
+    params.permit(:room_id, :name, :artist, :adam_id, :preview_url)
   end
 end
