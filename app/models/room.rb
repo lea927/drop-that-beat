@@ -15,7 +15,8 @@ class Room < ApplicationRecord
         nil
       end
       # then the rooms with the searched track are all returned through the room_track
-      Track.where(artist: search.downcase).map(&:rooms).flatten if track
+      room_names_arr = Track.where(artist: search.downcase).map(&:rooms).flatten.pluck(:name).uniq
+      Room.where(name: [room_names_arr]) if track
     else
       ''
     end
