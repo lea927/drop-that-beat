@@ -25,6 +25,9 @@ class TracksController < ApplicationController
     respond_to do |format|
       format.js
     end
+  rescue ActiveRecord::RecordInvalid => e
+    logger.info e.record.errors.full_messages
+    render js: ''
   end
 
   def destroy
