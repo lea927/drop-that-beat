@@ -30,5 +30,11 @@ RSpec.describe Room, type: :model do
     it 'is not valid with decimal rounds' do
       expect(build(:room, rounds: 1.5)).not_to be_valid
     end
+
+    it 'is not valid with duplicate tracks' do
+      track = create(:track)
+      room = create(:room, tracks: [track])
+      expect { room.tracks.push(track) }.to raise_error(ActiveRecord::RecordInvalid)
+    end
   end
 end
