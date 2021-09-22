@@ -1,1 +1,2 @@
-$('#room_playlist')[0].prepend("<%= j render 'track', tracks: [ @track ] %>")
+$('#room_playlist').prepend("<%= j render 'track', tracks: [ @track ] %>");
+$("div[data-track='<%= @track.id %>']").hide().fadeIn(700);
