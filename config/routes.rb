@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   get '/search', to: 'tracks#search', as: :search
   devise_for :users
   resources :rooms
-  resources :tracks
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :tracks, except: %i[update]
 end
