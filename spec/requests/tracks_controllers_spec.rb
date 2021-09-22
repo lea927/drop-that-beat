@@ -42,4 +42,27 @@ RSpec.describe TracksController, type: :request do
       include_examples 'assigns tracks to rooms and render js'
     end
   end
+
+  describe 'DELETE /destroy' do
+    before do
+      track.save
+      room.tracks.push(track)
+    end
+
+    it 'destroys the room tracks relation' do
+      expect do
+        delete track_path(track), params: { room_id: room.id }, xhr: true
+      end.to change(RoomTrack, :count).by(-1)
+    end
+
+    it 'does not destroy track' do
+      delete track_path(track), params: { room_id: room.id }, xhr: true
+      expect(track).to be_present
+    end
+
+    it 'does not destroy room' do
+      delete track_path(track), params: { room_id: room.id }, xhr: true
+      expect(room).to be_present
+    end
+  end
 end

@@ -27,6 +27,11 @@ class TracksController < ApplicationController
     end
   end
 
+  def destroy
+    @room_track = RoomTrack.find_by(room_id: params[:room_id], track_id: params[:id])
+    @room_track.destroy
+  end
+
   private
 
   def set_room
