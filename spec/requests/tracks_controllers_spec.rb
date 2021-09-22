@@ -47,10 +47,10 @@ RSpec.describe TracksController, type: :request do
         room.tracks.push(track)
       end
 
-      it 'raises error' do
+      it 'no change in room tracks table' do
         expect do
           post tracks_path, params: track.attributes.merge(room_id: room.id), xhr: true
-        end.to raise_error(ActiveRecord::RecordInvalid)
+        end.not_to change(RoomTrack, :count)
       end
     end
   end
