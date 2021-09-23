@@ -2,11 +2,11 @@ class RoomsController < ApplicationController
   before_action :set_room, only: %i[edit update destroy]
 
   def index
-    if params[:search].present? && Room.search(params[:search])
+    if params[:search].present? && Room.search(params[:search]).any?
       @rooms = Room.search(params[:search]) # if artist exists in a room
-    elsif Room.search(params[:search]).nil?
-      @rooms = nil # if artist does not exist in a room
+    elsif params[:search].present? && Room.search(params[:search]).empty?
       flash.now[:notice] = 'Cannot find rooms with associated artist'
+      @rooms = nil # if artist does not exist in a room
     else
       @rooms = Room.all # if rooms_path or blank search
       flash.now[:notice] = 'Please enter an artist to search' if params[:search] == ''
