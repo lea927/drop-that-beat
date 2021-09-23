@@ -9,13 +9,14 @@ class Room < ApplicationRecord
   def self.search(search)
     # If the argument search not nil, then a block is run where the track object is found based on params[:search]
     if search.present?
+      search = search.downcase
       begin
-        track = Track.find_by(artist: search.downcase).rooms.first
+        track = Track.where('artist LIKE ?', "%#{search}%").map(&:rooms).first
       rescue StandardError
         nil
       end
       # then the rooms with the searched track are all returned through the room_track
-      room_names_arr = Track.where(artist: search.downcase).map(&:rooms).flatten.pluck(:name).uniq
+      room_names_arr = Track.where('artist LIKE ?', "%#{search}%").map(&:rooms).flatten.pluck(:name).uniq
       Room.where(name: [room_names_arr]) if track
     else
       ''
