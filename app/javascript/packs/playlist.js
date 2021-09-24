@@ -9,6 +9,7 @@ class Playlist {
 		this.tracks = [];
 		this.currentTrack = '';
 		this.isPlaying = false;
+		this.createTrack(urlTracks);
 	}
 	/**
 	 * Setup playlist tracks
