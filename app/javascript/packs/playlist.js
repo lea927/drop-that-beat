@@ -4,5 +4,6 @@ class Playlist {
 	constructor(urlTracks) {
 		this.trackNo = 0;
 		this.tracks = [];
+		this.currentTrack = '';
 	}
 }
