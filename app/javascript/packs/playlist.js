@@ -81,3 +81,4 @@ class Playlist {
 		return this;
 	}
 }
+export default Playlist;
