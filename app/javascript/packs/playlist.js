@@ -68,4 +68,16 @@ class Playlist {
 		this.play();
 		return this;
 	}
+	/**
+	 * Sets the track number to the next track
+	 * @returns {Playlist}
+	 */
+	nextTrackNo() {
+		if (this.trackNo < this.tracks.length - 1) {
+			this.trackNo++;
+		} else {
+			this.trackNo = 0;
+		}
+		return this;
+	}
 }
