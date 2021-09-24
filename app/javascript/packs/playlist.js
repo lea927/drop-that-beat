@@ -43,4 +43,15 @@ class Playlist {
 		this.isPlaying = false;
 		return this;
 	}
+	/**
+	 * End audio track.
+	 * @returns {Playlist}
+	 */
+	end() {
+		this.tracks[this.trackNo].load();
+		this.currentTrack = '';
+		this.trackNo = 0;
+		this.isPlaying = false;
+		return this;
+	}
 }
