@@ -8,12 +8,13 @@ class RoomsController < ApplicationController
       @rooms = nil # if artist does not exist in a room
       flash.now[:notice] = 'Cannot find rooms with associated artist'
     else
-      @rooms = Room.all # if rooms_path or blank search
+      @rooms = Room.joins(:tracks).distinct # if rooms_path or blank search
       flash.now[:notice] = 'Please enter an artist to search' if params[:search] == ''
     end
   end
 
   def show
+    # flash[:alert] = 'Room not available' unless @room.tracks.exists?
     @tracks = @room.tracks
   end
 
@@ -48,7 +49,7 @@ class RoomsController < ApplicationController
   private
 
   def set_room
-    @room = Room.find(params[:id])
+    @room = Room.joins(:tracks).distinct.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Room doesn't exist."
     render :index
