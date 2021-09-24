@@ -41,4 +41,18 @@ RSpec.describe Track, type: :model do
     it { is_expected.to be_valid }
     it { is_expected.to respond_to :rooms }
   end
+
+  context 'when searching stored track' do
+    it 'is expected to find track' do
+      track = create(:track)
+      expect(described_class.search_db(track.adam_id)).to eq track
+    end
+  end
+
+  context 'when searching unstored track' do
+    it 'is expected not to find track' do
+      track = build(:track, adam_id: '')
+      expect(described_class.search_db(track.adam_id)).to be_nil
+    end
+  end
 end

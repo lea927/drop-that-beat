@@ -31,6 +31,7 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   # Include test helpers
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :system
 
   config.before(:suite) do
