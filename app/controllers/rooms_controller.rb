@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
   def show
     set_room_with_tracks
     @tracks = @room.tracks if @room
+    @tracks_url = @tracks.map(&:preview_url) if @tracks
   end
 
   def tracks_json

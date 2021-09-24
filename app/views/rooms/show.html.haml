@@ -1,3 +1,7 @@
 = @room.name
-
-= link_to 'Start game', tracks_json_path(@room), method: :get, remote: true, data: { type: 'json' }
+%button{ id: 'startGameBtn'} Start Game
+:javascript
+  let playlist = new Playlist(#{@tracks_url});
+  document.addEventListener('turbolinks:load', () => {
+    document.querySelector('#startGameBtn').addEventListener('click', () => playlist.play());
+  })
