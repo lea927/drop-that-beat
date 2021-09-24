@@ -9,8 +9,11 @@ require("@rails/activestorage").start()
 require("channels")
 require('jquery')
 require('../stylesheets/application.scss')
+import 'bootstrap/dist/js/bootstrap'
+import 'bootstrap/scss/bootstrap'
 import Playlist from './playlist'
 window.Playlist = Playlist
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
