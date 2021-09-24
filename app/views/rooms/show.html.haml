@@ -1,0 +1,3 @@
+= @room.name
+
+= link_to 'Start game', tracks_json_path(@room), method: :get, remote: true, data: { type: 'json' }
