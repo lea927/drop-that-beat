@@ -3,5 +3,9 @@
 :javascript
   let playlist = new Playlist(#{@tracks_url});
   document.addEventListener('turbolinks:load', () => {
-    document.querySelector('#startGameBtn').addEventListener('click', () => playlist.play());
+    const startBtn = document.querySelector('#startGameBtn');
+    startBtn.addEventListener('click', () => {
+      playlist.play()
+      startBtn.style.visibility = 'hidden';
+    });
   })
