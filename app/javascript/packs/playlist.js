@@ -5,5 +5,6 @@ class Playlist {
 		this.trackNo = 0;
 		this.tracks = [];
 		this.currentTrack = '';
+		this.isPlaying = false;
 	}
 }
