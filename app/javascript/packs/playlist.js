@@ -28,10 +28,19 @@ class Playlist {
 	 * Play audio track. Track number is automatically determined
 	 * @returns {Playlist}
 	 */
-	 play() {
+	play() {
 		this.tracks[this.trackNo].play();
 		this.currentTrack = this.tracks[this.trackNo];
 		this.isPlaying = true;
+		return this;
+	}
+	/**
+	 * Pause audio track.
+	 * @returns {Playlist}
+	 */
+	pause() {
+		this.tracks[this.trackNo].pause();
+		this.isPlaying = false;
 		return this;
 	}
 }
