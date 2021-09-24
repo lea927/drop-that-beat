@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[edit update destroy]
+  before_action :set_room, only: %i[edit update tracks_json destroy]
 
   def index
     if params[:search].present? && Room.search(params[:search]).any?
@@ -8,9 +8,20 @@ class RoomsController < ApplicationController
       flash.now[:notice] = 'Cannot find rooms with associated artist'
       @rooms = nil # if artist does not exist in a room
     else
-      @rooms = Room.all # if rooms_path or blank search
+      @rooms = Room.joins(:tracks).distinct # if rooms_path or blank search
       flash.now[:notice] = 'Please enter an artist to search' if params[:search] == ''
     end
+  end
+
+  def show
+    set_room_with_tracks
+    @tracks = @room.tracks if @room
+    @tracks_url = @tracks.map(&:preview_url) if @tracks
+  end
+
+  def tracks_json
+    @tracks = @room.tracks
+    render json: @tracks
   end
 
   def new; end
@@ -36,8 +47,6 @@ class RoomsController < ApplicationController
     end
   end
 
-  def show; end
-
   def destroy
     @room.destroy
     redirect_to home_path, notice: 'Room was successfully deleted.'
@@ -47,6 +56,16 @@ class RoomsController < ApplicationController
 
   def set_room
     @room = Room.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "Room doesn't exist."
+    render :index
+  end
+
+  def set_room_with_tracks
+    @room = Room.joins(:tracks).distinct.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "Room doesn't exist."
+    render :index
   end
 
   def room_params
