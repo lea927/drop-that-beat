@@ -54,4 +54,18 @@ class Playlist {
 		this.isPlaying = false;
 		return this;
 	}
+	/**
+	 * Next Track
+	 * @returns {Playlist}
+	 */
+	next() {
+		this.tracks[this.trackNo].load();
+		this.nextTrackNo();
+		if (this.trackNo === 0) {
+			this.end();
+			return;
+		}
+		this.play();
+		return this;
+	}
 }
