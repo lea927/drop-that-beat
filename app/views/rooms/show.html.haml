@@ -4,4 +4,26 @@
   let playlist = new Playlist(#{@tracks_url});
   document.addEventListener('turbolinks:load', () => {
     document.querySelector('#startGameBtn').addEventListener('click', () => playlist.play());
+    post_answers(#{@room.id}, #{current_user.id}, '15118851789', 'eight (feat. suga)');
   })
+  function post_answers(roomId, userId, adamId, trackName) {
+    $.ajax({
+      type: 'POST',
+      url: `/rooms/${roomId}`,
+      dataType: 'json',
+      data: {
+        user_id: userId,
+        adam_id: adamId,
+        name: trackName,
+      },
+      success: function success(data) {
+        if (data.length === 0) return;
+        let isCorrect = JSON.parse(data);
+        let msg = isCorrect ? 'Correct answer' : 'Incorrect answer'
+        alert(msg);
+      },
+      error: function error(request, errorMsg) {
+        console.log(request, errorMsg);
+      },
+    });
+  };
