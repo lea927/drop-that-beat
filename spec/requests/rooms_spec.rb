@@ -24,6 +24,7 @@ RSpec.describe 'RoomsController', type: :request do
 
   describe 'POST /answer' do
     let(:valid_params) { { user_id: user.id, adam_id: track.adam_id, name: track.name } }
+    let(:invalid_params) { { user_id: '456321', adam_id: '456321', name: track.name } }
 
     context 'with correct answer' do
       it 'user points changes by 1' do
@@ -50,6 +51,14 @@ RSpec.describe 'RoomsController', type: :request do
       it 'returns false' do
         post answer_room_path(room), params: valid_params, xhr: true
         expect(response.body).to eq 'false'
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'user points does not change' do
+        expect do
+          post answer_room_path(room), params: invalid_params, xhr: true
+        end.not_to(change { user.reload.points })
       end
     end
   end
