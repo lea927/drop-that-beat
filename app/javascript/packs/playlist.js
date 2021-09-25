@@ -20,7 +20,6 @@ class Playlist {
     urlTracks.forEach((urlTrack) => {
       let track = new Audio(urlTrack);
       track.addEventListener('ended', () => this.next());
-      track.addEventListener('play', () => this.loader());
       this.tracks.push(track);
     });
     return this.tracks;
@@ -53,7 +52,6 @@ class Playlist {
     this.currentTrack = '';
     this.trackNo = 0;
     this.isPlaying = false;
-    this.hideLoader();
     return this;
   }
   /**
@@ -81,31 +79,6 @@ class Playlist {
       this.trackNo = 0;
     }
     return this;
-  }
-
-  loader() {
-    let i = 0;
-    if (i == 0) {
-      i = 1;
-      let loader = document.getElementById('myBar');
-      let width = 1;
-      let id = setInterval(frame, 300);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          loader.style.width = width + '%';
-        }
-      }
-    }
-  }
-  hideLoader() {
-    let bar = document.getElementById('myBar');
-    let progress = document.getElementById('myProgress');
-    bar.classList.add('hide');
-    progress.classList.add('hide');
   }
 }
 
