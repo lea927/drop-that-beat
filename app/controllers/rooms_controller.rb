@@ -54,9 +54,10 @@ class RoomsController < ApplicationController
 
   def answer
     @track = @room.tracks.search_db(params[:adam_id])
-
-    @user = User.find(params[:user_id])
-    @user.increment(:points).save
+    if @track.name == params[:name]
+      @user = User.find(params[:user_id])
+      @user.increment(:points).save
+    end
     render json: @track.name == params[:name]
   end
 
