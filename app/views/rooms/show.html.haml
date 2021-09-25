@@ -5,3 +5,26 @@
   document.addEventListener('turbolinks:load', () => {
     document.querySelector('#startGameBtn').addEventListener('click', () => playlist.play());
   })
+  function post_answers(roomId, userId, adamId, trackName) {
+    $.ajax({
+      type: 'POST',
+      url: `/rooms/${roomId}`,
+      dataType: 'json',
+      data: {
+        user_id: userId,
+        adam_id: adamId,
+        name: trackName,
+      },
+      success: function success(data) {
+        if (data.length === 0) return;
+        let isCorrect = JSON.parse(data);
+        let msg = isCorrect ? 'Correct answer' : 'Incorrect answer';
+        alert(msg);
+        return isCorrect;
+      },
+      error: function error(request, errorMsg) {
+        console.log(request, errorMsg);
+      },
+    });
+  };
+
