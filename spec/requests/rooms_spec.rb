@@ -31,6 +31,11 @@ RSpec.describe 'RoomsController', type: :request do
           post answer_room_path(room), params: valid_params, xhr: true
         end.to(change { user.reload.points }.by(1))
       end
+
+      it 'returns true' do
+        post answer_room_path(room), params: valid_params, xhr: true
+        expect(response.body).to eq 'true'
+      end
     end
   end
 end
