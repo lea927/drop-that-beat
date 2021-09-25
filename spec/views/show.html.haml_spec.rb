@@ -27,7 +27,7 @@ RSpec.describe 'rooms/show.html.haml', type: :view do
   end
 
   # failures
-  it 'does not display another loader element', :aggregate_failures do 
+  it 'does not display another loader element', :aggregate_failures do
     expect(rendered).not_to have_selector('div', id: 'theirBar')
     expect(rendered).not_to have_selector('div', id: 'theirProgress')
   end
