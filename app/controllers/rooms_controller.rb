@@ -54,6 +54,8 @@ class RoomsController < ApplicationController
 
   def answer
     @track = @room.tracks.search_db(params[:adam_id])
+    return if @track.nil?
+
     if @track.name == params[:name]
       @user = User.find(params[:user_id])
       @user.increment(:points).save
