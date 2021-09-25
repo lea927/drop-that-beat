@@ -37,5 +37,14 @@ RSpec.describe 'RoomsController', type: :request do
         expect(response.body).to eq 'true'
       end
     end
+
+    context 'with incorrect answer' do
+      it 'user points does not change' do
+        track.name = 'IDGAF'
+        expect do
+          post answer_room_path(room), params: valid_params, xhr: true
+        end.not_to(change { user.reload.points })
+      end
+    end
   end
 end
