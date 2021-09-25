@@ -57,7 +57,7 @@ class RoomsController < ApplicationController
 
     @user = User.find(params[:user_id])
     @user.increment(:points).save
-    @track.name == params[:name]
+    render json: @track.name == params[:name]
   end
 
   private
