@@ -2,11 +2,8 @@
 //           GLOBAL VARIABLES
 // ==================================================
 
-import Playlist from './playlist';
-
 let bar = document.getElementById('myBar');
 let progress = document.getElementById('myProgress');
-let playlistArr;
 // ==================================================
 //           FUNCTIONS
 // ==================================================
@@ -42,6 +39,13 @@ function loader() {
   }
 }
 
+function checkPlaylistStatus() {
+  setInterval(function () {
+    if (playlist.isPlaying === false) {
+      hideLoader();
+    }
+  }, 1000);
+}
 // ==================================================
 //           EVENT LISTENERS
 // ==================================================
@@ -51,9 +55,8 @@ document.addEventListener('turbolinks:load', () => {
 });
 document.querySelector('#startGameBtn').addEventListener('click', () => {
   showLoader();
-  console.log(playlist);
-  playlistArr = playlist.tracks;
-  playlistArr.forEach((track) => {
+  playlist.tracks.forEach((track) => {
     track.addEventListener('play', () => loader());
   });
+  checkPlaylistStatus();
 });
