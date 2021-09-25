@@ -37,6 +37,11 @@ RSpec.describe 'RoomsController', type: :request do
         post answer_room_path(room), params: valid_params, xhr: true
         expect(response.body).to eq 'true'
       end
+
+      it 'renders successful response' do
+        post answer_room_path(room), params: valid_params, xhr: true
+        expect(response).to be_successful
+      end
     end
 
     context 'with incorrect answer' do
@@ -52,6 +57,11 @@ RSpec.describe 'RoomsController', type: :request do
         post answer_room_path(room), params: valid_params, xhr: true
         expect(response.body).to eq 'false'
       end
+
+      it 'renders successful response' do
+        post answer_room_path(room), params: valid_params, xhr: true
+        expect(response).to be_successful
+      end
     end
 
     context 'with invalid parameters' do
@@ -59,6 +69,11 @@ RSpec.describe 'RoomsController', type: :request do
         expect do
           post answer_room_path(room), params: invalid_params, xhr: true
         end.not_to(change { user.reload.points })
+      end
+
+      it 'renders unsuccessful response' do
+        post answer_room_path(room), params: invalid_params, xhr: true
+        expect(response).not_to be_successful
       end
     end
   end
