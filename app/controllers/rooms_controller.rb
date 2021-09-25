@@ -52,6 +52,8 @@ class RoomsController < ApplicationController
     redirect_to home_path, notice: 'Room was successfully deleted.'
   end
 
+  def answer; end
+
   private
 
   def set_room
