@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[edit update tracks_json destroy]
+  before_action :set_room, only: %i[edit update tracks_json destroy answer]
 
   def index
     if params[:search].present? && Room.search(params[:search]).any?
@@ -52,7 +52,13 @@ class RoomsController < ApplicationController
     redirect_to home_path, notice: 'Room was successfully deleted.'
   end
 
-  def answer; end
+  def answer
+    @track = @room.tracks.search_db(params[:adam_id])
+
+    @user = User.find(params[:user_id])
+    @user.increment(:points).save
+    @track.name == params[:name]
+  end
 
   private
 
