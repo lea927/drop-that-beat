@@ -3,9 +3,9 @@
 %h1{ id: 'question', style: 'visibility: hidden' }
 %button{ id: 'startGameBtn' } Start Game
 %div{ id: 'choices' } 
-  %button{ id: 'choice1', class: 'choiceBtn btn btn-primary btn-lg', width: '4rem', style: 'display: none' } 
-  %button{ id: 'choice2', class: 'choiceBtn btn btn-primary btn-lg', width: '4rem', style: 'display: none' } 
-  %button{ id: 'choice3', class: 'choiceBtn btn btn-primary btn-lg', width: '4rem', style: 'display: none' } 
+  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
+  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
+  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
 %p{ id: 'test' }
 :javascript
   let playlist = new Playlist(#{@tracks_url});
