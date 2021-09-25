@@ -53,6 +53,7 @@ class Playlist {
     this.currentTrack = '';
     this.trackNo = 0;
     this.isPlaying = false;
+    this.hideLoader();
     return this;
   }
   /**
@@ -99,6 +100,12 @@ class Playlist {
         }
       }
     }
+  }
+  hideLoader() {
+    let bar = document.getElementById('myBar');
+    let progress = document.getElementById('myProgress');
+    bar.classList.add('hide');
+    progress.classList.add('hide');
   }
 }
 
