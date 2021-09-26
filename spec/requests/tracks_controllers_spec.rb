@@ -27,6 +27,7 @@ RSpec.describe TracksController, type: :request do
     end
 
     it { is_expected.to be_successful }
+    it { is_expected.to have_attributes(media_type: 'application/json') }
   end
 
   describe 'POST /create' do
