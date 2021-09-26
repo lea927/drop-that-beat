@@ -18,6 +18,8 @@ class TracksController < ApplicationController
     end
   end
 
+  def show; end
+
   def create
     @track = Track.search_db(params[:adam_id]) || Track.new(track_params.except(:room_id))
     @track.save
