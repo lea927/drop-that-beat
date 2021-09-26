@@ -20,6 +20,9 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "Track doesn't exist."
+    render 'rooms/index'
   end
 
   def create
