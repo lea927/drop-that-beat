@@ -10,8 +10,7 @@ class Room < ApplicationRecord
     # If the argument search not nil, then a block is run where the track object is found based on params[:search]
     return if search.nil?
 
-    search.downcase!
-    Track.where('artist LIKE ?', "%#{search}%").map(&:rooms).flatten.uniq
+    Track.where('artist ILIKE ?', "%#{search}%").map(&:rooms).flatten.uniq
   rescue StandardError
     nil
   end
