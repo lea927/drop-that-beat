@@ -6,7 +6,7 @@
  * @param {Object} options
  * @returns {Promise} Promise object representing XHR result
  */
-function get(path, { data, successCallback, errorCallback } = {}) {
+export function get(path, { data, successCallback, errorCallback } = {}) {
 	return $.get({
 		url: path,
 		dataType: 'json',
