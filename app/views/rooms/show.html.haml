@@ -3,6 +3,7 @@
 #myProgress
   #myBar
 = javascript_pack_tag 'loader'
+= javascript_pack_tag 'api/index'
 :javascript
   let playlist = new Playlist(#{@tracks_url});
   document.addEventListener('turbolinks:load', () => {
