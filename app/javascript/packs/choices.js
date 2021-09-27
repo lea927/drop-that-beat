@@ -72,9 +72,9 @@ function displayChoices(incorrectTracks, correctTrack) {
   let choices = [...wrongChoices, correctTrack];
   let shuffledChoices = shuffleTracks(choices);
   const choiceBtns = document.querySelectorAll(".choiceBtn");
-  choiceBtns[0].textContent = `${shuffledChoices[1].name} by ${shuffledChoices[1].artist}`;
-  choiceBtns[1].textContent = `${shuffledChoices[2].name} by ${shuffledChoices[2].artist}`;
-  choiceBtns[2].textContent = `${shuffledChoices[0].name} by ${shuffledChoices[0].artist}`;
+  choiceBtns.forEach((choiceBtn, i) => {
+    choiceBtn.textContent = `${shuffledChoices[i].name} by ${shuffledChoices[i].artist}`;
+  });
   let data = incorrectTracks;
   incorrectTracks.push(correctTrack);
   isEnded(data);
