@@ -7,3 +7,4 @@ const MusicApiClient = {
   get tracks() { return trackApi.tracks },
   track(id) { return trackApi.track(id) },
 };
+window.client = MusicApiClient;
