@@ -4,4 +4,6 @@ import Url from './url';
 /**
  * @module api/track
  */
-const trackApi = {};
+const trackApi = {
+  get tracks() { return get(Url.tracks) },
+};
