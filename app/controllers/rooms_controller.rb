@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
 
   def show
     set_room_with_tracks
-    if @room.users.where(email: current_user.email).exists?
+    if @room.users.exists?(email: current_user.email)
       flash[:notice] = "Access denied. You can't play your own room."
       redirect_to rooms_path
     else
