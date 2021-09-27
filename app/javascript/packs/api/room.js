@@ -6,4 +6,8 @@ const roomsApi = {
   room(id) { return get(Url.room(id)) },
   isInRoomPath() { return window.location.pathname.includes('rooms') },
   getRoomIdFromPath() { return window.location.pathname.split('rooms').pop() },
+
+  setDefaultRoomId() {
+		if (roomsApi.isInRoomPath()) return roomsApi.getRoomIdFromPath();
+	},
 };
