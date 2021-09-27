@@ -11,3 +11,6 @@ const trackApi = {
 		return get(Url.track(id));
 	},
 };
+
+/*** @exports api/track Connect with room model in music app*/
+export default trackApi;
