@@ -3,13 +3,6 @@ class Track < ApplicationRecord
   has_many :room_tracks, dependent: :destroy
   has_many :rooms, through: :room_tracks
 
-  before_save :set_downcase
-
-  def set_downcase
-    name.downcase!
-    artist.downcase!
-  end
-
   def self.search_db(track)
     find_by(adam_id: track)
   end
