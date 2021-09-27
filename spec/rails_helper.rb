@@ -33,6 +33,7 @@ RSpec.configure do |config|
   # Include test helpers
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :view
 
   config.before(:suite) do
     DatabaseRewinder.clean_all
@@ -41,7 +42,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseRewinder.clean
   end
-  config.include Devise::Test::IntegrationHelpers, type: :request
 end
 
 Shoulda::Matchers.configure do |config|
