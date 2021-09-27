@@ -10,3 +10,5 @@ class Url {
 	static get tracks() { return `/tracks.json` }
   static track(id) { return `/tracks/${id}.json` }
 }
+/*** @exports api/url Connect with room model in music app*/
+export default Url;
