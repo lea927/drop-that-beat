@@ -64,11 +64,11 @@ function setData(data) {
       correctTrack = track;
     }
   });
-  let wrongChoices = shuffleTracks(incorrectTracks).slice(0, 2);
-  displayChoices(wrongChoices, correctTrack);
+  displayChoices(incorrectTracks, correctTrack);
 }
 
-function displayChoices(wrongChoices, correctTrack) {
+function displayChoices(incorrectTracks, correctTrack) {
+  let wrongChoices = shuffleTracks(incorrectTracks).slice(0, 2);
   let choices = [...wrongChoices, correctTrack];
   let shuffledChoices = shuffleTracks(choices);
   const choiceBtns = document.querySelectorAll(".choiceBtn");
@@ -80,9 +80,11 @@ function displayChoices(wrongChoices, correctTrack) {
   isEnded(data);
 }
 
-function isEnded(data){
-  track.addEventListener("ended", (e) => {
-    e.preventDefault();
+function isEnded(data) {
+  playlist.tracks.forEach((track) => {
+    track.addEventListener("ended", (e) => {
+      e.preventDefault();
       setData(data);
-  })
+    });
+  });
 }
