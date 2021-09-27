@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[edit update tracks_json destroy]
+  before_action :set_room, only: %i[edit update tracks_json destroy answer]
 
   def index
     if params[:search].present? && Room.search(params[:search]).any?
@@ -50,6 +50,17 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     redirect_to home_path, notice: 'Room was successfully deleted.'
+  end
+
+  def answer
+    @track = @room.tracks.search_db(params[:adam_id])
+    return render json: { errors: 'Track not found' }, status: :unprocessable_entity if @track.nil?
+
+    if @track.name == params[:name]
+      @user = User.find(params[:user_id])
+      @user.increment(:points).save
+    end
+    render json: @track.name == params[:name], status: :ok
   end
 
   private
