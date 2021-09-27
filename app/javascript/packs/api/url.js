@@ -8,4 +8,5 @@ class Url {
 
 	/** TRACKS URLS */
 	static get tracks() { return `/tracks.json` }
+  static track(id) { return `/tracks/${id}.json` }
 }
