@@ -4,4 +4,5 @@
  class Url {
   /** ROOMS URLS */
   static get rooms() { return `/rooms.json` }
+  static room(id) { return `/rooms/${id}.json`}
  }
