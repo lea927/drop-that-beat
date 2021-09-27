@@ -25,6 +25,7 @@ function shuffleTracks(tracks) {
 function startGame() {
   const question = document.querySelector("#question");
   question.style.visibility = "visible";
+  question.innerText = `Guess the song:`;
   const choiceBtns = document.querySelectorAll(".choiceBtn");
   for (const btns of choiceBtns) {
     btns.style.display = "block";
@@ -33,9 +34,9 @@ function startGame() {
 }
 
 function isPlaying() {
-  document.querySelector("#question").innerText = `Guess the song:`;
   playlist.tracks.forEach((track) => {
     track.addEventListener("play", (e) => {
+      e.preventDefault();
       getData(e);
     });
   });
@@ -55,24 +56,33 @@ async function getData(e) {
 
 function setData(data) {
   let incorrectTracks = [];
-  let correctTrack = "";
+  let correctTrack;
   data.forEach((track) => {
     if (track.preview_url != playlist.currentTrack.src) {
-      incorrectTracks.push(track.name);
+      incorrectTracks.push(track);
     } else {
-      correctTrack = track.name;
+      correctTrack = track;
     }
   });
-    displayChoices(incorrectTracks, correctTrack, 3);
+  let wrongChoices = shuffleTracks(incorrectTracks).slice(0, 2);
+  displayChoices(wrongChoices, correctTrack);
 }
 
-function displayChoices(incorrectTracks, correctTrack, numOfChoices) {
-  let wrongChoices = shuffleTracks(incorrectTracks).slice(0, numOfChoices);
+function displayChoices(wrongChoices, correctTrack) {
   let choices = [...wrongChoices, correctTrack];
   let shuffledChoices = shuffleTracks(choices);
   const choiceBtns = document.querySelectorAll(".choiceBtn");
-  choiceBtns[0].textContent = shuffledChoices[1];
-  choiceBtns[1].textContent = shuffledChoices[2];
-  choiceBtns[2].textContent = shuffledChoices[0];
-  isPlaying();
+  choiceBtns[0].textContent = `${shuffledChoices[1].name} by ${shuffledChoices[1].artist}`;
+  choiceBtns[1].textContent = `${shuffledChoices[2].name} by ${shuffledChoices[2].artist}`;
+  choiceBtns[2].textContent = `${shuffledChoices[0].name} by ${shuffledChoices[0].artist}`;
+  let data = incorrectTracks;
+  incorrectTracks.push(correctTrack);
+  isEnded(data);
+}
+
+function isEnded(data){
+  track.addEventListener("ended", (e) => {
+    e.preventDefault();
+      setData(data);
+  })
 }
