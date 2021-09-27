@@ -15,8 +15,13 @@ class RoomsController < ApplicationController
 
   def show
     set_room_with_tracks
-    @tracks = @room.tracks if @room
-    @tracks_url = @tracks.map(&:preview_url) if @tracks
+    if @room.users.where(email: current_user.email).exists?
+      flash[:notice] = "Access denied. You can't play your own room."
+      redirect_to rooms_path
+    else
+      @tracks = @room.tracks if @room
+      @tracks_url = @tracks.map(&:preview_url) if @tracks
+    end
   end
 
   def tracks_json
