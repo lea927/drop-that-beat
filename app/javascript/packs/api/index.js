@@ -5,4 +5,5 @@ const MusicApiClient = {
   get rooms() { return roomApi.rooms },
   room(id) { return roomApi.room(id) },
   get tracks() { return trackApi.tracks },
+  track(id) { return trackApi.track(id) },
 };
