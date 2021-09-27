@@ -18,6 +18,18 @@ RSpec.describe TracksController, type: :request do
   let(:room) { create(:room) }
   let(:track) { build(:track) }
 
+  describe 'GET /show' do
+    subject { response }
+
+    before do
+      track.save!
+      get track_path(track), xhr: true
+    end
+
+    it { is_expected.to be_successful }
+    it { is_expected.to have_attributes(media_type: 'application/json') }
+  end
+
   describe 'POST /create' do
     context 'when track is not yet already saved' do
       it 'creates new track' do
