@@ -7,6 +7,7 @@
 :javascript
   let playlist = new Playlist(#{@tracks_url});
   document.addEventListener('turbolinks:load', () => {
+    playlist.end();
     document.querySelector('#startGameBtn').addEventListener('click', () => playlist.play());
   })
   function post_answers(roomId, userId, adamId, trackName) {
