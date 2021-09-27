@@ -6,4 +6,7 @@ import Url from './url';
  */
 const trackApi = {
   get tracks() { return get(Url.tracks) },
+  track(id) {
+		return get(Url.track(id));
+	},
 };
