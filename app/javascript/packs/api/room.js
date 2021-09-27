@@ -14,3 +14,6 @@ const roomsApi = {
 		if (roomsApi.isInRoomPath()) return roomsApi.getRoomIdFromPath();
 	},
 };
+
+/*** @exports api/room Connect with room model in music app*/
+export default roomsApi;
