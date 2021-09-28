@@ -39,3 +39,4 @@ class Track {
     return incorrectTracks;
   }
 }
+export default Track;
