@@ -42,3 +42,4 @@ class Question {
     this.choices = shuffle(choices);
   }
 }
+export default Question;
