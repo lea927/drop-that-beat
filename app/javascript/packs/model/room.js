@@ -32,3 +32,5 @@ class Room {
 		this.questions = questions;
 	}
 }
+export default Room;
+
