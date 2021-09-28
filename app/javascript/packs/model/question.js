@@ -8,5 +8,6 @@ class Question {
   constructor(track, incorrectTracks) {
     this.track = track;
     this.incorrectTracks = incorrectTracks;
+    this.noOfChoices = 3;
   }
 }
