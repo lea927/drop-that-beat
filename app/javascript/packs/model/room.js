@@ -1,3 +1,5 @@
+import Question from './question'
+
 /** Class representing the room data */
 class Room {
 	/**
@@ -13,5 +15,19 @@ class Room {
 		this.name = name;
 		this.rounds = rounds;
 		this.tracks = tracks;
+	}
+	/**
+	 * Creates incorrect tracks(i.e., tracks aside from the current tracks)
+	 * Given tracklist ['IDGAF', 'Levitating', 'Break My Heart'] with current track 'IDGAF'
+	 * the incorrect tracks are ['Levitating', 'Break My Heart']
+	 * @param {Array} ArrayofTracks
+	 * @returns {Array<Question>} populates the questions for the room
+	 */
+	createQuestions(tracks) {
+		let questions = [];
+		tracks.forEach((track, index, tracks) => {
+			questions.push(Question.create(track, index, tracks));
+		});
+		this.questions = questions;
 	}
 }
