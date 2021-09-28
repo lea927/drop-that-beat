@@ -25,9 +25,10 @@ RSpec.describe 'ShowGameRooms', type: :system do
       click_on room.name
     end
 
-    it 'does not display the room without tracks' do
+    it 'does not display rooms without tracks' do
       RoomTrack.find_by(room_id: room.id).destroy
-      expect(page).not_to have_content '#{room.name}'
+      visit rooms_path
+      expect(page).not_to have_content room.name
     end
 
     it 'tells user if the room url is invalid' do
