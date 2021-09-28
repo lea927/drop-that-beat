@@ -1,4 +1,4 @@
-import Question from './question'
+import Question from './question';
 
 /** Class representing the room data */
 class Room {
@@ -15,7 +15,7 @@ class Room {
 		this.name = name;
 		this.rounds = rounds;
 		this.tracks = tracks;
-    this.createQuestions(tracks);
+		this.createQuestions(tracks);
 	}
 	/**
 	 * Creates incorrect tracks(i.e., tracks aside from the current tracks)
