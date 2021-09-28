@@ -1,60 +1,54 @@
 document.addEventListener("turbolinks:load", () => {
   const startBtn = document.querySelector("#startGameBtn");
-  if (startBtn) {
-    startBtn.addEventListener("click", () => {
-      startBtn.style.display = "none";
-      startGame();
-    });
-  }
+  startBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    displayGame();
+    playlist.play();
+    startBtn.style.display = "none";
+  });
 });
 
-function shuffleTracks(tracks) {
-  let currentIndex = tracks.length,
+// class Question {
+//   constructor(track) {
+//     this.track = track;
+//     this.choices = [];
+//     this.choiceNames = [];
+//   }
+// }
+
+function shuffle(array) {
+  let currentIndex = array.length,
     temporaryValue,
     randomIndex;
   while (0 !== currentIndex) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
-    temporaryValue = tracks[currentIndex];
-    tracks[currentIndex] = tracks[randomIndex];
-    tracks[randomIndex] = temporaryValue;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
   }
-  return tracks;
+  return array;
 }
 
-function startGame() {
+function displayGame() {
   const question = document.querySelector("#question");
   question.style.visibility = "visible";
   question.innerText = `Guess the song:`;
-  const choiceBtns = document.querySelectorAll(".choiceBtn");
-  for (const btns of choiceBtns) {
-    btns.style.display = "block";
-  }
-  isPlaying();
+  getData();
 }
 
-function isPlaying() {
-  playlist.tracks.forEach((track) => {
-    track.addEventListener("play", (e) => {
-      e.preventDefault();
-      getData(e);
-    });
-  });
-}
-
-async function getData(e) {
-  e.preventDefault();
+async function getData() {
   await fetch(`/tracks_json/${document.getElementById("room").dataset.url}`)
     .then((res) => res.json())
     .then((data) => {
-      setData(data);
+      buildChoices(data);
     })
     .catch((err) => {
       console.log(err);
     });
 }
 
-function setData(data) {
+function buildChoices(data) {
   let incorrectTracks = [];
   let correctTrack;
   data.forEach((track) => {
@@ -64,27 +58,27 @@ function setData(data) {
       correctTrack = track;
     }
   });
-  displayChoices(incorrectTracks, correctTrack);
+  let choices = generateRandomChoices(incorrectTracks, correctTrack);
+  displayChoices(choices);
+  isEnded(data);
 }
 
-function displayChoices(incorrectTracks, correctTrack) {
-  let wrongChoices = shuffleTracks(incorrectTracks).slice(0, 2);
+function generateRandomChoices(incorrectTracks, correctTrack) {
+  let wrongChoices = shuffle(incorrectTracks).slice(0, 2);
   let choices = [...wrongChoices, correctTrack];
-  let shuffledChoices = shuffleTracks(choices);
+  return shuffle(choices);
+}
+
+function displayChoices(choices) {
   const choiceBtns = document.querySelectorAll(".choiceBtn");
   choiceBtns.forEach((choiceBtn, i) => {
-    choiceBtn.textContent = `${shuffledChoices[i].name} by ${shuffledChoices[i].artist}`;
+    choiceBtn.textContent = `${choices[i].name} by ${choices[i].artist}`;
+    choiceBtn.style.display = "block";
   });
-  let data = incorrectTracks;
-  incorrectTracks.push(correctTrack);
-  isEnded(data);
 }
 
 function isEnded(data) {
   playlist.tracks.forEach((track) => {
-    track.addEventListener("ended", (e) => {
-      e.preventDefault();
-      setData(data);
-    });
+    track.addEventListener("ended", () => buildChoices(data));
   });
 }
