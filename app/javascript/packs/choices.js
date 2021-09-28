@@ -8,14 +8,6 @@ document.addEventListener("turbolinks:load", () => {
   });
 });
 
-// class Question {
-//   constructor(track) {
-//     this.track = track;
-//     this.choices = [];
-//     this.choiceNames = [];
-//   }
-// }
-
 function shuffle(array) {
   let currentIndex = array.length,
     temporaryValue,
