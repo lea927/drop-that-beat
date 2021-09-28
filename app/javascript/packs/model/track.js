@@ -2,14 +2,15 @@
 class Track {
   /**
    * Creates a new track
-   * @param {number} id 
-   * @param {string} name 
-   * @param {string} artist 
-   * @param {string} adam_id 
-   * @param {string} preview_url 
-   * @param {boolean} isCorrect 
+   * @param {Object} track - the track object
+   * @param {number} track.id
+   * @param {string} track.name 
+   * @param {string} track.artist 
+   * @param {string} track.adam_id 
+   * @param {string} track.preview_url 
+   * @param {boolean} isCorrect
    */
-  constructor(id, name, artist, adam_id, preview_url, isCorrect ) {
+   constructor({ id, name, artist, adam_id, preview_url }, isCorrect ) {
     this.id = id;
     this.name = name;
     this.artist = artist;
