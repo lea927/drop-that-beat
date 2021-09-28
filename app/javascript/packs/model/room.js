@@ -5,9 +5,9 @@ class Room {
 	/**
 	 * Creates a new room
 	 * @param {Object} room - The room to be played
-	 * @param {string} room.id - The room id
+	 * @param {number} room.id - The room id
 	 * @param {string} room.name - The room name
-	 * @param {integer} room.rounds - The number of rounds to be played
+	 * @param {number} room.rounds - The number of rounds to be played
 	 * @param {Array<object>} room.tracks - The tracks in the room
 	 */
 	constructor({ id, name, rounds, tracks } = {}) {
