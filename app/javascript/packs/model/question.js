@@ -7,7 +7,7 @@ class Question {
 	 * @param {Array<Object>} incorrectTracks array of incorrect tracks
 	 */
 	constructor(track, incorrectTracks) {
-		this.track = track;
+		this.track = Track.createCorrectTrack(track);
 		this.incorrectTracks = incorrectTracks;
 		this.noOfChoices = 3;
     this.createChoices();
