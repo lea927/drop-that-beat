@@ -32,4 +32,11 @@ class Question {
 		incorrectTracks.splice(indexOfCorrectTrack, 1); // Remove correct track
 		return incorrectTracks;
 	}
+  /** This creates the choices property in the object class */
+  createChoices() {
+    let wrongChoices = shuffle(this.incorrectTracks).slice(0, this.noOfChoices - 1); // Shuffle wrong choices so all questions will have different sets of choices
+    let correctChoice = this.track;
+    let choices = [...wrongChoices, correctChoice];
+    this.choices = shuffle(choices);
+  }
 }
