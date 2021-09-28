@@ -1,8 +1,16 @@
-= @room.name
-%button{ id: 'startGameBtn'} Start Game
-#myProgress
-  #myBar
+%h1{ id: 'room', data: { url: @room.id } } 
+  = @room.name
+%p{ id: 'test' }
+%button{ id: 'startGameBtn' } Start Game
+#myProgress.hide
+  #myBar.hide
+%h1{ id: 'question', style: 'visibility: hidden' }
+%div{ id: 'choices' } 
+  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
+  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
+  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
 = javascript_pack_tag 'loader'
+= javascript_pack_tag 'api/index'
 :javascript
   let playlist = new Playlist(#{@tracks_url});
   document.addEventListener('turbolinks:load', () => {

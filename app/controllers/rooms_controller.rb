@@ -15,7 +15,8 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @tracks = @room.tracks if @room
+    set_room_with_tracks
+    @tracks = @room.tracks.to_a.shuffle! if @room
     @tracks_url = @tracks.map(&:preview_url) if @tracks
     return if @room.users.where(email: current_user.email).empty?
 
