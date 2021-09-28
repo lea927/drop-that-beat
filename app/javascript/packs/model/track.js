@@ -26,17 +26,17 @@ class Track {
 	static createCorrectTrack(track) {
 		return new Track(track, (isCorrect = true));
 	}
-  /**
-   * Creates array of incorrect track by setting isCorrect property to false
-   * @param {Array<Object>} tracks - array of incorrect tracks
-   * @returns {Array<Track>} array of incorrect track class
-   */
-  static createIncorrectTrack(tracks) {
-    let incorrectTracks = [];
-    tracks.forEach((track) => {
-      incorrectTracks.push(new Track(track, isCorrect = false))
-    })
-    return incorrectTracks;
-  }
+	/**
+	 * Creates array of incorrect track by setting isCorrect property to false
+	 * @param {Array<Object>} tracks - array of incorrect tracks
+	 * @returns {Array<Track>} array of incorrect track class
+	 */
+	static createIncorrectTrack(tracks) {
+		let incorrectTracks = [];
+		tracks.forEach((track) => {
+			incorrectTracks.push(new Track(track, (isCorrect = false)));
+		});
+		return incorrectTracks;
+	}
 }
 export default Track;
