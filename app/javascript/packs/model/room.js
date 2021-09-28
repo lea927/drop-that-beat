@@ -15,6 +15,7 @@ class Room {
 		this.name = name;
 		this.rounds = rounds;
 		this.tracks = tracks;
+    this.createQuestions(tracks);
 	}
 	/**
 	 * Creates incorrect tracks(i.e., tracks aside from the current tracks)
