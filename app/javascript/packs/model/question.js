@@ -7,7 +7,7 @@ class Question {
 	 * @param {Array<Object>} incorrectTracks array of incorrect tracks
 	 */
 	constructor(track, incorrectTracks) {
-		this.track = Track.createCorrectTrack(track);
+		this.correctTrack = Track.createCorrectTrack(track);
 		this.incorrectTracks = Track.createIncorrectTrack(incorrectTracks);
 		this.noOfChoices = 3;
 		this.createChoices();
@@ -37,7 +37,7 @@ class Question {
 	/** This creates the choices property in the object class */
 	createChoices() {
 		let wrongChoices = shuffle(this.incorrectTracks).slice(0, this.noOfChoices - 1); // Shuffle wrong choices so all questions will have different sets of choices
-		let correctChoice = this.track;
+		let correctChoice = this.correctTrack;
 		let choices = [...wrongChoices, correctChoice];
 		this.choices = shuffle(choices);
 	}
