@@ -24,7 +24,7 @@ class Track {
 	 * @returns {Track}
 	 */
 	static createCorrectTrack(track) {
-		return new Track(track, (isCorrect = true));
+		return new Track(track, true);
 	}
 	/**
 	 * Creates array of incorrect track by setting isCorrect property to false
@@ -34,7 +34,7 @@ class Track {
 	static createIncorrectTrack(tracks) {
 		let incorrectTracks = [];
 		tracks.forEach((track) => {
-			incorrectTracks.push(new Track(track, (isCorrect = false)));
+			incorrectTracks.push(new Track(track, false));
 		});
 		return incorrectTracks;
 	}
