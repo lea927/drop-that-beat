@@ -81,3 +81,5 @@ class Game {
     $(".choiceBtn").each(function(index) {(this.textContent) = choices[index]});
   }
 }
+
+window.Game = Game; // Add game as global variable

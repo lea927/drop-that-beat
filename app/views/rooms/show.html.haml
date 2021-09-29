@@ -9,8 +9,9 @@
   %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
   %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
   %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
-
+= javascript_pack_tag 'game'
 :javascript
+  document.addEventListener("turbolinks:load", new Game());
   function post_answers(roomId, userId, adamId, trackName) {
     $.ajax({
       type: 'POST',
