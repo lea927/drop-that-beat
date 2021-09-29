@@ -1,5 +1,8 @@
 /** Class representing the game */
 class Game {
+  constructor() {
+    this.room = {};
+  }
   addStartBtnListener() {
     const startBtn = document.querySelector("#startGameBtn");
     startBtn?.addEventListener("click", startGame);
