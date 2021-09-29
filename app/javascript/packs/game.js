@@ -55,7 +55,6 @@ class Game {
     question.style.visibility = "visible";
     // Display choice buttons
     choiceBtns.forEach((choiceBtn) => {choiceBtn.style.display = "block"});
-    getData();
   }
   /**
    * Get the choice names based on the current question
