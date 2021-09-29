@@ -43,16 +43,7 @@ class Game {
   async fetchRoomDetails() {
     this.room = await MusicApiClient.room();
   }
-  displayChoices(choices) {
-    const choiceBtns = document.querySelectorAll(".choiceBtn");
-    choiceBtns.forEach((choiceBtn, i) => {
-      choiceBtn.textContent = `${choices[i].name} by ${choices[i].artist}`;
-    });
-  }
-
-  isEnded(data) {
-    playlist.tracks.forEach((track) => {
-      track.addEventListener("ended", () => buildChoices(data));
-    });
+  addTextToChoiceBtns(choiceNames) {
+    $(".choiceBtn").each(function(index) {(this.textContent) = choiceNames[index]});
   }
 }
