@@ -13,9 +13,9 @@ RSpec.describe 'Edit Password', type: :system do
     user.save
     visit root_path
     click_link 'Log In'
-    fill_in 'user_username', with: user.username
-    fill_in 'user_password', with: user.password
-    click_on 'Log in'
+    fill_in 'user[username]', with: user.username
+    fill_in 'user[password]', with: user.password
+    click_on 'LOG IN'
     click_link 'Update Password'
     fillout_form
   end
