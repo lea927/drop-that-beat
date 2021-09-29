@@ -18,7 +18,9 @@ require "sprockets/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+if ['development', 'test'].include? ENV['RAILS_ENV']
+  Dotenv::Railtie.load
+end
 module RailsProject
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -32,4 +34,5 @@ module RailsProject
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
+
 end
