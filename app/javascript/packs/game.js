@@ -13,6 +13,14 @@ class Game {
     await this.setGameRoomDetails(); // Need to get the game data before adding the event listeners
     this.addEventListeners();
   }
+  async setGameRoomDetails() {
+    await this.fetchRoomDetails();
+    this.room = new Room(this.room);
+    this.playlist = new Playlist(this.room.tracksUrl);
+  }
+  async fetchRoomDetails() {
+    this.room = await MusicApiClient.room();
+  }
   addEventListeners() {
     this.addStartBtnListener();
     this.addTracksListener();
@@ -48,14 +56,6 @@ class Game {
     // Display choice buttons
     choiceBtns.forEach((choiceBtn) => {choiceBtn.style.display = "block"});
     getData();
-  }
-  async setGameRoomDetails() {
-    await this.fetchRoomDetails();
-    this.room = new Room(this.room);
-    this.playlist = new Playlist(this.room.tracksUrl);
-  }
-  async fetchRoomDetails() {
-    this.room = await MusicApiClient.room();
   }
   /**
    * Get the choice names based on the current question
