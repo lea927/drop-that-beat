@@ -2,12 +2,12 @@
   = link_to root_path, class:'navbar-brand mx-2' do  
     = image_tag '/logo.svg', alt: '', height: '50', width: '50'
     Drop that Beat
-.row.h-100.w-100.bg-light.m-0
+.row.h-100.w-100.bg-white.m-0
   .col.d-flex.justify-content-center.bg-primary
     = image_tag '/girl-listening-music.svg', width: '60%'
   .col.d-flex.justify-content-center.align-items-center.text-dark.position-relative
     %div.col-md-6
-      %h2.text-center
+      %h2.text-center.my-4
         %strong Log in
       = form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: 'text-center my-4'}) do |f|
         .form-floating
