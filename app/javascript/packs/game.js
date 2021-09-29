@@ -1,13 +1,14 @@
 document.addEventListener("turbolinks:load", () => {
   const startBtn = document.querySelector("#startGameBtn");
-  startBtn?.addEventListener("click", (e) => {
-    e.preventDefault();
-    displayGame();
-    playlist.play();
-    startBtn.style.display = "none";
-  });
+  startBtn?.addEventListener("click", startGame);
 });
 
+function startGame(e) {
+  e.preventDefault();
+  displayGame();
+  playlist.play();
+  startBtn.style.display = "none";
+}
 function shuffle(array) {
   let currentIndex = array.length,
     temporaryValue,
