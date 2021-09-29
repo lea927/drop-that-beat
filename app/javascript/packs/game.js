@@ -32,10 +32,9 @@ class Game {
       });
     });
   }
-  startGame(e) {
-    e.preventDefault();
-    displayGame();
-    playlist.play();
+  startGame() {
+    this.displayGame();
+    this.playlist.play();
   }
   displayGame() {
     const question = document.querySelector("#question");
