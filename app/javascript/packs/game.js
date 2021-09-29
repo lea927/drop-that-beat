@@ -25,6 +25,9 @@ class Game {
     choiceBtns.forEach((choiceBtn) => {choiceBtn.style.display = "block"});
     getData();
   }
+  async setGameRoomDetails() {
+    await this.fetchRoomDetails()
+  }
   async fetchRoomDetails() {
     this.room = await MusicApiClient.room();
   }
