@@ -39,9 +39,6 @@ export function checkPlaylistStatus(playlist) {
 //           EVENT LISTENERS
 // ==================================================
 
-document.addEventListener('turbolinks:load', () => {
-  hideLoader();
-});
 document.querySelector('#startGameBtn').addEventListener('click', () => {
   showLoader();
   playlist.tracks.forEach((track) => {
