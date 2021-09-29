@@ -1,3 +1,7 @@
+/**
+ * @fileoverview This contains the functions to create the progress bar/loader 
+ * for the music app
+ */
 
 // ==================================================
 //           FUNCTIONS
