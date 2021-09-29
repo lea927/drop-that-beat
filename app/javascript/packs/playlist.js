@@ -72,13 +72,13 @@ class Playlist {
    * Sets the track number to the next track
    * @returns {Playlist}
    */
-  nextTrackNo() {
-    let isLastTrack = this.trackNo < this.tracks.length - 1;
-		if (isLastTrack) {
-			this.trackNo++;
-		} else {
-			this.trackNo = 0;
-		}
+   nextTrackNo() {
+    let isLastTrack = this.trackNo === this.tracks.length - 1;
+    if (isLastTrack) { // if last track
+      this.trackNo = 0;  
+    } else {
+      this.trackNo++ // next track
+    }
     return this;
   }
 }
