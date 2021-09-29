@@ -19,7 +19,6 @@ class Game {
     const choiceBtns = document.querySelectorAll(".choiceBtn");
     
     question.style.visibility = "visible";
-    question.innerText = `Guess the song:`;
     choiceBtn.style.display = "block";
     getData();
   }
