@@ -16,6 +16,7 @@ class Track {
 		this.artist = artist;
 		this.adam_id = adam_id;
 		this.preview_url = preview_url;
+		this.displayName = `${this.name} by ${this.artist}`
 		this.isCorrect = isCorrect;
 	}
 	/**

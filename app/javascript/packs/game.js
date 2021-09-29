@@ -50,7 +50,8 @@ class Game {
   getChoiceNames() {
     let currentTrackNo = this.playlist.trackNo; // To determine the current track
     let currentQuestion = this.room.questions[currentTrackNo];
-    
+    let choiceNames = currentQuestion.choices.map((choice) => choice.displayName);
+    return choiceNames;
   }
   addTextToChoiceBtns() {
     let choices = this.getChoiceNames();
