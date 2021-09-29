@@ -25,16 +25,8 @@ class Game {
     choiceBtns.forEach((choiceBtn) => {choiceBtn.style.display = "block"});
     getData();
   }
-
-  async getData() {
-    await fetch(`/tracks_json/${document.getElementById("room").dataset.url}`)
-      .then((res) => res.json())
-      .then((data) => {
-        buildChoices(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async fetchRoomDetails() {
+    this.room = await MusicApiClient.room();
   }
   displayChoices(choices) {
     const choiceBtns = document.querySelectorAll(".choiceBtn");
