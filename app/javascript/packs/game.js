@@ -1,4 +1,5 @@
 import MusicApiClient from './api'
+import Room from './model/room'
 
 /** Class representing the game */
 class Game {
@@ -26,7 +27,8 @@ class Game {
     getData();
   }
   async setGameRoomDetails() {
-    await this.fetchRoomDetails()
+    await this.fetchRoomDetails();
+    this.room = new Room(this.room);
   }
   async fetchRoomDetails() {
     this.room = await MusicApiClient.room();
