@@ -7,17 +7,17 @@
 //           FUNCTIONS
 // ==================================================
 
-function hideLoader() {
+export function hideLoader() {
   $('#myBar').addClass('hide');
   $('#myProgress').addClass('hide');
 }
 
-function showLoader() {
+export function showLoader() {
   $('#myBar').removeClass('hide').addClass('show');
   $('#myProgress').removeClass('hide').addClass('show');
 }
 
-function loader() {
+export function loader() {
   let loader = document.getElementById('myBar');
   let width = 1;
   let id = setInterval(frame, 300);
@@ -28,7 +28,7 @@ function loader() {
   }
 }
 
-function checkPlaylistStatus() {
+export function checkPlaylistStatus(playlist) {
   setInterval(function () {
     if (playlist.isPlaying === false) {
       hideLoader();

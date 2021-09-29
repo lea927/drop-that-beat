@@ -1,7 +1,7 @@
 import MusicApiClient from './api'
 import Room from './model/room'
 import Playlist from './playlist'
-
+import * as LOADER from './loader'
 /** Class representing the game */
 class Game {
   constructor() {
