@@ -48,7 +48,9 @@ class Game {
    * @returns {Array<string>} choiceNames
    */
   getChoiceNames() {
-    let trackNo = this.playlist.trackNo;
+    let currentTrackNo = this.playlist.trackNo; // To determine the current track
+    let currentQuestion = this.room.questions[currentTrackNo];
+    
   }
   addTextToChoiceBtns() {
     let choices = this.getChoiceNames();
