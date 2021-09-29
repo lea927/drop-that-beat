@@ -1,5 +1,5 @@
 module ApplicationHelper
-  require 'dotenv'
+  # require 'dotenv'
   Dotenv.load
   require 'httparty'
   include HTTParty
