@@ -2,6 +2,7 @@
 class Game {
   constructor() {
     this.room = {};
+    this.playlist = {};
   }
   addStartBtnListener() {
     const startBtn = document.querySelector("#startGameBtn");
