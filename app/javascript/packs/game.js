@@ -43,6 +43,7 @@ class Game {
   }
   startGame() {
     this.displayGame();
+    LOADER.showLoader();
     this.playlist.play();
   }
   endGame() {

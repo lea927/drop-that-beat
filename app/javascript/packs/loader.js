@@ -40,7 +40,6 @@ export function checkPlaylistStatus(playlist) {
 // ==================================================
 
 document.querySelector('#startGameBtn').addEventListener('click', () => {
-  showLoader();
   playlist.tracks.forEach((track) => {
     track.addEventListener('play', () => loader());
   });
