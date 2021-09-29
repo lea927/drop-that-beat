@@ -19,7 +19,10 @@ class Game {
   }
   addStartBtnListener() {
     const startBtn = document.querySelector("#startGameBtn");
-    startBtn?.addEventListener("click", startGame);
+    startBtn?.addEventListener("click", () => {
+      startBtn.style.display = "none"; // Hide start button
+      this.startGame();
+    })
   }
   addTracksListener() {
     this.addTextToChoiceBtns = this.addTextToChoiceBtns.bind(this); // bind addTextToChoiceBtns function to Game instance
@@ -33,7 +36,6 @@ class Game {
     e.preventDefault();
     displayGame();
     playlist.play();
-    startBtn.style.display = "none";
   }
   displayGame() {
     const question = document.querySelector("#question");
