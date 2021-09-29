@@ -1,3 +1,11 @@
+/**
+ * @fileoverview This document defines the logic of the game
+ * @requires /api/index.js:MusicApiClient - To fetch the data from db
+ * @requires /model/room.js:Room - Room data which is the basis for the game
+ * @requires /playlist.js:Playlist - Track Audio elements to be played
+ * @requires /loader.js:Loader
+ */
+
 import MusicApiClient from './api'
 import Room from './model/room'
 import Playlist from './playlist'
