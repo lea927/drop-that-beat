@@ -24,6 +24,12 @@ class Playlist {
     });
     return this.tracks;
   }
+  reset() {
+    this.currentTrack = '';
+    this.trackNo = 0;
+    this.isPlaying = false;
+    return this;
+  }
   /**
    * Play audio track. Track number is automatically determined
    * @returns {Playlist}
@@ -49,9 +55,7 @@ class Playlist {
    */
   end() {
     this.tracks[this.trackNo].load();
-    this.currentTrack = '';
-    this.trackNo = 0;
-    this.isPlaying = false;
+    this.reset();
     return this;
   }
   /**
