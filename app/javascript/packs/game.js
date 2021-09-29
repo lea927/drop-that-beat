@@ -36,6 +36,9 @@ class Game {
     this.displayGame();
     this.playlist.play();
   }
+  endGame() {
+    this.playlist.end();
+  }
   displayGame() {
     const question = document.querySelector("#question");
     const choiceBtns = document.querySelectorAll(".choiceBtn");
