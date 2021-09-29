@@ -43,7 +43,14 @@ class Game {
   async fetchRoomDetails() {
     this.room = await MusicApiClient.room();
   }
-  addTextToChoiceBtns(choiceNames) {
-    $(".choiceBtn").each(function(index) {(this.textContent) = choiceNames[index]});
+  /**
+   * Get the choice names based on the current question
+   * @returns {Array<string>} choiceNames
+   */
+  getChoiceNames() {
+  }
+  addTextToChoiceBtns() {
+    let choices = this.getChoiceNames();
+    $(".choiceBtn").each(function(index) {(this.textContent) = choices[index]});
   }
 }
