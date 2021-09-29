@@ -66,9 +66,7 @@ class Playlist {
     let isLastTrack = this.trackNo === this.tracks.length - 1;
 		this.tracks[this.trackNo].load();
 		if (isLastTrack) return this.end();
-		this.nextTrackNo();
-    this.play();
-    return this;
+		return this.nextTrackNo().play();
   }
   /**
    * Sets the track number to the next track
