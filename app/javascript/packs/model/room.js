@@ -18,6 +18,9 @@ class Room {
 		this.questions = [];
 		this.createQuestions(tracks);
 	}
+	get tracksUrl() {
+		return this.tracks.map((track) => track.preview_url);
+	}
 	/**
 	 * Creates incorrect tracks(i.e., tracks aside from the current tracks)
 	 * Given tracklist ['IDGAF', 'Levitating', 'Break My Heart'] with current track 'IDGAF'
