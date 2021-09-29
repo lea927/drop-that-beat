@@ -15,6 +15,7 @@ class Room {
 		this.name = name;
 		this.rounds = rounds;
 		this.tracks = tracks;
+		this.questions = [];
 		this.createQuestions(tracks);
 	}
 	/**
