@@ -32,21 +32,6 @@ class Game {
       });
   }
 
-  buildChoices(data) {
-    let incorrectTracks = [];
-    let correctTrack;
-    data.forEach((track) => {
-      if (track.preview_url != playlist.currentTrack.src) {
-        incorrectTracks.push(track);
-      } else {
-        correctTrack = track;
-      }
-    });
-    let choices = generateRandomChoices(incorrectTracks, correctTrack);
-    displayChoices(choices);
-    isEnded(data);
-  }
-
   generateRandomChoices(incorrectTracks, correctTrack) {
     let wrongChoices = shuffle(incorrectTracks).slice(0, 2);
     let choices = [...wrongChoices, correctTrack];
