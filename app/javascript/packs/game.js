@@ -16,8 +16,11 @@ class Game {
   }
   displayGame() {
     const question = document.querySelector("#question");
+    const choiceBtns = document.querySelectorAll(".choiceBtn");
+    
     question.style.visibility = "visible";
     question.innerText = `Guess the song:`;
+    choiceBtn.style.display = "block";
     getData();
   }
 
@@ -35,7 +38,6 @@ class Game {
     const choiceBtns = document.querySelectorAll(".choiceBtn");
     choiceBtns.forEach((choiceBtn, i) => {
       choiceBtn.textContent = `${choices[i].name} by ${choices[i].artist}`;
-      choiceBtn.style.display = "block";
     });
   }
 
