@@ -1,3 +1,5 @@
+import MusicApiClient from './api'
+
 /** Class representing the game */
 class Game {
   constructor() {
