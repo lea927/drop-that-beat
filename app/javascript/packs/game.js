@@ -8,6 +8,9 @@ class Game {
     this.room = {};
     this.playlist = {};
   }
+  async initialize() {
+    await this.setGameRoomDetails(); // Need to get the game data before adding the event listeners
+  }
   addStartBtnListener() {
     const startBtn = document.querySelector("#startGameBtn");
     startBtn?.addEventListener("click", startGame);
