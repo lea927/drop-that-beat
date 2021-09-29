@@ -1,7 +1,7 @@
-document.addEventListener("turbolinks:load", () => {
+function addStartBtnListener() {
   const startBtn = document.querySelector("#startGameBtn");
   startBtn?.addEventListener("click", startGame);
-});
+}
 
 function startGame(e) {
   e.preventDefault();
