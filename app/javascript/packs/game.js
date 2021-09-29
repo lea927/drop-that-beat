@@ -19,7 +19,8 @@ class Game {
     const choiceBtns = document.querySelectorAll(".choiceBtn");
     
     question.style.visibility = "visible";
-    choiceBtn.style.display = "block";
+    // Display choice buttons
+    choiceBtns.forEach((choiceBtn) => {choiceBtn.style.display = "block"});
     getData();
   }
 
