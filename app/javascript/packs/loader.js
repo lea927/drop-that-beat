@@ -1,23 +1,16 @@
-// ==================================================
-//           GLOBAL VARIABLES
-// ==================================================
 
-let bar = document.getElementById('myBar');
-let progress = document.getElementById('myProgress');
 // ==================================================
 //           FUNCTIONS
 // ==================================================
 
 function hideLoader() {
-  bar.classList.add('hide');
-  progress.classList.add('hide');
+  $('#myBar').addClass('hide');
+  $('#myProgress').addClass('hide');
 }
 
 function showLoader() {
-  bar.classList.remove('hide');
-  progress.classList.remove('hide');
-  bar.classList.add('show');
-  progress.classList.add('show');
+  $('#myBar').removeClass('hide').addClass('show');
+  $('#myProgress').removeClass('hide').addClass('show');
 }
 
 function loader() {
