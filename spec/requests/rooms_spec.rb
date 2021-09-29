@@ -5,23 +5,6 @@ RSpec.describe 'RoomsController', type: :request do
   let(:track) { create(:track) }
   let!(:room) { create(:room, tracks: [track]) }
 
-  context 'when GET /tracks_json gets called' do
-    it 'gets a successful response' do
-      get tracks_json_path(room)
-      assert_response :success
-    end
-
-    it 'gets json from ajax request' do
-      get tracks_json_path(room), xhr: true
-      assert_equal 'application/json', response.media_type
-    end
-
-    it 'gets 200 ok status' do
-      get tracks_json_path(room)
-      expect(response).to have_http_status(:ok)
-    end
-  end
-
   describe 'POST /answer' do
     let(:valid_params) { { user_id: user.id, adam_id: track.adam_id, name: track.name } }
     let(:invalid_params) { { user_id: '456321', adam_id: '456321', name: track.name } }
