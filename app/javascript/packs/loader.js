@@ -35,13 +35,3 @@ export function checkPlaylistStatus(playlist) {
     }
   }, 1000);
 }
-// ==================================================
-//           EVENT LISTENERS
-// ==================================================
-
-document.querySelector('#startGameBtn').addEventListener('click', () => {
-  playlist.tracks.forEach((track) => {
-    track.addEventListener('play', () => loader());
-  });
-  checkPlaylistStatus();
-});

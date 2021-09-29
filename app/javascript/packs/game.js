@@ -38,6 +38,7 @@ class Game {
     this.playlist.tracks.forEach((track) => {
       track.addEventListener('play', () => {
         this.addTextToChoiceBtns();
+        LOADER.loader();
       });
     });
   }
