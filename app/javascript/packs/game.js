@@ -16,6 +16,7 @@ class Game {
   addEventListeners() {
     this.addStartBtnListener();
     this.addTracksListener();
+    document.addEventListener("turbolinks:load", () => this.endGame()); // To stop music when user exits page
   }
   addStartBtnListener() {
     const startBtn = document.querySelector("#startGameBtn");

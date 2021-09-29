@@ -11,10 +11,6 @@
   %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
 = javascript_pack_tag 'loader'
 :javascript
-  document.addEventListener('turbolinks:load', () => {
-    playlist.end();
-    document.querySelector('#startGameBtn').addEventListener('click', () => playlist.play());
-  })
   function post_answers(roomId, userId, adamId, trackName) {
     $.ajax({
       type: 'POST',
