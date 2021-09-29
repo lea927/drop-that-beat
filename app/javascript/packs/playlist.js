@@ -73,11 +73,12 @@ class Playlist {
    * @returns {Playlist}
    */
   nextTrackNo() {
-    if (this.trackNo < this.tracks.length - 1) {
-      this.trackNo++;
-    } else {
-      this.trackNo = 0;
-    }
+    let isLastTrack = this.trackNo < this.tracks.length - 1;
+		if (isLastTrack) {
+			this.trackNo++;
+		} else {
+			this.trackNo = 0;
+		}
     return this;
   }
 }
