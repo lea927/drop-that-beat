@@ -14,21 +14,13 @@ function showLoader() {
 }
 
 function loader() {
-  let i = 0;
-  if (i == 0) {
-    i = 1;
-    let loader = document.getElementById('myBar');
-    let width = 1;
-    let id = setInterval(frame, 300);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        loader.style.width = width + '%';
-      }
-    }
+  let loader = document.getElementById('myBar');
+  let width = 1;
+  let id = setInterval(frame, 300);
+  function frame() {
+    if (width >= 100) { return clearInterval(id) };
+    width++;
+    loader.style.width = width + '%';
   }
 }
 
