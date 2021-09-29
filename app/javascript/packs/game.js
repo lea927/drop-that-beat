@@ -31,13 +31,6 @@ class Game {
         console.log(err);
       });
   }
-
-  generateRandomChoices(incorrectTracks, correctTrack) {
-    let wrongChoices = shuffle(incorrectTracks).slice(0, 2);
-    let choices = [...wrongChoices, correctTrack];
-    return shuffle(choices);
-  }
-
   displayChoices(choices) {
     const choiceBtns = document.querySelectorAll(".choiceBtn");
     choiceBtns.forEach((choiceBtn, i) => {
