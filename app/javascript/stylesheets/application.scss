@@ -1,6 +1,6 @@
-@import './variables';
-@import './typography';
-@import './buttons';
+@import "./variables";
+@import "./typography";
+@import "./buttons";
 
 body,
 a,
@@ -18,6 +18,13 @@ body {
 a {
   color: $white;
   text-decoration: none;
+}
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.text-primary {
+  color: $primary-color;
 }
 
 #myProgress {
@@ -37,4 +44,22 @@ a {
 
 .hide {
   visibility: hidden;
+}
+
+// Header
+.navbar-collapse,
+.dropdown-menu {
+  text-align: center;
+}
+
+.dropdown-menu a {
+  color: $primary-color;
+  &:hover {
+    color: $white;
+    background-color: $gray;
+  }
+}
+
+.active {
+  border-bottom: 2px solid $secondary-color;
 }
