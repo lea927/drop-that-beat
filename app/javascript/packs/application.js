@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require('jquery')
 require('../stylesheets/application.scss')
+require('./game')
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/scss/bootstrap'
 
