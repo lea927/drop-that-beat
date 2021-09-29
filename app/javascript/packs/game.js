@@ -48,6 +48,7 @@ class Game {
    * @returns {Array<string>} choiceNames
    */
   getChoiceNames() {
+    let trackNo = this.playlist.trackNo;
   }
   addTextToChoiceBtns() {
     let choices = this.getChoiceNames();
