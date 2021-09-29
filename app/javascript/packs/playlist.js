@@ -63,12 +63,10 @@ class Playlist {
    * @returns {Playlist}
    */
   next() {
-    this.tracks[this.trackNo].load();
-    this.nextTrackNo();
-    if (this.trackNo === 0) {
-      this.end();
-      return;
-    }
+    let isLastTrack = this.trackNo === this.tracks.length - 1;
+		this.tracks[this.trackNo].load();
+		if (isLastTrack) return this.end();
+		this.nextTrackNo();
     this.play();
     return this;
   }
