@@ -15,10 +15,19 @@ class Game {
   }
   addEventListeners() {
     this.addStartBtnListener();
+    this.addTracksListener();
   }
   addStartBtnListener() {
     const startBtn = document.querySelector("#startGameBtn");
     startBtn?.addEventListener("click", startGame);
+  }
+  addTracksListener() {
+    this.addTextToChoiceBtns = this.addTextToChoiceBtns.bind(this); // bind addTextToChoiceBtns function to Game instance
+    this.playlist.tracks.forEach((track) => {
+      track.addEventListener('play', () => {
+        this.addTextToChoiceBtns();
+      });
+    });
   }
   startGame(e) {
     e.preventDefault();
