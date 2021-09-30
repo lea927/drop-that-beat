@@ -56,6 +56,13 @@ class Question {
 		// Check if answer is null or undefined
 		if (this.answer == undefined) throw new SyntaxError('Answer not yet added');
 		// Get data to be passed in the request
+		const { id } = this.correctTrack; // Queston or correct track
+		const { name, artist } = this.answer;
+		const answer = {
+			track_id: id,
+			name,
+			artist,
+		};
 	}
 }
 
