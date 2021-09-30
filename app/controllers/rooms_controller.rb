@@ -52,7 +52,7 @@ class RoomsController < ApplicationController
   end
 
   def answer
-    @track = @room.tracks.search_db(params[:adam_id])
+    @track = @room.tracks.find(params[:track_id])
     return render json: { errors: 'Track not found' }, status: :unprocessable_entity if @track.nil?
 
     if @track.name == params[:name]
