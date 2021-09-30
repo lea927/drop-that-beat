@@ -1,0 +1,11 @@
+%header
+  %nav.navbar.navbar-expand-lg.navbar-dark.fixed-top
+    = link_to root_path, class:'navbar-brand mx-2' do
+      - if current_page?(new_user_session_path)  
+        = image_tag '/logo.svg', alt: 'logo', height: '50', width: '50'
+        %strong
+          Drop that Beat
+      - else
+        = image_tag '/logo-dark.svg', alt: 'logo', height: '50', width: '50'
+        %strong.text-primary 
+          Drop that Beat
