@@ -53,7 +53,7 @@ class Question {
 		this.answer = this.choices[index];
 		return this;
 	}
-	postAnswer() {
+	postAnswer(roomId) {
 		// Check if answer is null or undefined
 		if (this.answer == undefined) throw new SyntaxError('Answer not yet added');
 		// Get data to be passed in the request
