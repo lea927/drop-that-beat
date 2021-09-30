@@ -24,6 +24,12 @@ class Playlist {
     });
     return this.tracks;
   }
+  reset() {
+    this.currentTrack = '';
+    this.trackNo = 0;
+    this.isPlaying = false;
+    return this;
+  }
   /**
    * Play audio track. Track number is automatically determined
    * @returns {Playlist}
@@ -49,9 +55,7 @@ class Playlist {
    */
   end() {
     this.tracks[this.trackNo].load();
-    this.currentTrack = '';
-    this.trackNo = 0;
-    this.isPlaying = false;
+    this.reset();
     return this;
   }
   /**
@@ -59,24 +63,21 @@ class Playlist {
    * @returns {Playlist}
    */
   next() {
-    this.tracks[this.trackNo].load();
-    this.nextTrackNo();
-    if (this.trackNo === 0) {
-      this.end();
-      return;
-    }
-    this.play();
-    return this;
+    let isLastTrack = this.trackNo === this.tracks.length - 1;
+		this.tracks[this.trackNo].load();
+		if (isLastTrack) return this.end();
+		return this.nextTrackNo().play();
   }
   /**
    * Sets the track number to the next track
    * @returns {Playlist}
    */
-  nextTrackNo() {
-    if (this.trackNo < this.tracks.length - 1) {
-      this.trackNo++;
+   nextTrackNo() {
+    let isLastTrack = this.trackNo === this.tracks.length - 1;
+    if (isLastTrack) { // if last track
+      this.trackNo = 0;  
     } else {
-      this.trackNo = 0;
+      this.trackNo++ // next track
     }
     return this;
   }

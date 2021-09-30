@@ -8,3 +8,4 @@ const MusicApiClient = {
   track(id) { return trackApi.track(id) },
 };
 window.client = MusicApiClient;
+export default MusicApiClient;
