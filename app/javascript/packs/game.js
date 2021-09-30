@@ -76,6 +76,11 @@ class Game {
 		let trackNo = this.playlist.trackNo; // Currently playing track number
 		return this.room.questions[trackNo];
 	}
+	/** Save answer to database */
+	saveAnswer({index, currentTrackData}) {
+		if (index == undefined || currentTrackData == undefined) throw new SyntaxError('Object does not have index or currentTrackData property');
+		currentTrackData.addAnswer(index).postAnswer(this.room.id);
+	}
 	/**
 	 * Get the choice names based on the current question
 	 * @returns {Array<string>} choiceNames
