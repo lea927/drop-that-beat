@@ -49,6 +49,9 @@ class Game {
 				LOADER.loader();
 			});
 		});
+		track.addEventListener('ended', () => {
+			this.resetChoiceBtns();
+		});
 	}
 	addChoiceBtnListener() {
 		this.saveAnswer = this.saveAnswer.bind(this);
