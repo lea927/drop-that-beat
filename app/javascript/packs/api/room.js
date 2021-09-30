@@ -37,12 +37,12 @@ const roomsApi = {
 	 * Checks if current window is the rooms_path (/rooms/:id)
 	 * @returns {boolean} window path name
 	 */
-	isInRoomPath() { return window.location.pathname.includes('rooms') },
+	isInRoomPath() { return window.location.pathname.includes('rooms/') },
 	/**
 	 * Gets the room id from the window pathname
 	 * @returns {number} room id
 	 */
-	getRoomIdFromPath() { return window.location.pathname.split('rooms').pop() },
+	getRoomIdFromPath() { return window.location.pathname.split('/rooms/').pop() },
 	/**
 	 * Sets default room id if the user is in the rooms path
 	 * @returns {number} room id
