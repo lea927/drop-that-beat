@@ -1,5 +1,7 @@
-- unless current_page?(new_user_session_path) || current_page?(new_user_registration_path)
-  %header  
+- if request.path == new_user_session_path || request.path == new_user_registration_path || request.path == '/users'
+  = render 'devise/shared/header'
+- else
+  %header
     %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.shadow-sm
       .container-fluid
         = link_to root_path, class: 'navbar-brand' do
