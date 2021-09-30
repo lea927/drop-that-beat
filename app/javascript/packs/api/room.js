@@ -1,4 +1,4 @@
-import { get } from './request';
+import { get, post } from './request';
 import Url from './url';
 
 const roomsApi = {
