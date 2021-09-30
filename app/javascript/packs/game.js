@@ -69,6 +69,14 @@ class Game {
 		});
 	}
 	/**
+	 * Get current track details
+	 * @returns {Question} current question
+	 */
+	getCurrentTrackData() {
+		let trackNo = this.playlist.trackNo; // Currently playing track number
+		return this.room.questions[trackNo];
+	}
+	/**
 	 * Get the choice names based on the current question
 	 * @returns {Array<string>} choiceNames
 	 */
