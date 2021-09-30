@@ -55,7 +55,7 @@ class RoomsController < ApplicationController
     @track = @room.tracks.find(params[:track_id])
     return render json: { errors: 'Track not found' }, status: :unprocessable_entity if @track.nil?
 
-    current_user.increment(:points).save if @track.name == params[:name]
+    current_user.increment(:points).save if @track.name == params[:name] && @track.artist == params[:artist]
     render json: @track.name == params[:name], status: :ok
   end
 
