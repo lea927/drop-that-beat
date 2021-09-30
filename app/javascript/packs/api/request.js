@@ -1,4 +1,5 @@
-/*** XHR Requests module
+/***
+ * @fileoverview XHR Requests module
  * @module api/request */
 /**
  * Run async get request
