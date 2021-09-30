@@ -1,22 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Edit Password', type: :system do
+  include_context 'when user is logged in'
+
   let(:fillout_form) do
     fill_in 'user_password', with: 'password123'
     fill_in 'user_password_confirmation', with: 'password123'
   end
 
   before do
-    driven_by(:rack_test)
-    user = create(:user)
-    user.skip_confirmation!
-    user.save
-    visit root_path
-    click_link 'Log In'
-    fill_in 'user[username]', with: user.username
-    fill_in 'user[password]', with: user.password
-    click_on 'LOG IN'
-    click_link 'Update Password'
+    visit home_path
+    find('#navbarDropdown').click
+    click_on 'Update Password'
     fillout_form
   end
 
