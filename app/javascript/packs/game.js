@@ -82,6 +82,9 @@ class Game {
 			choiceBtn.style.display = 'block';
 		});
 	}
+	hideGame() {
+		$('#choices').addClass('d-none');
+	}
 	/**
 	 * Get current track details
 	 * @returns {Question} current question
