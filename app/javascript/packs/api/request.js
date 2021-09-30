@@ -31,6 +31,7 @@ export function post(path, { data, successCallback, errorCallback } = {}) {
 	return $.post({
 		url: path,
 		dataType: 'json',
+		headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
 		data,
 		success: function (data) {
 			successCallback && successCallback(data);
