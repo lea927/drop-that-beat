@@ -21,3 +21,24 @@ export function get(path, { data, successCallback, errorCallback } = {}) {
 		},
 	});
 }
+/**
+ * Run async post request
+ * @param {string} path
+ * @param {Object} options
+ * @returns {Promise} Promise object representing XHR result
+ */
+export function post(path, { data, successCallback, errorCallback } = {}) {
+	return $.post({
+		url: path,
+		dataType: 'json',
+		data,
+		success: function (data) {
+			successCallback && successCallback(data);
+			return data;
+		},
+		error: function (request, errorMsg) {
+			errorCallback && errorCallback();
+			console.log(request, errorMsg);
+		},
+	});
+}
