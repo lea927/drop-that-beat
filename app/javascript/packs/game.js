@@ -71,6 +71,7 @@ class Game {
 	}
 	endGame() {
 		this.playlist.end();
+		this.hideGame();
 	}
 	displayGame() {
 		const question = document.querySelector('#question');
