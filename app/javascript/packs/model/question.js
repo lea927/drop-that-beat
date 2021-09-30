@@ -62,4 +62,4 @@ function shuffle(array) {
 	return array;
 }
 
-export default Question;
+export { Question, shuffle };

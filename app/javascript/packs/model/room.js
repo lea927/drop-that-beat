@@ -1,4 +1,4 @@
-import Question from './question';
+import { Question, shuffle } from './question';
 
 /** Class representing the room data */
 class Room {
@@ -14,7 +14,8 @@ class Room {
 		this.id = id;
 		this.name = name;
 		this.rounds = rounds;
-		this.tracks = tracks;
+		this.tracks = shuffle(tracks);
+		this.tracksUrl;
 		this.questions = [];
 		this.createQuestions(tracks);
 	}
@@ -28,9 +29,9 @@ class Room {
 	 * @param {Array} ArrayofTracks
 	 * @returns {Array<Question>} populates the questions for the room
 	 */
-	createQuestions(tracks) {
+	createQuestions() {
 		let questions = [];
-		tracks.forEach((track, index, tracks) => {
+		this.tracks.forEach((track, index, tracks) => {
 			questions.push(Question.create(track, index, tracks));
 		});
 		this.questions = questions;
