@@ -54,6 +54,7 @@ class Question {
 	}
 	postAnswer() {
 		// Check if answer is null or undefined
+		if (this.answer == undefined) throw new SyntaxError('Answer not yet added');
 		// Get data to be passed in the request
 	}
 }
