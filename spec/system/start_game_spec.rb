@@ -24,11 +24,11 @@ RSpec.describe 'StartGame', type: :system do
       expect(page).not_to have_selector(:link_or_button, 'Start Game')
     end
 
-    it 'displays possible answers as buttons with track names', :aggregate_failures do
+    it 'displays possible answers as track names', :aggregate_failures do
       click_on 'Start Game'
-      expect(page).to have_selector(:link_or_button, track.name).once
-      expect(page).to have_selector(:link_or_button, track2.name).once
-      expect(page).to have_selector(:link_or_button, track3.name).once
+      expect(page).to have_text(track.name).once
+      expect(page).to have_text(track2.name).once
+      expect(page).to have_text(track3.name).once
     end
   end
 end
