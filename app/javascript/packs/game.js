@@ -48,9 +48,9 @@ class Game {
 				this.addTextToChoiceBtns();
 				LOADER.loader();
 			});
-		});
-		track.addEventListener('ended', () => {
-			this.resetChoiceBtns();
+			track.addEventListener('ended', () => {
+				this.resetChoiceBtns();
+			});
 		});
 	}
 	addChoiceBtnListener() {
