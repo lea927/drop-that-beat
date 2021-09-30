@@ -1,4 +1,4 @@
-- unless current_page?(new_user_registration_path) || current_page?(new_user_session_path)
+- unless current_page?(new_user_session_path) || current_page?(new_user_registration_path)
   %header  
     %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.shadow-sm
       .container-fluid
@@ -31,3 +31,4 @@
               = link_to "Sign Up", new_user_registration_path, class: "nav-link text-light fs-5 #{current_class?(new_user_registration_path)}"
             %li.nav-item.mx-4
               = link_to "Log In", new_user_session_path, class: "nav-link text-light fs-5 #{current_class?(new_user_session_path)}"
+  = render 'layouts/flash'
