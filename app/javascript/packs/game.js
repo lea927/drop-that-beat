@@ -52,6 +52,7 @@ class Game {
 	}
 	addChoiceBtnListener() {
 		this.saveAnswer = this.saveAnswer.bind(this);
+		this.getCurrentTrackData = this.getCurrentTrackData.bind(this);
 		$('input[data-action="submit"]').on('click', (evt) => {
 			this.saveAnswer({
 				index: evt.target.value, // index of button clicked
