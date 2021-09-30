@@ -43,6 +43,15 @@ class Question {
 		let choices = [...wrongChoices, correctChoice];
 		this.choices = shuffle(choices);
 	}
+	/**
+	 * Add answer based the choices selected(index)
+	 * @param {number} index choice selected
+	 * @returns {Question} question instance
+	 */
+	addAnswer(index) {
+		this.answer = this.choices[index];
+		return this;
+	}
 }
 
 /**
