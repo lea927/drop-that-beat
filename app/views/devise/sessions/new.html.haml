@@ -1,22 +1,21 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.position-absolute
-  = link_to root_path, class:'navbar-brand mx-2' do  
-    = image_tag '/logo.svg', alt: '', height: '50', width: '50'
-    Drop that Beat
+= render 'devise/shared/header'
 .row.h-100.w-100.bg-white.m-0
   .col.d-flex.justify-content-center.bg-primary
     = image_tag '/girl-listening-music.svg', width: '60%'
   .col.d-flex.justify-content-center.align-items-center.text-dark.position-relative
     %div.col-md-6
       %h2.text-center.my-4
-        %strong Log in
+        %strong Log In
       = form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: 'text-center my-4'}) do |f|
+        %div.text-danger
+          = render 'devise/shared/error_messages', resource: resource
+          = render 'layouts/flash'
         .form-floating
-          = f.text_field :username, id: 'username', class: 'form-control', placeholder: 'Username'
-          = f.label :username, for: 'username'
-          %br/
+          = f.text_field :username, id: 'user_username', class: 'form-control', placeholder: 'Username', required: true
+          = f.label :username, for: 'user_username'
         .form-floating
-          = f.password_field :password, id: 'password', class: 'form-control', placeholder: 'Password', autocomplete: "current-password"
-          = f.label :password, for: 'password'
+          = f.password_field :password, id: 'user_password', class: 'form-control', placeholder: 'Password', autocomplete: "current-password", required: true
+          = f.label :password, for: 'user_password'
         .field.mt-4
           = f.check_box :remember_me
           = f.label :remember_me
@@ -29,6 +28,7 @@
             %br/
             %p.mt-4 
               Don't have an account?
-              = link_to 'Sign Up', new_registration_path(resource_name), class: 'text-dark text-decoration-underline'
+              %strong
+                = link_to 'Sign Up', new_registration_path(resource_name), class: 'text-dark text-decoration-underline'
             %br
             %span.text-muted &#169; Drop that Beat 2021
