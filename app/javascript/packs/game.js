@@ -13,8 +13,8 @@ import * as LOADER from './loader';
 /** Class representing the game */
 class Game {
 	constructor() {
-		this.room = {};
-		this.playlist = {};
+		this.room;
+		this.playlist;
 		this.initialize();
 	}
 	async initialize() {
