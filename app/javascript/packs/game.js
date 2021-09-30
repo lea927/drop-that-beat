@@ -58,6 +58,7 @@ class Game {
 				index: evt.target.value, // index of button clicked
 				currentTrackData: this.getCurrentTrackData(),
 			});
+			this.disableBtns();
 		});
 	}
 	startGame() {
