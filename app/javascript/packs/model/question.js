@@ -10,6 +10,7 @@ class Question {
 		this.correctTrack = Track.createCorrectTrack(track);
 		this.incorrectTracks = Track.createIncorrectTrack(incorrectTracks);
 		this.noOfChoices = 3;
+		this.answer;
 		this.createChoices();
 	}
 	/**
