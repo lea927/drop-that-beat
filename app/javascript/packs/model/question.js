@@ -52,6 +52,10 @@ class Question {
 		this.answer = this.choices[index];
 		return this;
 	}
+	postAnswer() {
+		// Check if answer is null or undefined
+		// Get data to be passed in the request
+	}
 }
 
 /**
