@@ -96,6 +96,11 @@ class Game {
 	disableBtns() {
 		$('input[data-action="submit"]').prop('disabled', true);
 	}
+	/** Reset choice buttons to be able to select buttons again */
+	resetChoiceBtns() {
+		$('input[data-action="submit"]').prop('disabled', false);
+		$('input[data-action="submit"]').prop('checked', false);
+	}
 	/**
 	 * Get the choice names based on the current question
 	 * @returns {Array<string>} choiceNames
