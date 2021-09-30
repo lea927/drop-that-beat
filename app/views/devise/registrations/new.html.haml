@@ -1,0 +1,33 @@
+= render 'devise/shared/header'
+.row.h-100.w-100.bg-white.m-0
+  .col.d-flex.justify-content-center.align-items-center.text-dark.position-relative
+    %div.col-md-6
+      %h2.text-center.my-4
+        %strong Sign Up
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html:{class: 'text-center my-4'}) do |f|
+        %div.text-danger
+          = render 'devise/shared/error_messages', resource: resource
+          = render 'layouts/flash'
+        .form-floating
+          = f.text_field :username, id: 'user_username', class: 'form-control', placeholder: 'Username', autocomplete: "username", required: true
+          = f.label :username, for: 'user_username'
+        .form-floating
+          = f.email_field :email, id: 'user_email', class: 'form-control', placeholder: 'Email', autocomplete: "email", required: true
+          = f.label :email, for: 'user_email'
+        .form-floating
+          = f.password_field :password, id: 'user_password', class: 'form-control', placeholder: 'Password', autocomplete: "current-password", required: true
+          = f.label :password, for: 'user_password'
+        .form-floating
+          = f.password_field :password_confirmation, id: 'user_password-confirmation', class: 'form-control', placeholder: 'Password', autocomplete: "current-password", required: true
+          = f.label :password_confirmation, for: 'user_password-confirmation'
+        .actions.position-relative
+          = f.submit 'SIGN UP', class: 'btn btn-secondary w-100 my-4'
+        %div.text-center 
+          %p.mt-4
+            Already have an account?
+            %strong
+              = link_to 'Log In', new_session_path(resource_name), class: 'text-dark text-decoration-underline'
+          %br
+          %span.text-muted &#169; Drop that Beat 2021
+  .col.d-flex.justify-content-center.bg-primary
+    = image_tag '/girl-recording.svg', width: '60%'
