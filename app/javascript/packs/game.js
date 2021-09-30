@@ -91,6 +91,10 @@ class Game {
 		if (index == undefined || currentTrackData == undefined) throw new SyntaxError('Object does not have index or currentTrackData property');
 		currentTrackData.addAnswer(index).postAnswer(this.room.id);
 	}
+	/** Disable buttons to prevent changing answer */
+	disableBtns() {
+		$('input[data-action="submit"]').prop('disabled', true);
+	}
 	/**
 	 * Get the choice names based on the current question
 	 * @returns {Array<string>} choiceNames
