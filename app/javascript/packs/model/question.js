@@ -64,6 +64,8 @@ class Question {
 			name,
 			artist,
 		};
+		MusicApiClient.postAnswer(roomId, answer);
+		return this;
 	}
 }
 
