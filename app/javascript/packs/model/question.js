@@ -1,13 +1,19 @@
+/**
+ * @fileoverview Contains the properties and methods for the question
+ * @requires /track.js/Track - Track class
+ * @requires /api/index.js:MusicApiClient - To fetch the data from db
+ */
 import Track from './track';
 import MusicApiClient from '../api';
 /** Class representing the questions to be presented in the room */
 class Question {
 	/**
 	 * Creates a new question class
-	 * @param {Object} track track details(correct track)
+	 * @param {Object} correctTrack track details
 	 * @param {Array<Object>} incorrectTracks array of incorrect tracks
 	 */
 	constructor(track, incorrectTracks) {
+		/** @this Question */
 		this.correctTrack = Track.createCorrectTrack(track);
 		this.incorrectTracks = Track.createIncorrectTrack(incorrectTracks);
 		this.noOfChoices = 3;
@@ -37,7 +43,10 @@ class Question {
 		incorrectTracks.splice(indexOfCorrectTrack, 1); // Remove correct track
 		return incorrectTracks;
 	}
-	/** This creates the choices property in the object class */
+	/**
+	 * This creates the choices property in the object class
+	 * Choices are shuffled everytime the function is called
+	 */
 	createChoices() {
 		let wrongChoices = shuffle(this.incorrectTracks).slice(0, this.noOfChoices - 1); // Shuffle wrong choices so all questions will have different sets of choices
 		let correctChoice = this.correctTrack;
@@ -53,6 +62,11 @@ class Question {
 		this.answer = this.choices[index];
 		return this;
 	}
+	/**
+	 * Submit answer by sending a POST request
+	 * @param {number} roomId - current room
+	 * @returns {Question} question instance
+	 */
 	postAnswer(roomId) {
 		// Check if answer is null or undefined
 		if (this.answer == undefined) throw new SyntaxError('Answer not yet added');
