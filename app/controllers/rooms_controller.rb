@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[edit update tracks_json destroy answer]
+  before_action :set_room, only: %i[edit update destroy answer]
   before_action :set_room_with_tracks, only: %i[show]
 
   def index
@@ -15,18 +15,12 @@ class RoomsController < ApplicationController
   end
 
   def show
-    set_room_with_tracks
     @tracks = @room.tracks.to_a.shuffle! if @room
     @tracks_url = @tracks.map(&:preview_url) if @tracks
     return if @room.users.where(email: current_user.email).empty?
 
     flash[:notice] = "Access denied. You can't play your own room."
     redirect_to rooms_path
-  end
-
-  def tracks_json
-    @tracks = @room.tracks
-    render json: @tracks
   end
 
   def new; end
