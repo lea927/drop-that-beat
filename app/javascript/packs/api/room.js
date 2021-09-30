@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Functions to get rooms and post answers in the room
+ *
+ * @requires ./request.js/ - request functions
+ * @requires ./url.js:Url - endpoints for the request
+ */
 import { get, post } from './request';
 import Url from './url';
 
