@@ -75,14 +75,8 @@ class Game {
 		this.hideGame();
 	}
 	displayGame() {
-		const question = document.querySelector('#question');
-		const choiceBtns = document.querySelectorAll('.choiceBtn');
-
-		question.style.visibility = 'visible';
-		// Display choice buttons
-		choiceBtns.forEach((choiceBtn) => {
-			choiceBtn.style.display = 'block';
-		});
+		$('#question').prop('style', 'visibility: visible');
+		$('#choices').removeClass('d-none');
 	}
 	hideGame() {
 		$('#choices').addClass('d-none');
