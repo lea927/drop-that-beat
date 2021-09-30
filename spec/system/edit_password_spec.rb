@@ -9,6 +9,7 @@ RSpec.describe 'Edit Password', type: :system do
   end
 
   before do
+    driven_by(:rack_test)
     visit home_path
     find('#navbarDropdown').click
     click_on 'Update Password'
