@@ -1,4 +1,5 @@
 import Track from './track';
+import MusicApiClient from '../api';
 /** Class representing the questions to be presented in the room */
 class Question {
 	/**
