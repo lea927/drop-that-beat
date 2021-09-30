@@ -50,6 +50,14 @@ class Game {
 			});
 		});
 	}
+	addChoiceBtnListener() {
+		$('input[data-action="submit"]').on('click', (evt) => {
+			this.saveAnswer({
+				index: evt.target.value, // index of button clicked
+				currentTrackData: this.getCurrentTrackData(),
+			});
+		});
+	}
 	startGame() {
 		this.displayGame();
 		LOADER.showLoader();
@@ -77,7 +85,7 @@ class Game {
 		return this.room.questions[trackNo];
 	}
 	/** Save answer to database */
-	saveAnswer({index, currentTrackData}) {
+	saveAnswer({ index, currentTrackData }) {
 		if (index == undefined || currentTrackData == undefined) throw new SyntaxError('Object does not have index or currentTrackData property');
 		currentTrackData.addAnswer(index).postAnswer(this.room.id);
 	}
