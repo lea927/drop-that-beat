@@ -1,6 +1,7 @@
 @import "./variables";
 @import "./typography";
 @import "./buttons";
+@import "./inputs";
 
 body,
 a,
@@ -24,7 +25,7 @@ a {
 }
 
 .text-primary {
-  color: $primary-color;
+  color: $primary-color !important;;
 }
 
 #myProgress {

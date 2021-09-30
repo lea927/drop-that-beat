@@ -6,11 +6,11 @@ RSpec.describe 'Create User', type: :system do
   end
 
   let(:fillout_form) do
-    fill_in 'user_username', with: 'johndoe'
-    fill_in 'user_email', with: 'johndoe@example.com'
-    fill_in 'user_password', with: 'password'
-    fill_in 'user_password_confirmation', with: 'password'
-    click_on 'Sign up'
+    fill_in 'user[username]', with: 'johndoe'
+    fill_in 'user[email]', with: 'johndoe@example.com'
+    fill_in 'user[password]', with: 'password'
+    fill_in 'user[password_confirmation]', with: 'password'
+    click_on 'SIGN UP'
   end
 
   describe 'Creating an account' do
