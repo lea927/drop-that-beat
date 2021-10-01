@@ -29,6 +29,11 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
       click_on 'Finish setup'
       expect(room).to have_attributes(name: 'animal')
     end
+
+    it 'redirects to homepage' do
+      click_on 'Finish setup'
+      expect(page).to have_content room.name
+    end
   end
 
   context 'with blank room name' do
