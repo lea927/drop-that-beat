@@ -5,5 +5,8 @@ FactoryBot.define do
     trait :stub_tracks do
       tracks { build_stubbed_list(:track, 5) }
     end
+    trait :users do
+      users { [association(:user)] }
+    end
   end
 end
