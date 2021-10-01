@@ -10,7 +10,6 @@ class TracksController < ApplicationController
     if params[:term].blank?
       flash.now[:notice] = 'Please enter valid track'
     else
-      @room = Room.find(params[:room_id])
       @tracks = new_track(search_track(params[:term]))
       respond_to do |format|
         format.js
