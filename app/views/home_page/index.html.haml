@@ -8,7 +8,7 @@
           = f.text_field :name, class: 'form-control mt-0', placeholder: 'Enter room name', ariadescribedby: "create-room-btn", required: true
           = f.submit 'Create Room', id:"create-room-btn", class: 'btn bg-dark text-white'
   - if @rooms.any?
-    .row.row-cols-1.row-cols-lg-3.align-items-stretch.g-4.py-5.mx-4
+    .row.row-cols-1.row-cols-md-2.row-cols-lg-3.align-items-stretch.g-4.py-5.mx-4
       - @rooms.each do |room|
         .col
           .card.text-primary.bg-white.rounded-3.shadow-lg.p-2
