@@ -1,4 +1,4 @@
-RSpec.shared_context 'when user creates a game room' do
+RSpec.shared_context 'when user creates a game room', vcr: 'tracks/dua_lipa' do
   include_context 'when user is logged in'
   let(:room) { user.rooms.find_by(name: 'animal') }
 

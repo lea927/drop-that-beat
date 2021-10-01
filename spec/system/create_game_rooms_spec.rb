@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'CreateGameRooms', type: :system do
+RSpec.describe 'CreateGameRooms', :vcr, type: :system do
   include_context 'when user creates a game room'
 
   before do
@@ -8,7 +8,7 @@ RSpec.describe 'CreateGameRooms', type: :system do
     visit root_path
   end
 
-  context 'with valid attributes' do
+  context 'with valid attributes', vcr: 'tracks/dua_lipa' do
     before { submit_form('animal') }
 
     it 'creates room' do
