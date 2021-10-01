@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'RoomsController', type: :request do
   include_context 'when user is logged in'
-  let(:track) { create(:track) }
-  let!(:room) { create(:room, tracks: [track]) }
+  let!(:room) { create(:room) }
+  let(:track) { room.tracks.first }
 
   describe 'POST /answer' do
     let(:valid_params) { { user_id: user.id, adam_id: track.adam_id, name: track.name } }
