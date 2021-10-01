@@ -11,7 +11,10 @@ RSpec.describe 'EditGameRooms', type: :system do
   end
 
   context 'with valid attributes' do
-    before { update_rounds(2) }
+    before do
+      update_room_name('animal2')
+      update_rounds(2)
+    end
 
     it 'saves correct data' do
       expect(room).to have_attributes(rounds: 2)
