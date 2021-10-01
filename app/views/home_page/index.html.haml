@@ -21,7 +21,18 @@
         .col
           .card.text-primary.bg-white.rounded-3.shadow-lg.p-2
             %span.text-end
-              = link_to '', room_path(room.id), method: :delete, data: { confirm: "Are you sure you want to delete #{room.name}?"}, class: 'text-danger fas fa-trash-alt' 
+              .text-danger.fas.fa-trash-alt{"data-bs-target" => "#deleteRoomModal", "data-bs-toggle" => "modal", type: "button"}
+              #deleteRoomModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "deleteRoomModalLabel", tabindex: "-1"}
+                .modal-dialog.modal-dialog-centered
+                  .modal-content
+                    = image_tag '/alert.svg', alt: 'alert', height: '80', width: '80', class: 'mx-auto m-4'
+                    %h5#deleteRoomModalLabel.modal-title.text-dark.text-center
+                      Are you sure you want to delete
+                      = room.name
+                      ?
+                      .modal-footer.mb-2
+                        %button.btn.btn-outline-secondary{"data-bs-dismiss" => "modal", type: "button"} Cancel
+                        = link_to 'Confirm', room_path(room.id), method: :delete, class: 'btn btn-outline-success' 
             = link_to edit_room_path(room) do
               %strong.fs-5.text-primary.p-2
                 = room.name
