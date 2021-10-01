@@ -16,6 +16,7 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
     end
 
     it 'creates room' do
+      click_on 'Finish setup'
       expect(Room.count).to eq 1
     end
 
@@ -25,6 +26,7 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
     end
 
     it 'saves data' do
+      click_on 'Finish setup'
       expect(room).to have_attributes(name: 'animal')
     end
   end
