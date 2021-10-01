@@ -21,7 +21,7 @@ RSpec.describe 'ListGameRooms', type: :system do
     end
 
     it 'shows create game button' do
-      expect(page).to have_button('Create Room')
+      expect(page).to have_button('CREATE GAME ROOM')
     end
 
     it 'redirects to edit game room when room is clicked' do

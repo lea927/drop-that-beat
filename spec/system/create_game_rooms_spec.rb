@@ -4,8 +4,9 @@ RSpec.describe 'CreateGameRooms', type: :system do
   include_context 'when user creates a game room'
 
   before do
-    driven_by(:rack_test)
+    driven_by(:selenium_chrome_headless)
     visit root_path
+    click_on 'CREATE GAME ROOM'
   end
 
   context 'with valid attributes' do
@@ -26,9 +27,9 @@ RSpec.describe 'CreateGameRooms', type: :system do
   end
 
   context 'with blank room name' do
-    it 'generates an error message' do
+    it 'does not submit form' do
       submit_form(nil)
-      expect(page).to have_content 'Name can\'t be blank'
+      expect(page).to have_field 'room_name'
     end
   end
 end
