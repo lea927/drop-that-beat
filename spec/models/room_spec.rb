@@ -40,9 +40,9 @@ RSpec.describe Room, type: :model do
     end
 
     it 'is not valid with duplicate tracks' do
-      track = create(:track)
-      room = create(:room, tracks: [track])
-      expect { room.tracks.push(track) }.to raise_error(ActiveRecord::RecordInvalid)
+      room = create(:room)
+      existing_track = room.tracks.first
+      expect { room.tracks.push(existing_track) }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it 'is not valid with less than five tracks' do
