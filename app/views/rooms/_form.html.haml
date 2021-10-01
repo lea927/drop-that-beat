@@ -15,7 +15,7 @@
 %div
   %h3 STEP 3
   %h3 Set Rounds
-  = form_with model: @room, local: true do |f|
+  = form_with model: @room, local: true, id: 'rooms_form' do |f|
     = f.label :rounds
     = f.select :rounds, options_for_select([[1, 1], [2, 2], [3, 3] ], @room.rounds)
     %br
