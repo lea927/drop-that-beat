@@ -16,4 +16,10 @@ RSpec.shared_context 'when user creates a game room' do
     fill_in 'Search track', with: 'dua lipa levitating'
     click_on 'Search'
   end
+
+  def add_tracks
+    within '#track_results' do
+      all('a').each(&:click)
+    end
+  end
 end
