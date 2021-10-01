@@ -31,6 +31,8 @@ RSpec.describe TracksController, type: :request do
   end
 
   describe 'POST /create' do
+    before { room }
+
     context 'when track is not yet already saved' do
       it 'creates new track' do
         expect do
