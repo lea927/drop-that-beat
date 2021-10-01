@@ -34,6 +34,11 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
       click_on 'Finish setup'
       expect(page).to have_content room.name
     end
+
+    it 'generates success message' do
+      click_on 'Finish setup'
+      expect(page).to have_content 'Game was setup successfully'
+    end
   end
 
   context 'with blank room name' do
