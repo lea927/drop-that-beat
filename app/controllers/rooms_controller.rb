@@ -23,7 +23,9 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
-  def new; end
+  def new
+    @room = Room.new(name: params[:room][:name])
+  end
 
   def edit; end
 
