@@ -8,7 +8,7 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
     visit root_path
   end
 
-  context 'with valid attributes', vcr: 'tracks/dua_lipa' do
+  context 'with valid attributes' do
     before do
       submit_form('animal')
       search_tracks
