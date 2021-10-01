@@ -9,7 +9,11 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
   end
 
   context 'with valid attributes', vcr: 'tracks/dua_lipa' do
-    before { submit_form('animal') }
+    before do
+      submit_form('animal')
+      search_tracks
+      add_tracks
+    end
 
     it 'creates room' do
       expect(Room.count).to eq 1
