@@ -21,7 +21,7 @@
         .col
           .card.text-primary.bg-white.rounded-3.shadow-lg.p-2
             %span.text-end
-              = link_to 'Delete', room_path(room.id), method: :delete, data: { confirm: "Are you sure you want to delete #{room.name}?"}, class: 'btn btn-outline-danger btn-sm' 
+              = link_to '', room_path(room.id), method: :delete, data: { confirm: "Are you sure you want to delete #{room.name}?"}, class: 'text-danger fas fa-trash-alt' 
             = link_to edit_room_path(room) do
               %strong.fs-5.text-primary.p-2
                 = room.name
