@@ -12,6 +12,10 @@ RSpec.shared_context 'when user creates a game room', vcr: 'tracks/dua_lipa' do
     click_on 'Finish setup'
   end
 
+  def update_room_name(name)
+    fill_in 'name', with: name
+  end
+
   def search_tracks
     fill_in 'Search track', with: 'dua lipa levitating'
     click_on 'Search'
