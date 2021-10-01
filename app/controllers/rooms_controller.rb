@@ -33,7 +33,7 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     if @room.save
       current_user.rooms << @room
-      redirect_to home_path, notice: 'Game was setup successfully'
+      redirect_to home_path, notice: 'Game was created successfully'
     else
       render :new
     end

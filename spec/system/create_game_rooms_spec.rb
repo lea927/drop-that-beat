@@ -37,7 +37,7 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
 
     it 'generates success message' do
       click_on 'Finish setup'
-      expect(page).to have_content 'Game was setup successfully'
+      expect(page).to have_content 'Game was created successfully'
     end
   end
 
