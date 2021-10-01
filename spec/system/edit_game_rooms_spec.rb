@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'SetupGameRooms', type: :system do
+RSpec.describe 'EditGameRooms', type: :system do
   include_context 'when user creates a game room'
 
   before do
