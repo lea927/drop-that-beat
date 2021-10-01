@@ -27,7 +27,7 @@ class TracksController < ApplicationController
   def create
     @track = Track.search_db(params[:adam_id]) || Track.new(track_params.except(:room_id))
     @track.save
-    @room.tracks << @track
+    @room.tracks << @track if @room
     respond_to do |format|
       format.js
     end
