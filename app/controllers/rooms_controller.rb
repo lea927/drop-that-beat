@@ -52,14 +52,12 @@ class RoomsController < ApplicationController
   end
 
   def answer
-    @track = @room.tracks.search_db(params[:adam_id])
-    return render json: { errors: 'Track not found' }, status: :unprocessable_entity if @track.nil?
+    @track = @room.tracks.find(params[:track_id])
 
-    if @track.name == params[:name]
-      @user = User.find(params[:user_id])
-      @user.increment(:points).save
-    end
+    current_user.increment(:points).save if @track.name == params[:name] && @track.artist == params[:artist]
     render json: @track.name == params[:name], status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: { errors: 'Track not found' }, status: :unprocessable_entity
   end
 
   private

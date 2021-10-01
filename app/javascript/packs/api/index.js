@@ -6,6 +6,7 @@ const MusicApiClient = {
   room(id) { return roomApi.room(id) },
   get tracks() { return trackApi.tracks },
   track(id) { return trackApi.track(id) },
+  postAnswer(roomId, data) { return roomApi.postAnswer(roomId, data) },
 };
 window.client = MusicApiClient;
 export default MusicApiClient;
