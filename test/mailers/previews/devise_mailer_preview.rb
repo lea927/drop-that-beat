@@ -1,8 +1,7 @@
 # test/mailers/previews/devise_mailer_preview.rb
-
 class DeviseMailerPreview < ActionMailer::Preview
   def confirmation_instructions
-    Devise::Mailer.confirmation_instructions(User.first, "faketoken")
+    Devise::Mailer.confirmation_instructions(User.first, 'faketoken')
   end
 
   # def reset_password_instructions
