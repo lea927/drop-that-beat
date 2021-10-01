@@ -38,4 +38,15 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
       expect(message).to eq 'Please fill out this field.'
     end
   end
+
+  context 'with less than 5 tracks' do
+    before do
+      submit_form('animal')
+      click_on 'Finish setup'
+    end
+
+    it 'generates an error nessage' do
+      expect(page).to have_content 'Tracks must be at least 5'
+    end
+  end
 end
