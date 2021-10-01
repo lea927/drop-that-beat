@@ -17,11 +17,11 @@ RSpec.describe 'EditGameRooms', type: :system do
     end
 
     it 'saves correct data' do
-      expect(room).to have_attributes(rounds: 2)
+      expect(room).to have_attributes(rounds: 2, name: 'animal2')
     end
 
     it 'generates success message' do
-      expect(page).to have_content 'Game was setup successfully'
+      expect(page).to have_content 'Game was updated successfully'
     end
   end
 end
