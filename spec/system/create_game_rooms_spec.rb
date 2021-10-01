@@ -34,7 +34,8 @@ RSpec.describe 'CreateGameRooms', :vcr, type: :system do
   context 'with blank room name' do
     it 'generates an error message' do
       submit_form(nil)
-      expect(page).to have_content 'Name can\'t be blank'
+      message = page.find('#room_name').native.attribute('validationMessage')
+      expect(message).to eq 'Please fill out this field.'
     end
   end
 end
