@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
-  subject { build(:room) }
+  subject(:room) { build(:room) }
 
   context 'with valid attributes' do
     it { is_expected.to be_valid }
     it { is_expected.to respond_to :tracks }
     it { is_expected.to respond_to :users }
     it { is_expected.to have_attributes(rounds: 1) }
+
+    it 'has 5 tracks' do
+      expect(room.tracks.length).to eq 5
+    end
   end
 
   context 'with invalid attributes' do
@@ -39,6 +43,10 @@ RSpec.describe Room, type: :model do
       track = create(:track)
       room = create(:room, tracks: [track])
       expect { room.tracks.push(track) }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it 'is not valid with less than five tracks' do
+      expect(build(:room, tracks: [])).not_to be_valid
     end
   end
 end
