@@ -27,7 +27,7 @@ RSpec.describe 'ListGameRooms', type: :system do
     it 'redirects to new game room when game button is clicked' do
       fill_in 'Enter room name', with: 'animal'
       click_on 'Create Room'
-      expect(page).to have_current_path(/rooms\/new/)
+      expect(page).to have_current_path(%r{rooms/new})
     end
 
     it 'redirects to edit game room when room is clicked' do
