@@ -1,5 +1,5 @@
 %h1 
-  = %input{ value: @room.name, class: 'border-0 bg-primary text-white' }
+  = %input{ value: @room.name, class: 'border-0 bg-primary text-white', 'data-submit': 'name' }
   = 'ROOM'
 = render partial: 'devise/shared/error_messages', locals: { resource: @room }
 %div
@@ -33,4 +33,5 @@
   });
   $(document).on('turbolinks:load', () => {
     $("a[data-animate='fadeOut']").on('click', removeParentElem);
+    $('[data-submit=name').on('change', (ev) => { $('#room_name').val(ev.target.value) })
   });
