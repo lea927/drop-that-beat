@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe 'EditGameRooms', type: :system do
   include_context 'when user creates a game room'
+  let!(:room) { create(:room, users: [user]) }
 
   before do
     driven_by(:selenium_chrome_headless)
     visit root_path
-    submit_form('animal')
+    click_on room.name
   end
 
   context 'with valid attributes' do
