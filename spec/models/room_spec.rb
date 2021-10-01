@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
-  subject(:room) { build(:room) }
+  subject(:room) { build(:room, :stub_tracks) }
 
   context 'with valid attributes' do
     it { is_expected.to be_valid }
