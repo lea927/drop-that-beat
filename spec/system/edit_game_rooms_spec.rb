@@ -17,7 +17,7 @@ RSpec.describe 'EditGameRooms', type: :system do
     end
 
     it 'saves correct data' do
-      expect(room).to have_attributes(rounds: 2, name: 'animal2')
+      expect(room.reload).to have_attributes(rounds: 2, name: 'animal2')
     end
 
     it 'generates success message' do
