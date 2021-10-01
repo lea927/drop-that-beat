@@ -33,6 +33,11 @@
     // Extract track id using map function from Array
     return Array.prototype.map.call(tracks, ({dataset}) => dataset.track)
   }
+  function createInputElem(trackIds) {
+    return trackIds.reduce((result, trackId) => result.concat(
+      `<input type="hidden" value="${trackId}" name="room[track_ids][]" id="room_track_ids">\n`
+    ), '');
+  }
   $(document).on('ajax:success', () => {
     $("a[data-animate='fadeOut']").on('click', removeParentElem);
   });
