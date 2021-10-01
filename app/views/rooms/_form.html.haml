@@ -28,6 +28,11 @@
       $(this).parent().remove();
     });
   };
+  function getTrackList() {
+    let tracks = document.querySelectorAll('[data-track]');
+    // Extract track id using map function from Array
+    return Array.prototype.map.call(tracks, ({dataset}) => dataset.track)
+  }
   $(document).on('ajax:success', () => {
     $("a[data-animate='fadeOut']").on('click', removeParentElem);
   });
