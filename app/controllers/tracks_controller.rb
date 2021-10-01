@@ -45,6 +45,8 @@ class TracksController < ApplicationController
 
   def set_room
     @room = Room.find(params[:room_id])
+  rescue ActiveRecord::RecordNotFound
+    nil
   end
 
   def track_params
