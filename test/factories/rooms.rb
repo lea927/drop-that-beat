@@ -1,8 +1,6 @@
 FactoryBot.define do
   factory :room do
     name { 'animal' }
-    trait :tracks do
-      tracks { [association(:track)] }
-    end
+    tracks { build_list(:track, 5) }
   end
 end
