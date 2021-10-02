@@ -20,6 +20,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'httparty'
 gem 'hirb'
 gem 'premailer-rails' 
+gem 'nokogiri'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
