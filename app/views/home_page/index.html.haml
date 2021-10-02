@@ -1,4 +1,4 @@
-.container-fluid.text-center.mt-4
+.container-fluid.text-center.mt-4.col-xl-9
   .row
     .col-sm-12.col-md-9.col-lg-6.mx-auto
       %button.btn.btn-primary.btn-lg{"data-bs-target" => "#createGameModal", "data-bs-toggle" => "modal", type: "button"}
@@ -19,7 +19,7 @@
     .row.row-cols-1.row-cols-md-2.row-cols-lg-3.align-items-stretch.g-4.py-5.mx-4
       - @rooms.each do |room|
         .col
-          .card.text-primary.bg-white.rounded-3.shadow-lg.p-2
+          .card.text-primary.bg-white.rounded-3.shadow-lg.p-2.border-left-secondary
             %span.text-end
               .text-danger.fas.fa-trash-alt{"data-bs-target" => "#deleteRoomModal", "data-bs-toggle" => "modal", type: "button"}
               #deleteRoomModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "deleteRoomModalLabel", tabindex: "-1"}
@@ -34,7 +34,7 @@
                         %button.btn.btn-outline-secondary{"data-bs-dismiss" => "modal", type: "button"} Cancel
                         = link_to 'Confirm', room_path(room.id), method: :delete, class: 'btn btn-outline-success' 
             = link_to edit_room_path(room) do
-              %strong.fs-5.text-primary.p-2
+              %strong.fs-5.text-primary.p-2.mx-2
                 = room.name
             %div.d-flex.justify-content-between
               %span.text-dark
