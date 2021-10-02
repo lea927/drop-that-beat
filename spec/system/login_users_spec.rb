@@ -12,9 +12,9 @@ RSpec.describe 'LoginUsers', type: :system do
   end
 
   def fillout_form(user)
-    fill_in 'Username', with: user.username
-    fill_in 'Password', with: user.password
-    click_on 'Log in'
+    fill_in 'user[username]', with: user.username
+    fill_in 'user[password]', with: user.password
+    click_on 'LOG IN'
   end
 
   it 'can access login page' do

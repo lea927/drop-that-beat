@@ -1,15 +1,36 @@
-%header
-  %a(href="#{root_path}") 
-    = image_tag '/logo.svg', alt: 'logo', height: '50', width: '50', class: ''
-  - if user_signed_in?
-    = link_to "Home", root_path 
-    |
-    = link_to "Log Out", destroy_user_session_path, method: :delete
-    |
-    = link_to "Update Password", edit_user_registration_path 
-    |
-    = link_to "All Rooms", rooms_path
-  - else
-    = link_to "Sign Up", new_user_registration_path
-    = link_to "Log In", new_user_session_path
-    
+- if request.path == new_user_session_path || request.path == new_user_registration_path || request.path == '/users'
+  = render 'devise/shared/header'
+- else
+  %header
+    %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.shadow-sm
+      .container-fluid
+        = link_to root_path, class: 'navbar-brand' do
+          = image_tag '/navbar-brand-light.svg', alt: 'logo', height: '50', width: '50'
+        - if user_signed_in?
+          %button.navbar-toggler{"aria-controls" => "navbarToggler", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarToggler", "data-bs-toggle" => "collapse"}
+            %span.navbar-toggler-icon
+          #navbarToggler.collapse.navbar-collapse
+            %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+              %li.nav-item.p-2
+                = link_to "Home", home_path, class: "nav-link text-light #{current_class?(home_path)}"
+              %li.nav-item.p-2
+                = link_to "All Rooms", rooms_path, class: "nav-link text-light #{current_class?(rooms_path)}"
+            .nav-item.dropdown.navbar-nav.ml-auto
+              %div.m-auto.px-2
+                = image_tag '/coin.svg', alt: 'coin', height: '20', width: '20'
+                = "#{current_user.points } points"
+              %a#navbarDropdown.nav-link.dropdown-toggle.text-light.px-2{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+                %span
+                  = image_tag '/user.svg', alt: 'user', height: '20', width: '20'
+                  = current_user.username
+              .dropdown-menu.dropdown-menu-end.bg-light.shadow
+                = link_to "Update Password", edit_user_registration_path, class: 'dropdown-item'
+                %hr.dropdown-divider
+                = link_to 'Logout', destroy_user_session_path, class: 'dropdown-item', method: :delete
+        - else
+          %ul.navbar-nav.list-unstyled.flex-row
+            %li.nav-item.mx-2
+              = link_to "Sign Up", new_user_registration_path, class: "nav-link text-light fs-5 #{current_class?(new_user_registration_path)}"
+            %li.nav-item.mx-4
+              = link_to "Log In", new_user_session_path, class: "nav-link text-light fs-5 #{current_class?(new_user_session_path)}"
+  = render 'layouts/flash'
