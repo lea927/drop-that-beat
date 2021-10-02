@@ -120,5 +120,5 @@ const GAME = {
 		});
 	}
 }
-
+window.GAME = {};
 window.GAME = GAME; // Add Game as global variable
