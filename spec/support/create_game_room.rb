@@ -1,4 +1,4 @@
-RSpec.shared_context 'when user creates a game room', vcr: 'tracks/dua_lipa' do
+RSpec.shared_context 'when user creates a game room' do
   include_context 'when user is logged in'
   let(:room) { user.rooms.find_by(name: 'animal') }
 
@@ -16,8 +16,8 @@ RSpec.shared_context 'when user creates a game room', vcr: 'tracks/dua_lipa' do
     fill_in 'name', with: name
   end
 
-  def search_tracks
-    fill_in 'Search track', with: 'dua lipa levitating'
+  def search_tracks(track_name)
+    fill_in 'Search track', with: track_name
     click_on 'Search'
   end
 
