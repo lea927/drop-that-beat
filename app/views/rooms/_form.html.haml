@@ -9,6 +9,7 @@
 %div
   %h3 STEP 2
   %h3 Create a Playlist
+  %p{ class: 'd-none', 'data-validation': 'message', 'data-name': 'playlist' }
   #room_playlist
     - if @room.tracks.any?
       = render 'tracks/track', tracks: @room.tracks.reverse_order
