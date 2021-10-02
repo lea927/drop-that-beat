@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'CreateGameRooms', :vcr, type: :system do
+RSpec.describe 'CreateGameRooms', vcr: 'tracks/dua_lipa', type: :system do
   include_context 'when user creates a game room'
 
   before do
