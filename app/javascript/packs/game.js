@@ -53,6 +53,10 @@ class Game {
 				this.resetChoiceBtns();
 			});
 		});
+		this.playlist.lastTrack.addEventListener('ended', () => {
+			this.hideGame();
+			$('#endGame').removeClass('d-none');
+		});
 	}
 	addChoiceBtnListener() {
 		this.saveAnswer = this.saveAnswer.bind(this);
