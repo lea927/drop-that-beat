@@ -51,6 +51,7 @@
     $("a[data-animate='fadeOut']").on('click', removeParentElem);
     $('[data-submit=name]').on('change', (ev) => $('#room_name').val(ev.target.value));
     $('#rooms_form').on('submit', function (evt) {
+      $('#rooms_form').find('input[type=submit]').attr('disabled', true); // Disable button
       evt.preventDefault();
       $('#room_name').before(createInputElem(getTrackList()));
       evt.target.submit();
