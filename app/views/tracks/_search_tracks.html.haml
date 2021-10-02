@@ -1,4 +1,6 @@
 = form_with url: search_path, method: :get, local: false, id: 'track_results_form' do |f|
+  - if @room
+    = f.hidden_field :room_id, value: @room.id
   = f.label :term, 'Search track'
   = f.text_field :term, required: true
   = f.submit 'Search'
