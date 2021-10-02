@@ -53,7 +53,11 @@
     $('#rooms_form').on('submit', function (evt) {
       $('#rooms_form').find('input[type=submit]').attr('disabled', true); // Disable button
       evt.preventDefault();
-      $('#room_name').before(createInputElem(getTrackList()));
-      evt.target.submit();
+      if (checkMinTracks()) {
+        $("[data-input='trackIds']").html(createInputElem(getTrackList()));
+        evt.target.submit();
+      } else {
+        $('#rooms_form').find('input[type=submit]').attr('disabled', false);
+      }
     });
   });
