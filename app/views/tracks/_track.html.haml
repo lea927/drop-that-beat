@@ -12,6 +12,6 @@
       - if track.id.nil?
         = link_to 'Add Song', tracks_path(track.attributes.merge(room_id: "#{@room ? @room.id : ''}")), method: :post, remote: true, data: { animate: 'fadeOut', target: 'parent' }
       - else
-        = link_to 'Remove Song', track_path(track, room_id: "#{@room ? @room.id : ''}"), method: :delete, remote: true, data: { animate: 'fadeOut', target: 'parent' }
+        %button{ data: { animate: 'fadeOut', target: 'parent' } } Remove Song
 - else
   %p No tracks found
