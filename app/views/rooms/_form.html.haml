@@ -21,7 +21,7 @@
     = f.label :rounds
     = f.select :rounds, options_for_select([[1, 1], [2, 2], [3, 3] ], @room.rounds)
     %br
-    = f.submit 'Finish setup'
+    = f.submit 'Finish setup', {data: { disable_with: false }}
 :javascript
   function removeParentElem() {
     if (this.dataset.target != 'parent') return;
