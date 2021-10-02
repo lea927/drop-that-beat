@@ -17,6 +17,7 @@
   %h3 STEP 3
   %h3 Set Rounds
   = form_with model: @room, local: true, id: 'rooms_form' do |f|
+    %div{ 'data-input': 'trackIds' }
     = f.hidden_field :name
     = f.label :rounds
     = f.select :rounds, options_for_select([[1, 1], [2, 2], [3, 3] ], @room.rounds)
