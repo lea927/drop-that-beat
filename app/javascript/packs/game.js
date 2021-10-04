@@ -103,6 +103,10 @@ const GAME = {
 		if (index == undefined || currentTrackData == undefined) throw new SyntaxError('Object does not have index or currentTrackData property');
 		currentTrackData.addAnswer(index).postAnswer(GAME.room.id);
 	},
+	getAnswer() {
+		if (GAME.getCurrentQuestion().answer == undefined) return undefined;
+		return GAME.getCurrentQuestion().answer.isCorrect;
+	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
 		$('input[data-action="submit"]').prop('disabled', true);
