@@ -14,6 +14,16 @@ import * as LOADER from './loader';
 const GAME = {
 	room: {},
 	playlist: {},
+	answerDisplay: {
+		true: {
+			classColor: 'btn-success',
+			message: 'Correct answer',
+		},
+		false: {
+			classColor: 'btn-danger',
+			message: 'Incorrect Answer',
+		},
+	},
 	async initialize() {
 		await GAME.setGameRoomDetails(); // Need to get the game data before adding the event listeners
 		GAME.addEventListeners();
