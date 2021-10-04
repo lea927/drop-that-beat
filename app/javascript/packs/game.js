@@ -147,6 +147,7 @@ const GAME = {
 	},
 	/** Reset choice buttons to be able to select buttons again */
 	resetChoiceBtns() {
+		$('#choices').hide().fadeIn(500);
 		$('input[data-action="submit"]').prop('disabled', false);
 		$('input[data-action="submit"]').prop('checked', false);
 	},
