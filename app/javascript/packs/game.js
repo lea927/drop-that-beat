@@ -118,6 +118,22 @@ const GAME = {
 		if (GAME.getCurrentQuestion().answer == undefined) return undefined;
 		return GAME.getCurrentQuestion().answer.isCorrect;
 	},
+	displayAnswer() {
+		// Styles
+		let answer = GAME.getAnswer()
+		let result = answer ?? false;
+		let { classColor, message } = GAME.answerDisplay[result];
+		// Header
+		$('#question').addClass('d-none');
+		$('[data-display="answer"]').removeClass('d-none').text(message);
+		// Buttons
+		if (answer !== undefined) {
+			$('[data-answer="true"]').next().removeClass('btn-primary').addClass(classColor);
+		} else {
+			let index = GAME.getCurrentQuestion().getCorrectChoicesIndex();
+			$('.choiceBtn').eq(index).removeClass('btn-primary').addClass(classColor);
+		}
+	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
 		$('input[data-action="submit"]').prop('disabled', true);
