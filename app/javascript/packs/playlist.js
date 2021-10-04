@@ -21,7 +21,6 @@ class Playlist {
   createTrack(urlTracks) {
     urlTracks.forEach((urlTrack) => {
       let track = new Audio(urlTrack);
-      track.addEventListener('ended', () => this.next());
       this.tracks.push(track);
     });
     return this.tracks;
