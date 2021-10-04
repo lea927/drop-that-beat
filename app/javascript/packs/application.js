@@ -8,10 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
-require('../stylesheets/application.scss')
 require('./game')
 import 'bootstrap/dist/js/bootstrap'
-import 'bootstrap/scss/bootstrap'
+import '../stylesheets/application.scss'
 import "@fortawesome/fontawesome-free/css/all"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
