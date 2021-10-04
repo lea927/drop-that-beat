@@ -1,21 +1,45 @@
-%p
-  ="Welcome,"
-  = current_user.username
-%p
-  = current_user.points
-  ='points'
-= link_to 'CREATE A ROOM', new_room_path
-- if @rooms.any?
-  %ul
-    - @rooms.each do |room|
-      %li
-        = link_to room.name, edit_room_path(room)
-        = link_to "Delete", room_path(room.id), |
-      method: :delete, |
-      data: { confirm: "Are you sure you want to delete #{room.name}?" }
-
-= form_with model: @room, url: new_room_path, method: :get, local: true do |f|
-  = render partial: 'devise/shared/error_messages', locals: { resource: @room }
-  = f.label :name, 'Enter room name'
-  = f.text_field :name, required: true
-  = f.submit 'Create Room'
+.container-fluid.text-center.mt-4.col-xl-9
+  .row
+    .col-sm-12.col-md-9.col-lg-6.mx-auto
+      %button.btn.btn-primary.btn-lg{"data-bs-target" => "#createGameModal", "data-bs-toggle" => "modal", type: "button"}
+        CREATE GAME ROOM
+      #createGameModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "createGameModalLabel", tabindex: "-1"}
+        .modal-dialog.modal-dialog-centered
+          .modal-content
+            .modal-header
+              %h5#createGameModalLabel.modal-title.text-dark.text-center New Game Room
+              %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", type: "button"}
+            .modal-body
+              = form_with model: @room, url: new_room_path, method: :get, local: true do |f|
+                = render partial: 'devise/shared/error_messages', locals: { resource: @room }
+                = f.text_field :name, class: 'form-control mt-0', placeholder: 'Enter room name', required: true
+                .modal-footer
+                = f.submit 'Create Room', class: 'btn btn-primary'
+  - if @rooms.any?
+    .row.row-cols-1.row-cols-md-2.row-cols-lg-3.align-items-stretch.g-4.py-5.mx-4
+      - @rooms.each do |room|
+        .col
+          .card.text-primary.bg-white.rounded-3.shadow-lg.p-2.border-left-secondary
+            %span.text-end
+              .text-danger.fas.fa-trash-alt{"data-bs-target" => "#deleteRoomModal", "data-bs-toggle" => "modal", type: "button"}
+              #deleteRoomModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "deleteRoomModalLabel", tabindex: "-1"}
+                .modal-dialog.modal-dialog-centered
+                  .modal-content
+                    = image_tag '/alert.svg', alt: 'alert', height: '80', width: '80', class: 'mx-auto m-4'
+                    %h5#deleteRoomModalLabel.modal-title.text-dark.text-center
+                      Are you sure you want to delete
+                      = room.name
+                      ?
+                      .modal-footer.mb-2
+                        %button.btn.btn-outline-secondary{"data-bs-dismiss" => "modal", type: "button"} Cancel
+                        = link_to 'Confirm', room_path(room.id), method: :delete, class: 'btn btn-outline-success' 
+            = link_to edit_room_path(room) do
+              %strong.fs-5.text-primary.p-2.mx-2
+                = room.name
+            %div.d-flex.justify-content-between
+              %span.text-dark
+                = image_tag '/music-note-list.svg', alt: 'music-note-list'
+                = room.tracks.count
+              %span.text-start.text-secondary
+                By
+                = current_user.username

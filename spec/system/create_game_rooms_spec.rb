@@ -6,6 +6,7 @@ RSpec.describe 'CreateGameRooms', vcr: 'tracks/coldplay', type: :system do
   before do
     driven_by(:selenium_chrome_headless)
     visit root_path
+    click_on 'CREATE GAME ROOM'
   end
 
   context 'with valid attributes', vcr: 'tracks/coldplay' do
@@ -42,7 +43,7 @@ RSpec.describe 'CreateGameRooms', vcr: 'tracks/coldplay', type: :system do
   end
 
   context 'with blank room name' do
-    it 'generates an error message' do
+    it 'does not submit form' do
       submit_form(nil)
       message = page.find('#room_name').native.attribute('validationMessage')
       expect(message).to eq 'Please fill out this field.'
@@ -55,8 +56,9 @@ RSpec.describe 'CreateGameRooms', vcr: 'tracks/coldplay', type: :system do
       click_on 'Finish setup'
     end
 
-    it 'generates an error nessage' do
+    it 'generates an error nessage', :aggregate_failures do
       expect(page).to have_content 'Tracks must be at least 5'
+      expect(page).to have_field 'room_name'
     end
   end
 end
