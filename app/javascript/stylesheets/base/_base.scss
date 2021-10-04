@@ -1,0 +1,39 @@
+@import "./variables";
+
+body,
+a,
+button {
+  font-family: $primary-font;
+}
+
+body {
+  background-color: #008080;
+  color: $white;
+  font-weight: $medium;
+  height: 100vh;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+}
+
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.active {
+  border-bottom: 2px solid $secondary-color;
+}
+
+.border-left-secondary {
+  border-left: 8px solid $secondary-color;
+}
+
+.bg-primary {
+  background-color: $primary-color !important;
+}
