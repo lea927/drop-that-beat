@@ -1,0 +1,11 @@
+@import '../base/variables';
+
+.form-control {
+  border-radius: 0.5rem;
+  border: 2px solid $black;
+  margin-top: 1rem;
+  &:focus {
+    border: 2px solid $black;
+    box-shadow: none;
+  }
+}
