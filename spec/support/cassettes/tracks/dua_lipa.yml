@@ -19,27 +19,27 @@ http_interactions:
       message: OK
     headers:
       X-Apple-Jingle-Correlation-Key:
-      - T6GUE37STC4Z4KIIVZEBUKNKSU
+      - PIFQTR4HMPUFH2Y2KW2K3NM7FI
       X-Apple-Request-Uuid:
-      - 9f8d426f-f298-b99e-2908-ae481a29aa95
+      - 7a0b09c7-8763-e853-eb1a-55b4adb59f2a
       X-Apple-Translated-Wo-Url:
       - "/WebObjects/MZStoreServices.woa/ws/wsSearch?term=dua%20lipa%20levitating&media=music&limit=5&urlDesc="
       Apple-Tk:
       - 'false'
       X-B3-Spanid:
-      - faac9f6264e0fd49
+      - 3e64702d82f6840b
       Content-Type:
       - text/javascript; charset=utf-8
       B3:
-      - 9f8d426ff298b99e2908ae481a29aa95-faac9f6264e0fd49
+      - 7a0b09c78763e853eb1a55b4adb59f2a-3e64702d82f6840b
       X-Content-Type-Options:
       - nosniff
       X-B3-Traceid:
-      - 9f8d426ff298b99e2908ae481a29aa95
+      - 7a0b09c78763e853eb1a55b4adb59f2a
       X-Webobjects-Loadaverage:
       - '0'
       X-Responding-Instance:
-      - 'MZStoreServices:2005522:::'
+      - 'MZStoreServices:4122001:::'
       Apple-Seq:
       - '0'
       Content-Disposition:
@@ -47,30 +47,30 @@ http_interactions:
       Apple-Originating-System:
       - MZStoreServices
       X-Apple-Orig-Url:
-      - http://mzstoreservices-int-st.itunes.apple.com/search?term=dua%20lipa%20levitating&media=music&limit=5
+      - http://mzstoreservices-int.dslb.apple.com/search?term=dua%20lipa%20levitating&media=music&limit=5
       X-Apple-Application-Site:
-      - ST11
+      - MR22
       Apple-Timing-App:
-      - 133 ms
+      - 158 ms
       X-Apple-Application-Instance:
-      - '2005522'
+      - '4122001'
       Vary:
       - Accept-Encoding
       Cache-Control:
-      - max-age=79689
+      - max-age=75769
       Date:
-      - Mon, 20 Sep 2021 08:11:26 GMT
+      - Fri, 01 Oct 2021 19:36:58 GMT
       Content-Length:
       - '7838'
       X-Cache:
-      - TCP_MISS from a122-2-209-60.deploy.akamaitechnologies.com (AkamaiGHost/10.4.4-34529956)
-        (-)
+      - TCP_REFRESH_MISS from a202-138-183-30.deploy.akamaitechnologies.com (AkamaiGHost/10.4.4-34529956)
+        (S)
       X-True-Cache-Key:
       - "/L/itunes.apple.com/search vcd=2897 ci2=limit=5&media=music&term=dua%20lipa%20levitating///"
       Connection:
       - keep-alive
       X-Cache-Remote:
-      - TCP_HIT from a202-138-183-31.deploy.akamaitechnologies.com (AkamaiGHost/10.4.4-34529956)
+      - TCP_HIT from a202-138-183-38.deploy.akamaitechnologies.com (AkamaiGHost/10.4.4-34529956)
         (-)
       X-Apple-Partner:
       - origin.0
@@ -156,5 +156,5 @@ http_interactions:
         \"discCount\":1, \"discNumber\":1, \"trackCount\":1, \"trackNumber\":1, \"trackTimeMillis\":250280,
         \"country\":\"USA\", \"currency\":\"USD\", \"primaryGenreName\":\"Dance\",
         \"isStreamable\":true}]\n}\n\n\n"
-  recorded_at: Mon, 20 Sep 2021 08:11:26 GMT
+  recorded_at: Fri, 01 Oct 2021 19:36:58 GMT
 recorded_with: VCR 6.0.0

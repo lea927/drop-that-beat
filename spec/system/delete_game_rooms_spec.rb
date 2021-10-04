@@ -13,8 +13,8 @@ RSpec.describe 'DeleteGameRooms', type: :system do
 
   context 'when deleting a room' do
     before do
-      click_on 'Delete'
-      page.driver.browser.switch_to.alert.accept
+      page.find('.fa-trash-alt').click
+      click_on 'Confirm'
     end
 
     it 'displays success message' do
