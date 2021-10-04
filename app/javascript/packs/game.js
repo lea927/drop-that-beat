@@ -31,6 +31,15 @@ const GAME = {
 		GAME.addTracksListener();
 		GAME.addChoiceBtnListener();
 		document.addEventListener('turbolinks:load', () => GAME.endGame()); // To stop music when user exits page
+		document.addEventListener('turbolinks:render', () => {
+			Turbolinks.clearCache();
+		});
+		document.addEventListener('turbolinks:before-cache', () => {
+			// Turbolinks won't cache the playing playlist
+			GAME.endGame();
+			GAME.room = {};
+			GAME.playlist = {};
+		});
 	},
 	addStartBtnListener() {
 		const startBtn = document.querySelector('#startGameBtn');
@@ -79,7 +88,8 @@ const GAME = {
 	hideGame() {
 		$('#choices').addClass('d-none');
 		$('#endGame').addClass('d-none');
-		$('#startGameBtn').attr('style', 'display:block')
+		$('#startGameBtn').attr('style', 'display:block');
+		LOADER.hideLoader();
 	},
 	/**
 	 * Get current track details
@@ -118,7 +128,7 @@ const GAME = {
 		$('.choiceBtn').each(function (index) {
 			this.textContent = choices[index];
 		});
-	}
-}
-window.GAME = {};
+	},
+};
+
 window.GAME = GAME; // Add Game as global variable

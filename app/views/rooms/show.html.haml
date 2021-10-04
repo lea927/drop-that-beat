@@ -19,6 +19,6 @@
     = link_to 'Quit Game', root_path, class:'btn btn-primary btn-lg'
 = javascript_pack_tag 'game'
 :javascript
-  document.addEventListener("turbolinks:load", GAME.initialize());
+  document.addEventListener("turbolinks:load", GAME.initialize(), { once: true });
 
 
