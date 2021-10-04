@@ -65,7 +65,7 @@ const GAME = {
 		$('input[data-action="submit"]').on('click', (evt) => {
 			GAME.saveAnswer({
 				index: evt.target.value, // index of button clicked
-				currentTrackData: GAME.getCurrentTrackData(),
+				currentTrackData: GAME.getCurrentQuestion(),
 			});
 			GAME.disableBtns();
 		});
@@ -94,7 +94,7 @@ const GAME = {
 	 * Get current track details
 	 * @returns {Question} current question
 	 */
-	getCurrentTrackData() {
+	getCurrentQuestion() {
 		let trackNo = GAME.playlist.trackNo; // Currently playing track number
 		return GAME.room.questions[trackNo];
 	},
