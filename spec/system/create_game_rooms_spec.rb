@@ -56,9 +56,8 @@ RSpec.describe 'CreateGameRooms', vcr: 'tracks/coldplay', type: :system do
       click_on 'Finish setup'
     end
 
-    it 'generates an error nessage', :aggregate_failures do
+    it 'generates an error message' do
       expect(page).to have_content 'Tracks must be at least 5'
-      expect(page).to have_field 'room_name'
     end
   end
 end
