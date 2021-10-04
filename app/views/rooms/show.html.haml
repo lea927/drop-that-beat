@@ -7,14 +7,15 @@
     #myBar.hide
 %section
   %h1{ id: 'question', style: 'visibility: hidden' } Guess the song:
+  %h1{ class: 'd-none', data: { display: 'answer'} }
 %section
   %div{ class: 'd-none d-flex flex-column', id: 'choices' } 
-    %input{ type: 'radio', class: 'btn-check d-none', id: 'choice1', name: 'choice', value: '0', data: { action: 'submit' }}
-    %label{ for: 'choice1', class: 'choiceBtn btn btn-primary btn-lg' }
-    %input{ type: "radio", class: 'btn-check d-none', id: 'choice2', name: 'choice', value: '1', data: { action: 'submit' }}
-    %label{ for: 'choice2', class: 'choiceBtn btn btn-primary btn-lg' }
-    %input{ type: 'radio', class: 'btn-check d-none', id: 'choice3', name: 'choice', value: '2', data: { action: 'submit' }}
-    %label{ for: 'choice3', class: 'choiceBtn btn btn-primary btn-lg' }
+    %input{ type: 'radio', class: 'btn-check d-none', id: 'choice1', name: 'choice', value: '0', data: { action: 'submit', answer: 'false' }}
+    %label{ for: 'choice1', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
+    %input{ type: "radio", class: 'btn-check d-none', id: 'choice2', name: 'choice', value: '1', data: { action: 'submit', answer: 'false' }}
+    %label{ for: 'choice2', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
+    %input{ type: 'radio', class: 'btn-check d-none', id: 'choice3', name: 'choice', value: '2', data: { action: 'submit', answer: 'false' }}
+    %label{ for: 'choice3', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
   %div{ class: 'd-none', id: 'endGame'}
     = link_to 'Quit Game', root_path, class:'btn btn-primary btn-lg'
 = javascript_pack_tag 'game'

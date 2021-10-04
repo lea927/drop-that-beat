@@ -73,6 +73,7 @@ const GAME = {
 	},
 	addChoiceBtnListener() {
 		$('input[data-action="submit"]').on('click', (evt) => {
+			evt.target.dataset.answer = 'true';
 			GAME.saveAnswer({
 				index: evt.target.value, // index of button clicked
 				currentTrackData: GAME.getCurrentQuestion(),
