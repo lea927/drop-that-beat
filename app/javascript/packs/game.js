@@ -134,6 +134,13 @@ const GAME = {
 			$('.choiceBtn').eq(index).removeClass('btn-primary').addClass(classColor);
 		}
 	},
+	resetAnswer() {
+		// Header
+		$('[data-display="answer"]').addClass('d-none');
+		$('#question').removeClass('d-none');
+		// Buttons
+		$('[data-answer]').attr('data-answer', 'false').next().removeClass('btn-success btn-danger').addClass('btn-primary');;
+	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
 		$('input[data-action="submit"]').prop('disabled', true);
