@@ -30,7 +30,6 @@ const GAME = {
 		GAME.addStartBtnListener();
 		GAME.addTracksListener();
 		GAME.addChoiceBtnListener();
-		document.addEventListener('turbolinks:load', () => GAME.endGame()); // To stop music when user exits page
 		document.addEventListener('turbolinks:render', () => {
 			Turbolinks.clearCache();
 		});
