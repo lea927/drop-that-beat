@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'ShowGameRooms', type: :system do
   include_context 'when user is logged in'
-  let(:track) { create(:track) }
-  let!(:room) { create(:room, tracks: [track]) }
+  let!(:room) { create(:room) }
+  let(:track) { room.tracks.first }
 
   before do
     driven_by(:rack_test)
@@ -33,7 +33,7 @@ RSpec.describe 'ShowGameRooms', type: :system do
 
   context 'when user is logged in and joins a room without tracks' do
     it 'does not display rooms without tracks' do
-      RoomTrack.find_by(room_id: room.id).destroy
+      RoomTrack.where(room_id: room.id).destroy_all
       visit rooms_path
       expect(page).not_to have_content room.name
     end

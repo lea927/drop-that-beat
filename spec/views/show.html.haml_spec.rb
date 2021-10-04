@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'rooms/show.html.haml', type: :view do
   include_context 'when user is logged in'
-  let(:track) { create(:track) }
-  let!(:room) { create(:room, tracks: [track]) }
+  let!(:room) { create(:room) }
 
   before do
     assign(:room, room)

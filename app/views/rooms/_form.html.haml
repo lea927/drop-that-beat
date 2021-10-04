@@ -1,0 +1,64 @@
+%h1 
+  %input{ type: 'text', name: 'name', value: @room.name, class: 'border-0 bg-primary text-white', 'data-submit': 'name' }
+  = 'ROOM'
+= render partial: 'devise/shared/error_messages', locals: { resource: @room }
+%div
+  %h3 STEP 1
+  %h3 Search a Song
+  = render 'tracks/search_tracks'
+%div
+  %h3 STEP 2
+  %h3 Create a Playlist
+  %p{ class: 'd-none', 'data-validation': 'message', 'data-name': 'playlist' }
+  #room_playlist
+    - if @room.tracks.any?
+      = render 'tracks/track', tracks: @room.tracks.reverse_order
+%div
+  %h3 STEP 3
+  %h3 Set Rounds
+  = form_with model: @room, local: true, id: 'rooms_form' do |f|
+    %div{ 'data-input': 'trackIds' }
+    = f.hidden_field :name
+    = f.label :rounds
+    = f.select :rounds, options_for_select([[1, 1], [2, 2], [3, 3] ], @room.rounds)
+    %br
+    = f.submit 'Finish setup', {data: { disable_with: false }}
+:javascript
+  function removeParentElem() {
+    if (this.dataset.target != 'parent') return;
+    $(this).fadeOut(200, () => {
+      $(this).parent().remove();
+    });
+  };
+  function getTrackList() {
+    let tracks = document.querySelectorAll('[data-track]');
+    // Extract track id using map function from Array
+    return Array.prototype.map.call(tracks, ({ dataset }) => dataset.track);
+  }
+  function createInputElem(trackIds) {
+    return trackIds.reduce((result, trackId) => result.concat(`<input type="hidden" value="${trackId}" name="room[track_ids][]" id="room_track_ids">\n`), '');
+  }
+  function checkMinTracks() {
+    let isValid = getTrackList().length >= 5;
+    if (!isValid) {
+      $('[data-validation=message][data-name=playlist]').removeClass('d-none').text('Tracks must be at least 5');
+    }
+    return isValid;
+  }
+  $(document).on('ajax:success', () => {
+    $("[data-animate='fadeOut']").on('click', removeParentElem);
+  });
+  $(document).on('turbolinks:load', () => {
+    $("[data-animate='fadeOut']").on('click', removeParentElem);
+    $('[data-submit=name]').on('change', (ev) => $('#room_name').val(ev.target.value));
+    $('#rooms_form').on('submit', function (evt) {
+      $('#rooms_form').find('input[type=submit]').attr('disabled', true); // Disable button
+      evt.preventDefault();
+      if (checkMinTracks()) {
+        $("[data-input='trackIds']").html(createInputElem(getTrackList()));
+        evt.target.submit();
+      } else {
+        $('#rooms_form').find('input[type=submit]').attr('disabled', false);
+      }
+    });
+  });

@@ -23,7 +23,9 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
-  def new; end
+  def new
+    @room = Room.new(name: params[:room][:name])
+  end
 
   def edit; end
 
@@ -31,16 +33,15 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     if @room.save
       current_user.rooms << @room
-      redirect_to edit_room_path(@room)
+      redirect_to home_path, notice: 'Game was created successfully'
     else
-      @rooms = current_user.rooms
-      render 'home_page/index'
+      render :new
     end
   end
 
   def update
     if @room.update(room_params)
-      redirect_to home_path, notice: 'Game was setup successfully'
+      redirect_to home_path, notice: 'Game was updated successfully'
     else
       render :edit
     end
