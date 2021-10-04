@@ -65,6 +65,7 @@ const GAME = {
 			track.addEventListener('ended', () => {
 				GAME.disableBtns();
 				GAME.displayAnswer();
+				setTimeout(displayNextQuestion, 3000);
 			});
 		});
 		GAME.playlist.lastTrack.addEventListener('ended', () => {
@@ -102,6 +103,11 @@ const GAME = {
 		$('#startGameBtn').attr('style', 'display:block');
 		LOADER.hideLoader();
 	},
+	displayNextQuestion() {
+		GAME.resetAnswer();
+		GAME.resetChoiceBtns();
+		GAME.playlist.next();
+	},
 	/**
 	 * Get current track details
 	 * @returns {Question} current question
@@ -121,7 +127,7 @@ const GAME = {
 	},
 	displayAnswer() {
 		// Styles
-		let answer = GAME.getAnswer()
+		let answer = GAME.getAnswer();
 		let result = answer ?? false;
 		let { classColor, message } = GAME.answerDisplay[result];
 		// Header
@@ -140,7 +146,7 @@ const GAME = {
 		$('[data-display="answer"]').addClass('d-none');
 		$('#question').removeClass('d-none');
 		// Buttons
-		$('[data-answer]').attr('data-answer', 'false').next().removeClass('btn-success btn-danger').addClass('btn-primary');;
+		$('[data-answer]').attr('data-answer', 'false').next().removeClass('btn-success btn-danger').addClass('btn-primary');
 	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
