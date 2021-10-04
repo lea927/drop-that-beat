@@ -7,9 +7,11 @@ class Playlist {
   constructor(urlTracks) {
     this.trackNo = 0;
     this.tracks = [];
-    this.currentTrack = '';
     this.isPlaying = false;
+    this.currentTrack;
+    this.lastTrack;
     this.createTrack(urlTracks);
+    this.setLastTrack();
   }
   /**
    * Setup playlist tracks
@@ -23,6 +25,9 @@ class Playlist {
       this.tracks.push(track);
     });
     return this.tracks;
+  }
+  setLastTrack() {
+    return this.lastTrack = this.tracks[this.tracks.length - 1];
   }
   reset() {
     this.currentTrack = '';

@@ -10,7 +10,7 @@
               %h5#createGameModalLabel.modal-title.text-dark.text-center New Game Room
               %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", type: "button"}
             .modal-body
-              = form_with model: @room, local: true do |f|
+              = form_with model: @room, url: new_room_path, method: :get, local: true do |f|
                 = render partial: 'devise/shared/error_messages', locals: { resource: @room }
                 = f.text_field :name, class: 'form-control mt-0', placeholder: 'Enter room name', required: true
                 .modal-footer

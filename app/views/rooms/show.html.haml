@@ -1,37 +1,24 @@
 %h1{ id: 'room', data: { url: @room.id } } 
   = @room.name
 %p{ id: 'test' }
-%button{ id: 'startGameBtn' } Start Game
-#myProgress.hide
-  #myBar.hide
-%h1{ id: 'question', style: 'visibility: hidden' } Guess the song:
-%div{ id: 'choices' } 
-  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
-  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
-  %button{ class: 'choiceBtn btn btn-primary btn-lg', style: 'display: none' } 
+%button{ id: 'startGameBtn', class: 'btn btn-primary btn-lg' } Start Game
+%section
+  #myProgress.hide
+    #myBar.hide
+%section
+  %h1{ id: 'question', style: 'visibility: hidden' } Guess the song:
+%section
+  %div{ class: 'd-none d-flex flex-column', id: 'choices' } 
+    %input{ type: 'radio', class: 'btn-check d-none', id: 'choice1', name: 'choice', value: '0', data: { action: 'submit' }}
+    %label{ for: 'choice1', class: 'choiceBtn btn btn-primary btn-lg' }
+    %input{ type: "radio", class: 'btn-check d-none', id: 'choice2', name: 'choice', value: '1', data: { action: 'submit' }}
+    %label{ for: 'choice2', class: 'choiceBtn btn btn-primary btn-lg' }
+    %input{ type: 'radio', class: 'btn-check d-none', id: 'choice3', name: 'choice', value: '2', data: { action: 'submit' }}
+    %label{ for: 'choice3', class: 'choiceBtn btn btn-primary btn-lg' }
+  %div{ class: 'd-none', id: 'endGame'}
+    = link_to 'Quit Game', root_path, class:'btn btn-primary btn-lg'
 = javascript_pack_tag 'game'
 :javascript
-  document.addEventListener("turbolinks:load", new Game());
-  function post_answers(roomId, userId, adamId, trackName) {
-    $.ajax({
-      type: 'POST',
-      url: `/rooms/${roomId}`,
-      dataType: 'json',
-      data: {
-        user_id: userId,
-        adam_id: adamId,
-        name: trackName,
-      },
-      success: function success(data) {
-        if (data.length === 0) return;
-        let isCorrect = JSON.parse(data);
-        let msg = isCorrect ? 'Correct answer' : 'Incorrect answer';
-        alert(msg);
-        return isCorrect;
-      },
-      error: function error(request, errorMsg) {
-        console.log(request, errorMsg);
-      },
-    });
-  };
+  document.addEventListener("turbolinks:load", GAME.initialize(), { once: true });
+
 

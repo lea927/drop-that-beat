@@ -10,7 +10,7 @@ class TracksController < ApplicationController
     if params[:term].blank?
       flash.now[:notice] = 'Please enter valid track'
     else
-      @room = Room.find(params[:room_id])
+      @room = Room.find(params[:room_id]) if params[:room_id].present?
       @tracks = new_track(search_track(params[:term]))
       respond_to do |format|
         format.js
@@ -28,7 +28,7 @@ class TracksController < ApplicationController
   def create
     @track = Track.search_db(params[:adam_id]) || Track.new(track_params.except(:room_id))
     @track.save
-    @room.tracks << @track
+    @room.tracks << @track if @room
     respond_to do |format|
       format.js
     end
@@ -46,6 +46,8 @@ class TracksController < ApplicationController
 
   def set_room
     @room = Room.find(params[:room_id])
+  rescue ActiveRecord::RecordNotFound
+    nil
   end
 
   def track_params

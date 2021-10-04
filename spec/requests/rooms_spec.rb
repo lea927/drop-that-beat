@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe 'RoomsController', type: :request do
   include_context 'when user is logged in'
-  let(:track) { create(:track) }
-  let!(:room) { create(:room, tracks: [track]) }
+  let!(:room) { create(:room) }
+  let(:track) { room.tracks.first }
 
   describe 'POST /answer' do
-    let(:valid_params) { { user_id: user.id, adam_id: track.adam_id, name: track.name } }
-    let(:invalid_params) { { user_id: '456321', adam_id: '456321', name: track.name } }
+    let(:valid_params) { { track_id: track.id, name: track.name, artist: track.artist } }
+    let(:invalid_params) { { track_id: '456321', name: track.name, artist: track.artist } }
 
     context 'with correct answer' do
       it 'user points changes by 1' do
