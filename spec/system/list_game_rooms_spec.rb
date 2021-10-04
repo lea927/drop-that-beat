@@ -20,13 +20,8 @@ RSpec.describe 'ListGameRooms', type: :system do
       expect(page).to have_content(user.points)
     end
 
-    it 'shows create game link' do
-      expect(page).to have_link('CREATE A ROOM', href: new_room_path)
-    end
-
-    it 'redirects to new game room when game button is clicked' do
-      find_link('CREATE A ROOM').click
-      expect(page).to have_current_path(new_room_path)
+    it 'shows create game button' do
+      expect(page).to have_button('CREATE GAME ROOM')
     end
 
     it 'redirects to edit game room when room is clicked' do
