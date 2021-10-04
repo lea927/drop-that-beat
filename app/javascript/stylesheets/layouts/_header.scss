@@ -1,0 +1,14 @@
+@import '../base/variables';
+
+.navbar-collapse,
+.dropdown-menu {
+  text-align: center;
+}
+
+.dropdown-menu a {
+  color: $primary-color;
+  &:hover {
+    color: $white;
+    background-color: $gray;
+  }
+}
