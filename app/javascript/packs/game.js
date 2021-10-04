@@ -63,7 +63,8 @@ const GAME = {
 				LOADER.loader();
 			});
 			track.addEventListener('ended', () => {
-				GAME.resetChoiceBtns();
+				GAME.disableBtns();
+				GAME.displayAnswer();
 			});
 		});
 		GAME.playlist.lastTrack.addEventListener('ended', () => {
