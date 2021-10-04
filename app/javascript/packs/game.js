@@ -31,13 +31,12 @@ const GAME = {
 		GAME.addTracksListener();
 		GAME.addChoiceBtnListener();
 		document.addEventListener('turbolinks:render', () => {
+			GAME.hideGame();
 			Turbolinks.clearCache();
 		});
 		document.addEventListener('turbolinks:before-cache', () => {
 			// Turbolinks won't cache the playing playlist
 			GAME.endGame();
-			GAME.room = {};
-			GAME.playlist = {};
 		});
 	},
 	addStartBtnListener() {
@@ -87,6 +86,7 @@ const GAME = {
 	hideGame() {
 		$('#choices').addClass('d-none');
 		$('#endGame').addClass('d-none');
+		$('#question').prop('style', 'visibility: hidden');
 		$('#startGameBtn').attr('style', 'display:block');
 		LOADER.hideLoader();
 	},
