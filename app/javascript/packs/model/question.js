@@ -81,6 +81,9 @@ class Question {
 		MusicApiClient.postAnswer(roomId, answer);
 		return this;
 	}
+	getCorrectChoicesIndex() {
+		return this.choices.findIndex((choice) => choice.isCorrect);
+	}
 }
 
 /**
