@@ -65,7 +65,7 @@ const GAME = {
 			track.addEventListener('ended', () => {
 				GAME.disableBtns();
 				GAME.displayAnswer();
-				setTimeout(displayNextQuestion, 3000);
+				setTimeout(GAME.displayNextQuestion, 3000);
 			});
 		});
 		GAME.playlist.lastTrack.addEventListener('ended', () => {
