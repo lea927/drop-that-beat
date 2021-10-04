@@ -11,79 +11,123 @@ import Room from './model/room';
 import Playlist from './playlist';
 import * as LOADER from './loader';
 /** Class representing the game */
-class Game {
-	constructor() {
-		this.room = {};
-		this.playlist = {};
-		this.initialize();
-	}
+const GAME = {
+	room: {},
+	playlist: {},
 	async initialize() {
-		await this.setGameRoomDetails(); // Need to get the game data before adding the event listeners
-		this.addEventListeners();
-	}
+		await GAME.setGameRoomDetails(); // Need to get the game data before adding the event listeners
+		GAME.addEventListeners();
+	},
 	async setGameRoomDetails() {
-		await this.fetchRoomDetails();
-		this.room = new Room(this.room);
-		this.playlist = new Playlist(this.room.tracksUrl);
-	}
+		await GAME.fetchRoomDetails();
+		GAME.room = new Room(GAME.room);
+		GAME.playlist = new Playlist(GAME.room.tracksUrl);
+	},
 	async fetchRoomDetails() {
-		this.room = await MusicApiClient.room();
-	}
+		GAME.room = await MusicApiClient.room();
+	},
 	addEventListeners() {
-		this.addStartBtnListener();
-		this.addTracksListener();
-		document.addEventListener('turbolinks:load', () => this.endGame()); // To stop music when user exits page
-	}
+		GAME.addStartBtnListener();
+		GAME.addTracksListener();
+		GAME.addChoiceBtnListener();
+		document.addEventListener('turbolinks:render', () => {
+			GAME.hideGame();
+			Turbolinks.clearCache();
+		});
+		document.addEventListener('turbolinks:before-cache', () => {
+			// Turbolinks won't cache the playing playlist
+			GAME.endGame();
+		});
+	},
 	addStartBtnListener() {
 		const startBtn = document.querySelector('#startGameBtn');
 		startBtn?.addEventListener('click', () => {
 			startBtn.style.display = 'none'; // Hide start button
-			this.startGame();
+			GAME.startGame();
 		});
-	}
+	},
 	addTracksListener() {
-		this.addTextToChoiceBtns = this.addTextToChoiceBtns.bind(this); // bind addTextToChoiceBtns function to Game instance
-		this.playlist.tracks.forEach((track) => {
+		GAME.playlist.tracks.forEach((track) => {
 			track.addEventListener('play', () => {
-				this.addTextToChoiceBtns();
+				GAME.addTextToChoiceBtns();
 				LOADER.loader();
 			});
+			track.addEventListener('ended', () => {
+				GAME.resetChoiceBtns();
+			});
 		});
-	}
+		GAME.playlist.lastTrack.addEventListener('ended', () => {
+			GAME.hideGame();
+			$('#endGame').removeClass('d-none');
+		});
+	},
+	addChoiceBtnListener() {
+		$('input[data-action="submit"]').on('click', (evt) => {
+			GAME.saveAnswer({
+				index: evt.target.value, // index of button clicked
+				currentTrackData: GAME.getCurrentTrackData(),
+			});
+			GAME.disableBtns();
+		});
+	},
 	startGame() {
-		this.displayGame();
+		GAME.displayGame();
 		LOADER.showLoader();
-		this.playlist.play();
-	}
+		GAME.playlist.play();
+	},
 	endGame() {
-		this.playlist.end();
-	}
+		GAME.playlist.end();
+		GAME.hideGame();
+	},
 	displayGame() {
-		const question = document.querySelector('#question');
-		const choiceBtns = document.querySelectorAll('.choiceBtn');
-
-		question.style.visibility = 'visible';
-		// Display choice buttons
-		choiceBtns.forEach((choiceBtn) => {
-			choiceBtn.style.display = 'block';
-		});
-	}
+		$('#question').prop('style', 'visibility: visible');
+		$('#choices').removeClass('d-none');
+	},
+	hideGame() {
+		$('#choices').addClass('d-none');
+		$('#endGame').addClass('d-none');
+		$('#question').prop('style', 'visibility: hidden');
+		$('#startGameBtn').attr('style', 'display:block');
+		LOADER.hideLoader();
+	},
+	/**
+	 * Get current track details
+	 * @returns {Question} current question
+	 */
+	getCurrentTrackData() {
+		let trackNo = GAME.playlist.trackNo; // Currently playing track number
+		return GAME.room.questions[trackNo];
+	},
+	/** Save answer to database */
+	saveAnswer({ index, currentTrackData }) {
+		if (index == undefined || currentTrackData == undefined) throw new SyntaxError('Object does not have index or currentTrackData property');
+		currentTrackData.addAnswer(index).postAnswer(GAME.room.id);
+	},
+	/** Disable buttons to prevent changing answer */
+	disableBtns() {
+		$('input[data-action="submit"]').prop('disabled', true);
+	},
+	/** Reset choice buttons to be able to select buttons again */
+	resetChoiceBtns() {
+		$('input[data-action="submit"]').prop('disabled', false);
+		$('input[data-action="submit"]').prop('checked', false);
+	},
 	/**
 	 * Get the choice names based on the current question
 	 * @returns {Array<string>} choiceNames
 	 */
 	getChoiceNames() {
-		let currentTrackNo = this.playlist.trackNo; // To determine the current track
-		let currentQuestion = this.room.questions[currentTrackNo];
+		let currentTrackNo = GAME.playlist.trackNo; // To determine the current track
+		let currentQuestion = GAME.room.questions[currentTrackNo];
 		let choiceNames = currentQuestion.choices.map((choice) => choice.displayName);
 		return choiceNames;
-	}
+	},
 	addTextToChoiceBtns() {
-		let choices = this.getChoiceNames();
+		let choices = GAME.getChoiceNames();
 		$('.choiceBtn').each(function (index) {
 			this.textContent = choices[index];
 		});
-	}
-}
+	},
+};
 
-window.Game = Game; // Add Game as global variable
+window.GAME = GAME; // Add Game as global variable
