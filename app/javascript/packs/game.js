@@ -69,8 +69,11 @@ const GAME = {
 			});
 		});
 		GAME.playlist.lastTrack.addEventListener('ended', () => {
-			GAME.hideGame();
-			$('#endGame').removeClass('d-none');
+			setTimeout(() => {
+				GAME.hideGame();
+				$('#startGameBtn').attr('style', 'display:none');
+				$('#endGame').removeClass('d-none');
+			}, 3000);
 		});
 	},
 	addChoiceBtnListener() {
