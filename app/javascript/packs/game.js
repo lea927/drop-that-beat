@@ -14,6 +14,16 @@ import * as LOADER from './loader';
 const GAME = {
 	room: {},
 	playlist: {},
+	answerDisplay: {
+		true: {
+			classColor: 'btn-success',
+			message: 'Correct answer',
+		},
+		false: {
+			classColor: 'btn-danger',
+			message: 'Incorrect Answer',
+		},
+	},
 	async initialize() {
 		await GAME.setGameRoomDetails(); // Need to get the game data before adding the event listeners
 		GAME.addEventListeners();
@@ -53,19 +63,25 @@ const GAME = {
 				LOADER.loader();
 			});
 			track.addEventListener('ended', () => {
-				GAME.resetChoiceBtns();
+				GAME.disableBtns();
+				GAME.displayAnswer();
+				setTimeout(GAME.displayNextQuestion, 3000);
 			});
 		});
 		GAME.playlist.lastTrack.addEventListener('ended', () => {
-			GAME.hideGame();
-			$('#endGame').removeClass('d-none');
+			setTimeout(() => {
+				GAME.hideGame();
+				$('#startGameBtn').attr('style', 'display:none');
+				$('#endGame').removeClass('d-none');
+			}, 3000);
 		});
 	},
 	addChoiceBtnListener() {
 		$('input[data-action="submit"]').on('click', (evt) => {
+			evt.target.dataset.answer = 'true';
 			GAME.saveAnswer({
 				index: evt.target.value, // index of button clicked
-				currentTrackData: GAME.getCurrentTrackData(),
+				currentTrackData: GAME.getCurrentQuestion(),
 			});
 			GAME.disableBtns();
 		});
@@ -90,11 +106,16 @@ const GAME = {
 		$('#startGameBtn').attr('style', 'display:block');
 		LOADER.hideLoader();
 	},
+	displayNextQuestion() {
+		GAME.resetAnswer();
+		GAME.resetChoiceBtns();
+		GAME.playlist.next();
+	},
 	/**
 	 * Get current track details
 	 * @returns {Question} current question
 	 */
-	getCurrentTrackData() {
+	getCurrentQuestion() {
 		let trackNo = GAME.playlist.trackNo; // Currently playing track number
 		return GAME.room.questions[trackNo];
 	},
@@ -103,12 +124,40 @@ const GAME = {
 		if (index == undefined || currentTrackData == undefined) throw new SyntaxError('Object does not have index or currentTrackData property');
 		currentTrackData.addAnswer(index).postAnswer(GAME.room.id);
 	},
+	getAnswer() {
+		if (GAME.getCurrentQuestion().answer == undefined) return undefined;
+		return GAME.getCurrentQuestion().answer.isCorrect;
+	},
+	displayAnswer() {
+		// Styles
+		let answer = GAME.getAnswer();
+		let result = answer ?? false;
+		let { classColor, message } = GAME.answerDisplay[result];
+		// Header
+		$('#question').addClass('d-none');
+		$('[data-display="answer"]').removeClass('d-none').text(message);
+		// Buttons
+		if (answer !== undefined) {
+			$('[data-answer="true"]').next().removeClass('btn-primary').addClass(classColor);
+		} else {
+			let index = GAME.getCurrentQuestion().getCorrectChoicesIndex();
+			$('.choiceBtn').eq(index).removeClass('btn-primary').addClass(classColor);
+		}
+	},
+	resetAnswer() {
+		// Header
+		$('[data-display="answer"]').addClass('d-none');
+		$('#question').removeClass('d-none');
+		// Buttons
+		$('[data-answer]').attr('data-answer', 'false').next().removeClass('btn-success btn-danger').addClass('btn-primary');
+	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
 		$('input[data-action="submit"]').prop('disabled', true);
 	},
 	/** Reset choice buttons to be able to select buttons again */
 	resetChoiceBtns() {
+		$('#choices').hide().fadeIn(500);
 		$('input[data-action="submit"]').prop('disabled', false);
 		$('input[data-action="submit"]').prop('checked', false);
 	},
