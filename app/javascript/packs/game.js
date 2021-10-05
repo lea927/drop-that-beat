@@ -104,6 +104,7 @@ const GAME = {
 	hideGame() {
 		$('#choices').addClass('d-none');
 		$('#endGame').addClass('d-none');
+		$('#trackNo').addClass('d-none');
 		$('#question').prop('style', 'visibility: hidden');
 		$('#startGameBtn').attr('style', 'display:block');
 		LOADER.hideLoader();
