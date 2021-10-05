@@ -157,6 +157,10 @@ const GAME = {
 		if (!result) return;
 		navBarPoints.textContent = parseInt(navBarPoints.textContent) + 1;
 	},
+	getTotalPoints() {
+		// Check if there is an answer and answer is correct
+		return GAME.room.questions.filter(({answer}) => answer && answer.isCorrect).length;
+	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
 		$('input[data-action="submit"]').prop('disabled', true);
