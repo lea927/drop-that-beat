@@ -73,6 +73,7 @@ const GAME = {
 			setTimeout(() => {
 				GAME.hideGame();
 				$('#startGameBtn').attr('style', 'display:none');
+				GAME.displayTotalPoints();
 				$('#endGame').removeClass('d-none');
 			}, 3000);
 		});
