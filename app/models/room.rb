@@ -16,4 +16,8 @@ class Room < ApplicationRecord
   rescue StandardError
     nil
   end
+
+  def self.playable(user_id)
+    joins(:users).where.not(users: { id: user_id })
+  end
 end
