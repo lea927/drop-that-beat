@@ -65,6 +65,7 @@ const GAME = {
 			track.addEventListener('ended', () => {
 				GAME.disableBtns();
 				GAME.displayAnswer();
+				GAME.updatePointsNavbar();
 				setTimeout(GAME.displayNextQuestion, 3000);
 			});
 		});
