@@ -19,7 +19,8 @@ gem 'rexml', '>= 3.2.5'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'httparty'
 gem 'hirb'
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'premailer-rails' 
+gem 'nokogiri'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

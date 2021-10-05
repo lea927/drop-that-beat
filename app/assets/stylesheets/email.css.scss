@@ -1,0 +1,21 @@
+@import './variables';
+@import './typography';
+
+p {
+  font-family: $primary-font;
+}
+
+.button {
+  color: white;
+  background-color: $primary-color;
+  font-family: $primary-font;
+  padding: 1.2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.button-wrapper {
+  margin: 2rem 0;
+}
