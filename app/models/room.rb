@@ -6,6 +6,7 @@ class Room < ApplicationRecord
   validates :name, presence: true
   validates :rounds, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 3 }
   validates :tracks, length: { minimum: 5, message: 'must be at least 5' }
+  scope :has_tracks, -> { joins(:tracks).distinct }
 
   def self.search(search)
     # If the argument search not nil, then a block is run where the track object is found based on params[:search]
@@ -14,5 +15,9 @@ class Room < ApplicationRecord
     Track.where('artist ILIKE ?', "%#{search}%").map(&:rooms).flatten.uniq
   rescue StandardError
     nil
+  end
+
+  def self.playable(user_id)
+    joins(:users).where.not(users: { id: user_id })
   end
 end
