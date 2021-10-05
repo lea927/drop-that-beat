@@ -5,9 +5,14 @@
 %section
   #myProgress.hide
     #myBar.hide
-%section
-  %h1{ id: 'question', style: 'visibility: hidden' } Guess the song:
-  %h1{ class: 'd-none', data: { display: 'answer'} }
+%section{ class: 'd-flex'}
+  %div{ class: 'd-none', id: 'trackNo' }
+    %p{ class: 'h1 fw-bolder me-3'}
+      %span{ data: {display: 'tracks' }}1
+      ="/ #{@room.tracks.count}"
+  %div
+    %h1{ id: 'question', style: 'visibility: hidden' } Guess the song:
+    %h1{ class: 'd-none', data: { display: 'answer'} }
 %section
   %div{ class: 'd-none d-flex flex-column', id: 'choices' } 
     %input{ type: 'radio', class: 'btn-check d-none', id: 'choice1', name: 'choice', value: '0', data: { action: 'submit', answer: 'false' }}
