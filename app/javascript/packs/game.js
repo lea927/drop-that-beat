@@ -59,6 +59,7 @@ const GAME = {
 	addTracksListener() {
 		GAME.playlist.tracks.forEach((track) => {
 			track.addEventListener('play', () => {
+				GAME.updateDispTracks();
 				GAME.addTextToChoiceBtns();
 				LOADER.loader();
 			});
@@ -100,10 +101,12 @@ const GAME = {
 	displayGame() {
 		$('#question').prop('style', 'visibility: visible');
 		$('#choices').removeClass('d-none');
+		$('#trackNo').removeClass('d-none');
 	},
 	hideGame() {
 		$('#choices').addClass('d-none');
 		$('#endGame').addClass('d-none');
+		$('#trackNo').addClass('d-none');
 		$('#question').prop('style', 'visibility: hidden');
 		$('#startGameBtn').attr('style', 'display:block');
 		LOADER.hideLoader();
@@ -153,6 +156,9 @@ const GAME = {
 		// Buttons
 		$('[data-answer]').attr('data-answer', 'false').next().removeClass('btn-success btn-danger').addClass('btn-primary');
 	},
+	updateDispTracks() {
+		$("[data-display='tracks']").text(parseInt(GAME.playlist.trackNo) + 1); // Track number starts with 0
+	},
 	updatePointsNavbar() {
 		let result = GAME.getAnswer() ?? false; // If no answer provided, the answer is incorrect
 		let navBarPoints = document.querySelector("[data-update='points']");
@@ -168,7 +174,7 @@ const GAME = {
 	},
 	getTotalPoints() {
 		// Check if there is an answer and answer is correct
-		return GAME.room.questions.filter(({answer}) => answer && answer.isCorrect).length;
+		return GAME.room.questions.filter(({ answer }) => answer && answer.isCorrect).length;
 	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
