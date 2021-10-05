@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag 'email.css' %>
-<p>Hi, <%= @email%>!</p>
+<p>Hi, <%= @resource.username %>!</p>
 <p>We can't wait for you to have fun.</p>
 <p>Click the button below to confirm your account or alternatively you can also access this <span><%= link_to 'link', confirmation_url(@resource, confirmation_token: @token) %></span>!</p>
-<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+<div class='button-wrapper'><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: 'button' %></div>
 <p>Thanks for joining!</p>
 <p><strong>Drop that Beat Team</strong></p>
 <p>***This is a system generated message. <strong>DO NOT REPLY TO THIS E-MAIL.</strong>***</p>
