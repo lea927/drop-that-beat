@@ -59,6 +59,7 @@ const GAME = {
 	addTracksListener() {
 		GAME.playlist.tracks.forEach((track) => {
 			track.addEventListener('play', () => {
+				GAME.updateDispTracks();
 				GAME.addTextToChoiceBtns();
 				LOADER.loader();
 			});
