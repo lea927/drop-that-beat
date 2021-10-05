@@ -17,27 +17,28 @@ RSpec.describe 'CreateGameRooms', vcr: 'tracks/coldplay', type: :system do
     end
 
     it 'creates room' do
-      click_on 'Finish setup'
+      click_on 'Create Game'
       expect(Room.count).to eq 1
     end
 
     it 'shows game setup details', :aggregate_failures do
+      expect(page).to have_content 'Search a Song'
       expect(page).to have_content 'Create a Playlist'
-      expect(page).to have_content 'Set Rounds'
+      expect(page).to have_content 'Finish Setup'
     end
 
     it 'saves data' do
-      click_on 'Finish setup'
+      click_on 'Create Game'
       expect(room).to have_attributes(name: 'animal')
     end
 
     it 'redirects to homepage' do
-      click_on 'Finish setup'
+      click_on 'Create Game'
       expect(page).to have_content room.name
     end
 
     it 'generates success message' do
-      click_on 'Finish setup'
+      click_on 'Create Game'
       expect(page).to have_content 'Game was created successfully'
     end
   end
@@ -53,7 +54,7 @@ RSpec.describe 'CreateGameRooms', vcr: 'tracks/coldplay', type: :system do
   context 'with less than 5 tracks' do
     before do
       submit_form('animal')
-      click_on 'Finish setup'
+      click_on 'Create Game'
     end
 
     it 'generates an error message' do
