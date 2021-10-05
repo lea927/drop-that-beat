@@ -18,7 +18,8 @@
             .nav-item.dropdown.navbar-nav.ml-auto
               %div.m-auto.px-2
                 = image_tag '/coin.svg', alt: 'coin', height: '20', width: '20'
-                = "#{current_user.points } points"
+                %span{ data: { update: 'points' }}= current_user.points
+                points
               %a#navbarDropdown.nav-link.dropdown-toggle.text-light.px-2{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
                 %span
                   = image_tag '/user.svg', alt: 'user', height: '20', width: '20'

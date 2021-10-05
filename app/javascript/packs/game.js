@@ -65,6 +65,7 @@ const GAME = {
 			track.addEventListener('ended', () => {
 				GAME.disableBtns();
 				GAME.displayAnswer();
+				GAME.updatePointsNavbar();
 				setTimeout(GAME.displayNextQuestion, 3000);
 			});
 		});
@@ -72,6 +73,7 @@ const GAME = {
 			setTimeout(() => {
 				GAME.hideGame();
 				$('#startGameBtn').attr('style', 'display:none');
+				GAME.displayTotalPoints();
 				$('#endGame').removeClass('d-none');
 			}, 3000);
 		});
@@ -150,6 +152,23 @@ const GAME = {
 		$('#question').removeClass('d-none');
 		// Buttons
 		$('[data-answer]').attr('data-answer', 'false').next().removeClass('btn-success btn-danger').addClass('btn-primary');
+	},
+	updatePointsNavbar() {
+		let result = GAME.getAnswer() ?? false; // If no answer provided, the answer is incorrect
+		let navBarPoints = document.querySelector("[data-update='points']");
+		if (!result) return;
+		navBarPoints.textContent = parseInt(navBarPoints.textContent) + 1;
+	},
+	displayTotalPoints() {
+		let points = GAME.getTotalPoints();
+		let messagePoint = points > 1 ? 'points' : 'point';
+		let message = points > 0 ? 'Congratulations!' : 'Try again next time';
+		points > 0 && $('[data-display="points"]').html(`You have earned ${points} ${messagePoint}<br>${message}`);
+		points === 0 && $('[data-display="points"]').html(`No points earned.<br>${message}`);
+	},
+	getTotalPoints() {
+		// Check if there is an answer and answer is correct
+		return GAME.room.questions.filter(({answer}) => answer && answer.isCorrect).length;
 	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
