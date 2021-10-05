@@ -22,6 +22,7 @@
     %input{ type: 'radio', class: 'btn-check d-none', id: 'choice3', name: 'choice', value: '2', data: { action: 'submit', answer: 'false' }}
     %label{ for: 'choice3', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
   %div{ class: 'd-none', id: 'endGame'}
+    %p{ class: 'fw-bolder fs-3', data: { display: 'points'}}
     = link_to 'Quit Game', root_path, class:'btn btn-primary btn-lg'
 = javascript_pack_tag 'game'
 :javascript
