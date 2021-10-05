@@ -151,6 +151,12 @@ const GAME = {
 		// Buttons
 		$('[data-answer]').attr('data-answer', 'false').next().removeClass('btn-success btn-danger').addClass('btn-primary');
 	},
+	updatePointsNavbar() {
+		let result = GAME.getAnswer() ?? false; // If no answer provided, the answer is incorrect
+		let navBarPoints = document.querySelector("[data-update='points']");
+		if (!result) return;
+		navBarPoints.textContent = parseInt(navBarPoints.textContent) + 1;
+	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
 		$('input[data-action="submit"]').prop('disabled', true);
