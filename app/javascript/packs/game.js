@@ -157,6 +157,13 @@ const GAME = {
 		if (!result) return;
 		navBarPoints.textContent = parseInt(navBarPoints.textContent) + 1;
 	},
+	displayTotalPoints() {
+		let points = GAME.getTotalPoints();
+		let messagePoint = points > 1 ? 'points' : 'point';
+		let message = points > 0 ? 'Congratulations!' : 'Try again next time';
+		points > 0 && $('[data-display="points"]').html(`You have earned ${points} ${messagePoint}<br>${message}`);
+		points === 0 && $('[data-display="points"]').html(`No points earned.<br>${message}`);
+	},
 	getTotalPoints() {
 		// Check if there is an answer and answer is correct
 		return GAME.room.questions.filter(({answer}) => answer && answer.isCorrect).length;
