@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
       flash.now[:notice] = 'Cannot find rooms with associated artist'
       @rooms = nil # if artist does not exist in a room
     else # if rooms_path or blank search
-      @rooms = Room.has_tracks
+      @rooms = Room.playable(current_user.id).has_tracks
       flash.now[:notice] = 'Please enter an artist to search' if params[:search] == ''
     end
   end
