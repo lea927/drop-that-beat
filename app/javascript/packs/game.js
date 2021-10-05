@@ -99,6 +99,7 @@ const GAME = {
 	displayGame() {
 		$('#question').prop('style', 'visibility: visible');
 		$('#choices').removeClass('d-none');
+		$('#trackNo').removeClass('d-none');
 	},
 	hideGame() {
 		$('#choices').addClass('d-none');
