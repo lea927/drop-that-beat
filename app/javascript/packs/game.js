@@ -151,6 +151,9 @@ const GAME = {
 		// Buttons
 		$('[data-answer]').attr('data-answer', 'false').next().removeClass('btn-success btn-danger').addClass('btn-primary');
 	},
+	updateDispTracks() {
+		$("[data-display='tracks']").text(parseInt(GAME.playlist.trackNo) + 1); // Track number starts with 0
+	},
 	/** Disable buttons to prevent changing answer */
 	disableBtns() {
 		$('input[data-action="submit"]').prop('disabled', true);
