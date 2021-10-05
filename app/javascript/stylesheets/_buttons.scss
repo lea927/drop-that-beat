@@ -2,6 +2,14 @@
 
 .btn {
   border-radius: 0.5rem !important;
+  .btn-check:hover + &.btn-primary,
+  .btn-check:checked + &.btn-primary,
+  .btn-check:active + &.btn-primary {
+    background-color: $blue !important;
+    border-color: $blue !important;
+    outline-color: $blue !important;
+    color: $white !important;
+  }
 }
 
 .btn-primary:hover,
