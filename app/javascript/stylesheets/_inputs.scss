@@ -1,9 +1,10 @@
+@import './variables';
+
 .form-control {
-    border-radius: .5rem;
-    border: 2px solid $black;
-    margin-top: 1rem;
+    border: 2px solid $black !important;
+    margin-top: 1rem !important;
     &:focus {
-        border: 2px solid $black;
-        box-shadow: none;
+        border: 2px solid $black !important;
+        box-shadow: none !important;
     }
 }

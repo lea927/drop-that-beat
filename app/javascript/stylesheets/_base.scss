@@ -1,0 +1,67 @@
+@import './variables';
+
+body,
+a,
+button {
+  font-family: $primary-font;
+}
+
+body {
+  background-color: #008080;
+  color: $white;
+  font-weight: $medium;
+  height: 100vh;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+}
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.text-primary {
+  color: $primary-color !important;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #ff805a;
+}
+
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+// Header
+.navbar-collapse,
+.dropdown-menu {
+  text-align: center;
+}
+
+.dropdown-menu a {
+  color: $primary-color !important;
+  &:hover {
+    color: $white !important;
+    background-color: $gray !important;
+  }
+}
+
+.active {
+  border-bottom: 2px solid $secondary-color;
+}
+
+.border-left-secondary {
+  border-left: 8px solid $secondary-color;
+}
