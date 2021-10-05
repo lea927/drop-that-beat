@@ -1,58 +1,74 @@
-# Hi there 👋
+# Drop that beat app
 
-This repo serves as the main repo for our Rails Projects. 
+![Drop that beat app](https://user-images.githubusercontent.com/79251819/136054424-c82d19df-477b-4dbc-8f23-0185d0658d44.png)
 
+### Built With 
+- [Ruby on Rails](https://rubyonrails.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [JQuery](https://jquery.com/)
 
-#### Version
+# Table of Contents
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-```
-  Ruby 2.7.2
-  Rails 6.0.3.4
-  NodeJS 12.18.3
-  Yarn 1.22.4
-```
+# Getting Started
+## Prerequisites
+- ruby
+  ```
+  # Insert installation instruction here
+    Ruby 2.7.2
+  ```
+- rails
+  ```
+  # Insert installation instruction here
+    Rails 6.0.3.4
+  ```
+- nodejs
+  ```
+  # Insert installation instruction here
+    NodeJS 12.18.3
+  ```
+- yarn
+  ```
+  # Insert installation instruction here
+    Yarn 1.22.4
+  ```
 
-#### Installation
+## Installation
 
-Fork this repo:
-![image](https://user-images.githubusercontent.com/9253881/111437757-6c527f00-873e-11eb-8d0a-862e4158f4ab.png)
-
-Then, clone your forked repo to your machine
-```
-  $ git clone git@github.com:<username>/rails-base-project.git <name of your app>
-  $ cd <name of your app>
-```
-
-#### Setup
-
-```
-  $ bundle install
+1. Clone the repo 
+  ```
+    $ git clone https://github.com/lea927/drop-that-beat.git
+    $ cd drop-that-beat
+  ```
+2. Install ruby gems dependencies
+  ```
+    $ bundle install
+  ```
+3. Install webpacker
+  ```
+    $ rails webpacker:install
+  ```
+4. Setup database
+  ```
   $ rake db:setup
-```
-
-#### Starting the application
-
+  ```
+### Starting the application
+Running the application in your localhost
 ```
   $ rails server
 ```
 
-#### How to run the test suite
-
-```
-  $ rspec
-```
-
-#### How to run the Ruby Linter
-
-```
-  $ rubocop
-```
-
-#### How to enable Github Workflow
-
-<img width="906" alt="Screen Shot 2021-03-23 at 10 10 52 PM" src="https://user-images.githubusercontent.com/9253881/112160501-2fe2bf80-8c25-11eb-8e2b-b9508711ec70.png">
-
-<img width="1244" alt="Screen Shot 2021-03-23 at 10 11 12 PM" src="https://user-images.githubusercontent.com/9253881/112160530-36713700-8c25-11eb-9f00-d69a3a36343f.png">
-
-
+### Testing
+/ Insert short description here /
+  ```
+    $ rspec
+  ```
+# Usage
+# Contributing
+# License
 
