@@ -3,6 +3,6 @@
     = f.hidden_field :room_id, value: @room.id
   .input-group
     = f.text_field :term, class: 'form-control shadow', placeholder: 'Enter room name', ariadescribedby: "search-song-btn", required: true
-    = button_tag :submit, class: 'btn-dark mt-3' do
-      %i.fas.fa-search 
-#track_results
+    = button_tag :submit, class: 'btn-dark mt-3', id: 'search-song-btn' do
+      %i.fas.fa-search
+#track_results.mt-4
