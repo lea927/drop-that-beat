@@ -74,15 +74,4 @@ a {
 }
 #rooms_form {
   margin-top: 3.3rem;
-  @media (min-width: 992px) and (max-width: 1172px) {
-    input[type='submit'] {
-      font-size: 1rem;
-    }
-  }
-}
-@media screen and (min-width: 1200px) {
-  .col-xl-4_5 {
-    flex: 0 0 auto;
-    width: 37.5%;
-  }
 }
