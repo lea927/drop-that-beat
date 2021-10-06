@@ -10,7 +10,7 @@
             = track.artist
           %audio{ controls: true }
             %source{ src: track.preview_url, type: 'audio/mp4' } 
-          = link_to 'Add Song', tracks_path(track.attributes.merge(room_id: "#{@room ? @room.id : ''}")), method: :post, remote: true, data: { animate: 'fadeOut', target: 'parent' }, class: 'btn btn-primary btn-sm d-block'
+          = link_to 'Add Song', tracks_path(track.attributes.merge(room_id: "#{@room ? @room.id : ''}")), method: :post, remote: true, data: { animate: 'fadeOut', target: 'parent' }, class: 'btn btn-primary btn-sm d-block m-2'
       - else
         .m-2.p-2.border.border-1.border-dark.position-relative
           %p
