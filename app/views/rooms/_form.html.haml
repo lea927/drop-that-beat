@@ -33,7 +33,7 @@
   function removeParentElem() {
     if (this.dataset.target != 'parent') return;
     $(this).fadeOut(200, () => {
-      $(this).parent().remove();
+      $(this).parent().parent().remove();
     });
   };
   function getTrackList() {
