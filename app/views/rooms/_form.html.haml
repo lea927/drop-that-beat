@@ -47,7 +47,7 @@
   function checkMinTracks() {
     let isValid = getTrackList().length >= 5;
     if (!isValid) {
-      $('[data-validation=message][data-name=playlist]').removeClass('d-none').text('Tracks must be at least 5');
+      $('[data-validation=message][data-name=playlist]').removeClass('d-none').addClass('text-warning').text('Tracks must be at least 5');
     }
     return isValid;
   }
