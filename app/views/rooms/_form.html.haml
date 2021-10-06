@@ -2,15 +2,15 @@
   %h1.pb-2
     %input{ type: 'text', name: 'name', value: @room.name, class: 'border-dark border-1 shadow bg-primary text-white p-0', 'data-submit': 'name', style: 'text-align: center' }
   = render partial: 'devise/shared/error_messages', locals: { resource: @room }
-  .row.g-4.py-5.row-cols-1.row-cols-lg-3
-    .col
+  .row.g-4.py-5.row-cols-1.justify-content-center
+    .col-md-6.col-lg-5.col-xl-4_5
       %h3 STEP 1:
       %div
         %i.fas.fa-search
         %span.fs-5 Search a Song
-      .col-9.mx-auto
+      .col-xl-10.mx-auto
         = render 'tracks/search_tracks'
-    .col
+    .col-md-6.col-lg-5.col-xl-4_5
       %h3 STEP 2:
       %div
         %i.fas.fa-headphones
@@ -19,7 +19,7 @@
         #room_playlist.card.text-dark
           - if @room.tracks.any?
             = render 'tracks/track', tracks: @room.tracks.reverse_order
-    .col.mx-md-auto
+    .col-md-6.col-lg-2.col-xl-3
       %h3 STEP 3:
       %div
         %i.fas.fa-check-circle
@@ -28,7 +28,7 @@
         %div{ 'data-input': 'trackIds' }
         = f.hidden_field :name
         %br
-        = f.submit 'Create Game', {data: { disable_with: false }, class: 'btn btn-primary btn-lg' }
+        = f.submit 'Create Game', {data: { disable_with: false }, class: 'btn btn-primary btn-lg mw-100 col-11' }
 :javascript
   function removeParentElem() {
     if (this.dataset.target != 'parent') return;
