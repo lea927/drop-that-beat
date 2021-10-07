@@ -12,11 +12,11 @@
         .col
           = link_to room_path(room) do
             .btn-primary.rounded-3.p-2
-              %strong.fs-5.text-primary.mx-2.pt-2= room.name
-              %div.text-secondary.d-flex.justify-content-between
-                %span
+              %span.fs-5.text-primary.mx-2.pt-2= room.name
+              %div.d-flex.justify-content-between
+                .text-dark
                   = image_tag '/music-note-list.svg', alt: 'music-note-list'
-                  = room.tracks.count
-                %span.d-flex
+                  %span= room.tracks.count
+                .d-flex.text-secondary
                   = image_tag '/user-with-note.svg', alt: 'user-with-note', height: '20', width: '20', class: 'mx-1'
-                  = room.users.first.username
+                  %span= room.users.first.username
