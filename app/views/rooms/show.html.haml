@@ -3,8 +3,8 @@
     = @room.name
     Room
   %h2#readyQuestion.fst-italic.my-4
-    = current_user.username 
-    , are you ready to drop that beat?
+    = "#{current_user.username}, are you ready to" 
+    %span.fw-bold Drop that Beat?
   %div
     %p{ id: 'test' }
     %button{ id: 'startGameBtn', class: 'btn btn-primary btn-lg fs-3 px-4 mx-auto' } 
