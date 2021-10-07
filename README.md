@@ -23,6 +23,7 @@ The developers created this app to bond with their love of music. We hope that u
 - [Ruby on Rails](https://rubyonrails.org/)
 - [Bootstrap](https://getbootstrap.com/)
 - [JQuery](https://jquery.com/)
+- [Postgresql](https://www.postgresql.org/)
 
 # Table of Contents
 - [Getting Started](#getting-started)
