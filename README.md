@@ -28,33 +28,37 @@ The developers created this app to bond with their love of music. We hope that u
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Testing](#testing)
 - [Contributing](#contributing)
-- [License](#license)
 
 # Getting Started
 ## Prerequisites
 🔙  [Table of Contents](#table-of-contents)
 
-- ruby
+- Ruby 2.7.2
+  ```bash
+    $ asdf plugin add ruby
+    $ asdf install ruby 2.7.2
   ```
-  # Insert installation instruction here
-    Ruby 2.7.2
+  For more details, see [ruby documentation](https://www.ruby-lang.org/en/documentation/installation/)
+- NodeJS 12.18.3
+  ```bash
+    $ asdf plugin add nodejs
+    $ bash -c '`${ASDF_DATA_DIR:=$HOME/`.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+    $ asdf install nodejs 12.18.3
   ```
-- rails
+- Yarn 1.22.4
+  ```bash
+    $ asdf plugin add yarn
+    $ asdf install yarn 1.22.4
   ```
-  # Insert installation instruction here
-    Rails 6.0.3.4
+- Rails 6.0.3.4
+  ```bash
+    $ gem install rails
   ```
-- nodejs
-  ```
-  # Insert installation instruction here
-    NodeJS 12.18.3
-  ```
-- yarn
-  ```
-  # Insert installation instruction here
-    Yarn 1.22.4
+- Postgresql
+  ```bash
+    $ asdf plugin add postgres
+    $ asdf install postgres latest
   ```
 
 ## Installation
@@ -73,9 +77,16 @@ The developers created this app to bond with their love of music. We hope that u
   ```
     $ rails webpacker:install
   ```
-4. Setup database
+4. Set up environment variables
+  Using [dotenv](https://github.com/bkeepers/dotenv)
+  Contact the developer(sensitive data)
+5. Setup database
   ```
   $ rake db:setup
+  ```
+6. Run the test suite to verify that everything is working correctly
+  ```
+  $ rspec
   ```
 ## Usage
 
@@ -92,15 +103,6 @@ When accessing the application, you can use the credentials below to try the fea
 username: testuser
 password: testuser
 ```
-## Testing
-
-🔙  [Table of Contents](#table-of-contents)
-
-Automated testing using RSpec was performed to verify the project requirements. You can run the test suites through the following: 
-  ```
-    $ rspec
-  ```
-
 # Contributing
 
 🔙  [Table of Contents](#table-of-contents)
@@ -112,7 +114,6 @@ Automated testing using RSpec was performed to verify the project requirements. 
 4. Push to the branch (git push origin feature/fooBar)
 5. Create a new Pull Request
 
+Alternatively see the GitHub documentation on [creating a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+
 You can suggest additional features or report bugs in the [issues pages](https://github.com/lea927/drop-that-beat/issues). Templates are available to be populated based on the type of issue (feature/bug/user story)
-
-# License
-
