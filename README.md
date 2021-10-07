@@ -7,9 +7,9 @@ The developers created this app to bond with their love of music. We hope that u
 
 ## Features 🎵🎵🎵
 
-- Create and edit an account
-- Create, edit and delete a game rooms. Game rooms created are accessible to other registered users.
-- Search tracks and add those tracks in the game room. 🎵
+- Register and update account details
+- Users can create, edit and delete game rooms. The game rooms created are accessible to other registered users.
+- Search tracks which connected to Apple's iTunes Search API and add those tracks in the game room 🎵
 - Search playable game rooms by searching the artist
 - Play game rooms created by other users 
 - Earn points while playing the game 💰
