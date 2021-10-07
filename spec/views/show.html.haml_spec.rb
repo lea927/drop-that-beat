@@ -5,6 +5,7 @@ RSpec.describe 'rooms/show.html.haml', type: :view do
   let!(:room) { create(:room) }
 
   before do
+    allow(view).to receive(:current_user).and_return(user)
     assign(:room, room)
     render
   end
