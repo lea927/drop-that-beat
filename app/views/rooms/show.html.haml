@@ -1,29 +1,41 @@
-%h1{ id: 'room', data: { url: @room.id } } 
-  = @room.name
-%p{ id: 'test' }
-%button{ id: 'startGameBtn', class: 'btn btn-primary btn-lg' } Start Game
-%section
-  #myProgress.hide
-    #myBar.hide
-%section{ class: 'd-flex'}
-  %div{ class: 'd-none', id: 'trackNo' }
-    %p{ class: 'h1 fw-bolder me-3'}
-      %span{ data: {display: 'tracks' }}1
-      ="/ #{@room.tracks.count}"
+.px-4.py-4.my-4.text-center
+  %h1.display-6.fw-bold{ id: 'room', data: { url: @room.id } } 
+    = @room.name
+    Room
+  %h2#readyQuestion.fst-italic.my-4
+    = current_user.username 
+    , are you ready to drop that beat?
   %div
-    %h1{ id: 'question', style: 'visibility: hidden' } Guess the song:
-    %h1{ class: 'd-none', data: { display: 'answer'} }
-%section
-  %div{ class: 'd-none d-flex flex-column', id: 'choices' } 
-    %input{ type: 'radio', class: 'btn-check d-none', id: 'choice1', name: 'choice', value: '0', data: { action: 'submit', answer: 'false' }}
-    %label{ for: 'choice1', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
-    %input{ type: "radio", class: 'btn-check d-none', id: 'choice2', name: 'choice', value: '1', data: { action: 'submit', answer: 'false' }}
-    %label{ for: 'choice2', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
-    %input{ type: 'radio', class: 'btn-check d-none', id: 'choice3', name: 'choice', value: '2', data: { action: 'submit', answer: 'false' }}
-    %label{ for: 'choice3', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
-  %div{ class: 'd-none', id: 'endGame'}
-    %p{ class: 'fw-bolder fs-3', data: { display: 'points'}}
-    = link_to 'Quit Game', root_path, class:'btn btn-primary btn-lg'
+    %p{ id: 'test' }
+    %button{ id: 'startGameBtn', class: 'btn btn-primary btn-lg fs-3 px-4 mx-auto' } 
+      Start Game
+      %i.fas.fa-play-circle 
+    %section{ class: 'd-flex'}
+      %div{ class: 'd-none', id: 'trackNo' }
+        %span{ class: 'fs-3 fw-bolder me-3'}
+          %i.fas.fa-stream.text-warning
+          %span{ data: {display: 'tracks' }}1
+          ="/ #{@room.tracks.count}"
+    %section
+      #myProgress.hide
+        #myBar.hide
+      %div.my-4
+        %h3{ id: 'question', style: 'visibility: hidden' }
+          %i.fas.fa-question 
+          Guess the song
+          %i.fas.fa-question
+        %h3{ class: 'd-none', data: { display: 'answer'} }
+    %section.col-md-6.mx-auto
+      %div{ class: 'd-none d-flex flex-column justify-content-center align-items-center', id: 'choices' } 
+        %input{ type: 'radio', class: 'btn-check d-none', id: 'choice1', name: 'choice', value: '0', data: { action: 'submit', answer: 'false' }}
+        %label{ for: 'choice1', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
+        %input{ type: "radio", class: 'btn-check d-none', id: 'choice2', name: 'choice', value: '1', data: { action: 'submit', answer: 'false' }}
+        %label{ for: 'choice2', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
+        %input{ type: 'radio', class: 'btn-check d-none', id: 'choice3', name: 'choice', value: '2', data: { action: 'submit', answer: 'false' }}
+        %label{ for: 'choice3', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
+      %div{ class: 'd-none', id: 'endGame'}
+        %p{ class: 'fw-bolder fs-3', data: { display: 'points'}}
+        = link_to 'Quit Game', root_path, class:'btn btn-primary btn-lg'
 = javascript_pack_tag 'game'
 :javascript
   document.addEventListener("turbolinks:load", GAME.initialize(), { once: true });
