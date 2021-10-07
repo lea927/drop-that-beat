@@ -30,9 +30,5 @@
     = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control'
   .actions
     = f.submit 'Update', class: 'w-100 btn btn-primary my-2'
-    %hr    
-    %h3.text-center Cancel my account
-    %div.d-flex.flex-column.justify-content-center.mt-2
-      %h6.text-center Unhappy? 
-      = button_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'w-100 btn btn-secondary my-2'
-      = link_to 'Back', :back, class: 'btn btn-outline-dark align-self-center btn-sm w-100'
+  %hr    
+  = button_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'w-100 btn btn-secondary my-2'
