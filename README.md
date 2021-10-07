@@ -1,4 +1,5 @@
-# Drop that beat app
+# Drop that beat app   ![build](https://github.com/lea927/drop-that-beat/actions/workflows/rspec.yml/badge.svg)
+
 
 ![Drop that beat app](https://user-images.githubusercontent.com/79251819/136054424-c82d19df-477b-4dbc-8f23-0185d0658d44.png)
 The developers created this app to bond with their love of music. We hope that users will enjoy listening to their favorite music and learn other songs they can tune into 😃 🎵🎵🎵
