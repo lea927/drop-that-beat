@@ -1,4 +1,5 @@
-# Drop that beat app   
+# Drop that beat app
+
 ![build](https://github.com/lea927/drop-that-beat/actions/workflows/rspec.yml/badge.svg)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 
@@ -11,14 +12,15 @@ The developers created this app to bond with their love of music. We hope that u
 - Users can create, edit and delete game rooms. The game rooms created are accessible to other registered users.
 - Search tracks which connected to Apple's iTunes Search API and add those tracks in the game room 🎵
 - Search playable game rooms by searching the artist
-- Play game rooms created by other users 
+- Play game rooms created by other users
 - Earn points while playing the game 💰
 
 #### Note
+
 - _Only confirmed accounts will be able to use the application. An email confirmation will be sent upon registration to verify your account._
 - _You cannot play rooms you have created_
 
-## Built With 
+## Built With
 
 - [Ruby on Rails](https://rubyonrails.org/)
 - [Bootstrap](https://getbootstrap.com/)
@@ -26,7 +28,14 @@ The developers created this app to bond with their love of music. We hope that u
 - [Postgresql](https://www.postgresql.org/)
 - [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html#//apple_ref/doc/uid/TP40017632-CH3-SW1)
 
+## Developers 👩‍💻👩‍💻👩‍💻
+
+- [Anna Gabriel](https://github.com/annagabriel-hash)
+- [Yvette Tan](https://github.com/yvettetan)
+- [Lea Tinoso](https://github.com/lea927)
+
 # Table of Contents
+
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -34,8 +43,10 @@ The developers created this app to bond with their love of music. We hope that u
 - [Contributing](#contributing)
 
 # Getting Started
+
 ## Prerequisites
-🔙  [Table of Contents](#table-of-contents)
+
+🔙 [Table of Contents](#table-of-contents)
 
 - Ruby 2.7.2
   ```bash
@@ -65,53 +76,68 @@ The developers created this app to bond with their love of music. We hope that u
   ```
 
 ## Installation
-🔙  [Table of Contents](#table-of-contents)
 
-1. Clone the repo 
-  ```
-    $ git clone https://github.com/lea927/drop-that-beat.git
-    $ cd drop-that-beat
-  ```
+🔙 [Table of Contents](#table-of-contents)
+
+1. Clone the repo
+
+```
+  $ git clone https://github.com/lea927/drop-that-beat.git
+  $ cd drop-that-beat
+```
+
 2. Install ruby gems dependencies
-  ```
-    $ bundle install
-  ```
+
+```
+  $ bundle install
+```
+
 3. Install webpacker
-  ```
-    $ rails webpacker:install
-  ```
+
+```
+  $ rails webpacker:install
+```
+
 4. Set up environment variables
-  Using [dotenv](https://github.com/bkeepers/dotenv)
-  Contact the developer(sensitive data)
+   Using [dotenv](https://github.com/bkeepers/dotenv)
+   Contact the developer(sensitive data)
 5. Setup database
-  ```
-  $ rake db:setup
-  ```
+
+```
+$ rake db:setup
+```
+
 6. Run the test suite to verify that everything is working correctly
-  ```
-  $ rspec
-  ```
+
+```
+$ rspec
+```
+
 ## Usage
 
-🔙  [Table of Contents](#table-of-contents)
+🔙 [Table of Contents](#table-of-contents)
 
 Running the application in your localhost or access the deployed application:
 
 Link: [Drop that beat](https://drop-that-beat.herokuapp.com/)
+
 ```
   $ rails server
 ```
+
 When accessing the application, you can use the credentials below to try the features available.
+
 ```
 username: testuser
 password: testuser
 ```
+
 # Contributing
 
-🔙  [Table of Contents](#table-of-contents)
+🔙 [Table of Contents](#table-of-contents)
 
 1. Fork it (https://github.com/lea927/drop-that-beat)
-![Fork project](https://user-images.githubusercontent.com/79251819/136222616-e9a78e32-a886-4356-93d7-093bd48f0c03.png)
+   ![Fork project](https://user-images.githubusercontent.com/79251819/136222616-e9a78e32-a886-4356-93d7-093bd48f0c03.png)
 2. Create your feature branch (git checkout -b feature/fooBar)
 3. Commit your changes (git commit -am 'Add feature to ...')
 4. Push to the branch (git push origin feature/fooBar)
