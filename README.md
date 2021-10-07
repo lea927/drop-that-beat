@@ -6,6 +6,8 @@
 ![Drop that beat app](https://user-images.githubusercontent.com/79251819/136054424-c82d19df-477b-4dbc-8f23-0185d0658d44.png)
 The developers created this app to bond with their love of music. We hope that users will enjoy listening to their favorite music and learn other songs they can tune into 😃 🎵🎵🎵
 
+Click [here](https://drop-that-beat.herokuapp.com/) for the live preview.
+
 ## Features 🎵🎵🎵
 
 - Register and update account details
@@ -28,11 +30,11 @@ The developers created this app to bond with their love of music. We hope that u
 - [Postgresql](https://www.postgresql.org/)
 - [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html#//apple_ref/doc/uid/TP40017632-CH3-SW1)
 
-## Developers 👩‍💻👩‍💻👩‍💻
+## Developers
 
-- [Anna Gabriel](https://github.com/annagabriel-hash)
-- [Yvette Tan](https://github.com/yvettetan)
-- [Lea Tinoso](https://github.com/lea927)
+- [Anna Gabriel](https://github.com/annagabriel-hash) 👩‍💻
+- [Yvette Tan](https://github.com/yvettetan) 👩‍💻
+- [Lea Tinoso](https://github.com/lea927) 👩‍💻
 
 # Table of Contents
 
