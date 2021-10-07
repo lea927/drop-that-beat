@@ -7,12 +7,16 @@
       = button_tag :submit, class: 'btn-dark mt-3', id: 'search-artist' do
         %i.fas.fa-search
   - if @rooms
-    .row.row-cols-1.row-cols-lg-3.align-items-stretch.g-4.py-5.mx-4
+    .row.row-cols-1.row-cols-md-2.row-cols-lg-3.align-items-stretch.g-4.py-5.mx-4
       - @rooms.each do |room|
-        .col-9.col-md-6
+        .col
           = link_to room_path(room) do
-            .card.text-primary.bg-white.rounded-3.shadow-lg.px-4.py-2
+            .card.text-primary.bg-white.rounded-3.shadow-lg.p-2
               %strong.fs-5.text-primary.mx-2.pt-2= room.name
-              %span.text-secondary.d-flex.justify-content-start
-                = image_tag '/user-with-note.svg', alt: 'user-with-note', height: '20', width: '20', class: 'mx-1'
-                = room.users.first.username
+              %div.text-secondary.d-flex.justify-content-between
+                %span
+                  = image_tag '/music-note-list.svg', alt: 'music-note-list'
+                  = room.tracks.count
+                %span.d-flex
+                  = image_tag '/user-with-note.svg', alt: 'user-with-note', height: '20', width: '20', class: 'mx-1'
+                  = room.users.first.username
