@@ -11,7 +11,7 @@
       - @rooms.each do |room|
         .col
           = link_to room_path(room) do
-            .card.text-primary.bg-white.rounded-3.shadow-lg.p-2
+            .btn-primary.rounded-3.p-2
               %strong.fs-5.text-primary.mx-2.pt-2= room.name
               %div.text-secondary.d-flex.justify-content-between
                 %span
