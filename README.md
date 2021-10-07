@@ -24,6 +24,7 @@ The developers created this app to bond with their love of music. We hope that u
 - [Bootstrap](https://getbootstrap.com/)
 - [JQuery](https://jquery.com/)
 - [Postgresql](https://www.postgresql.org/)
+- [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html#//apple_ref/doc/uid/TP40017632-CH3-SW1)
 
 # Table of Contents
 - [Getting Started](#getting-started)
