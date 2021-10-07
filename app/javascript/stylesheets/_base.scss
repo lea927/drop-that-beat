@@ -21,6 +21,10 @@ a {
   background-color: $primary-color !important;
 }
 
+.bg-gray {
+  background-color: $gray;
+}
+
 .text-primary {
   color: $primary-color !important;
 }
@@ -64,4 +68,10 @@ a {
 
 .border-left-secondary {
   border-left: 8px solid $secondary-color;
+}
+#room_playlist {
+  margin-top: 4.9rem;
+}
+#rooms_form {
+  margin-top: 3.3rem;
 }

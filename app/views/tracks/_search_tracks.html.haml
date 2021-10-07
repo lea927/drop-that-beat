@@ -1,7 +1,8 @@
 = form_with url: search_path, method: :get, local: false, id: 'track_results_form' do |f|
   - if @room
     = f.hidden_field :room_id, value: @room.id
-  = f.label :term, 'Search track'
-  = f.text_field :term, required: true
-  = f.submit 'Search'
-#track_results
+  .input-group
+    = f.text_field :term, class: 'form-control shadow', placeholder: 'Enter room name', ariadescribedby: "search-song-btn", required: true
+    = button_tag :submit, class: 'btn-dark mt-3', id: 'search-song-btn' do
+      %i.fas.fa-search
+#track_results.mt-4

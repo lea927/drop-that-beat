@@ -9,7 +9,7 @@ RSpec.shared_context 'when user creates a game room' do
 
   def update_rounds(rounds)
     select rounds, from: 'Rounds'
-    click_on 'Finish setup'
+    click_on 'Create Game'
   end
 
   def update_room_name(name)
@@ -17,8 +17,8 @@ RSpec.shared_context 'when user creates a game room' do
   end
 
   def search_tracks(track_name)
-    fill_in 'Search track', with: track_name
-    click_on 'Search'
+    fill_in 'term', with: track_name
+    page.find('#search-song-btn').click
   end
 
   def add_tracks
