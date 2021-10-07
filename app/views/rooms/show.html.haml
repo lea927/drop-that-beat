@@ -35,7 +35,9 @@
         %label{ for: 'choice3', class: 'choiceBtn btn btn-primary btn-lg fw-bold' }
       %div{ class: 'd-none', id: 'endGame'}
         %p{ class: 'fw-bolder fs-3', data: { display: 'points'}}
-        = link_to 'Quit Game', root_path, class:'btn btn-primary btn-lg'
+        = link_to rooms_path, class: 'btn btn-primary btn-lg fs-3 px-4 mx-auto' do
+          Quit Game
+          %i.fas.fa-times-circle
 = javascript_pack_tag 'game'
 :javascript
   document.addEventListener("turbolinks:load", GAME.initialize(), { once: true });
