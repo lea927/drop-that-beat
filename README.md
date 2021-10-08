@@ -4,7 +4,7 @@
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 
 ![Drop that beat app](https://user-images.githubusercontent.com/79251819/136054424-c82d19df-477b-4dbc-8f23-0185d0658d44.png)
-The developers created this app to bond with their love of music. We hope that users will enjoy listening to their favorite music and learn other songs they can tune into 😃 🎵🎵🎵
+The developers created this app to bond with their love of music. We hope that users will enjoy listening to their favorite music and discover other songs they can tune into 😃 🎵🎵🎵
 
 Click [here](https://drop-that-beat.herokuapp.com/) for the live preview.
 
@@ -88,28 +88,32 @@ Click [here](https://drop-that-beat.herokuapp.com/) for the live preview.
   $ cd drop-that-beat
 ```
 
-2. Install ruby gems dependencies
+2. Install ruby gems
 
 ```
   $ bundle install
 ```
+3. Install all dependencies listed within `package.json` in the local node_modules folder
+```
+  $ yarn install
+```
 
-3. Install webpacker
+4. Install webpacker
 
 ```
   $ rails webpacker:install
 ```
 
-4. Set up environment variables
+5. Set up environment variables
    Using [dotenv](https://github.com/bkeepers/dotenv)
    Contact the developer(sensitive data)
-5. Setup database
+6. Setup database
 
 ```
 $ rake db:setup
 ```
 
-6. Run the test suite to verify that everything is working correctly
+7. Run the test suite to verify that everything is working correctly
 
 ```
 $ rspec
