@@ -17,11 +17,11 @@ const GAME = {
 	answerDisplay: {
 		true: {
 			classColor: 'btn-success',
-			message: 'Correct answer',
+			message: 'Correct answer ✔',
 		},
 		false: {
 			classColor: 'btn-danger',
-			message: 'Incorrect Answer',
+			message: 'Incorrect Answer ✘',
 		},
 	},
 	async initialize() {
@@ -53,6 +53,7 @@ const GAME = {
 		const startBtn = document.querySelector('#startGameBtn');
 		startBtn?.addEventListener('click', () => {
 			startBtn.style.display = 'none'; // Hide start button
+			$('#readyQuestion').addClass('d-none'); // Hide ready question
 			GAME.startGame();
 		});
 	},
