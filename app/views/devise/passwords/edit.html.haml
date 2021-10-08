@@ -1,0 +1,22 @@
+%section.h-75.d-flex.justify-content-center.flex-column
+  .container-fluid.row.justify-content-center.text-dark
+    .col-md-7.col-lg-5.bg-light
+      .p-4.p-md-5
+        %h3.text-center.mb-4 Change your password
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          .text-danger
+            = render "devise/shared/error_messages", resource: resource
+          = f.hidden_field :reset_password_token
+          - if @minimum_password_length
+            %em
+              = @minimum_password_length 
+              characters minimum
+            %br/
+          .form-floating
+            = f.password_field :password, id: 'user_password', class: 'form-control', placeholder: 'New password', autocomplete: "email", required: true
+            = f.label :password, for: 'user_password'
+          .form-floating
+            = f.password_field :password_confirmation, id: 'user_confirm_password', class: 'form-control', placeholder: 'Confirm new password', autocomplete: "email", required: true
+            = f.label :password_confirmation, for: 'user_confirm_password'
+          .actions.my-4.d-flex.flex-column.justify-content-center
+            = f.submit "Change my password", class: 'btn btn-secondary'
