@@ -11,7 +11,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
   end
 
   before do
-    driven_by(:rack_test)
+    driven_by(:selenium_chrome_headless)
     valid_room.tracks.push(track)
     visit rooms_path
   end
@@ -33,7 +33,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
   context 'when user searches rooms with valid query' do
     it 'shows rooms with associated query' do
       fill_in 'search',	with: track.artist
-      click_on 'Search'
+      page.find('#search-artist').click
       expect(page).to have_content(/#{valid_room.name}/i).once
     end
   end
@@ -41,13 +41,13 @@ RSpec.describe 'SearchGameRooms', type: :system do
   context 'when user searches rooms with invalid query' do
     it 'does not show rooms without associated query' do
       fill_in 'search',	with: 'Bruno Mars'
-      click_on 'Search'
+      page.find('#search-artist').click
       expect(page).not_to have_content(/#{valid_room.name}/i)
     end
 
     it 'displays error message' do
       fill_in 'search',	with: 'Bruno Mars'
-      click_on 'Search'
+      page.find('#search-artist').click
       expect(page).to have_content('Cannot find rooms with associated artist')
     end
   end
@@ -55,12 +55,12 @@ RSpec.describe 'SearchGameRooms', type: :system do
   context 'when user searches with blank query' do
     it 'shows all rooms' do
       fill_in 'search',	with: ''
-      click_on 'Search'
+      page.find('#search-artist').click
       expect(page).to have_content(/#{valid_room.name}/i)
     end
 
     it 'displays error message' do
-      click_on 'Search'
+      page.find('#search-artist').click
       expect(page).to have_content('Please enter an artist to search')
     end
   end
@@ -68,7 +68,7 @@ RSpec.describe 'SearchGameRooms', type: :system do
   context 'when user searches rooms with a featuring artist' do
     it 'shows rooms with associated artist' do
       fill_in 'search',	with: 'kino'
-      click_on 'Search'
+      page.find('#search-artist').click
       expect(page).to have_content(/#{valid_room.name}/i).once
     end
   end

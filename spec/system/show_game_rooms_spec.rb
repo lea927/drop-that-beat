@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe 'ShowGameRooms', type: :system do
   include_context 'when user is logged in'
+  let(:user) { build(:user, points: 100, rooms: [room]) }
   let!(:room) { create(:room) }
   let(:track) { room.tracks.first }
 
   before do
-    driven_by(:rack_test)
+    driven_by(:selenium_chrome_headless)
     visit rooms_path
   end
 
@@ -16,12 +17,12 @@ RSpec.describe 'ShowGameRooms', type: :system do
     end
 
     it 'visits all rooms page' do
-      expect(page).to have_content 'All Music Rooms'
+      expect(page).to have_content 'All Game Rooms'
     end
 
     it 'searches a room to join' do
       fill_in 'search',	with: track.artist
-      click_on 'Search'
+      page.find('#search-artist').click
       click_on room.name
     end
 

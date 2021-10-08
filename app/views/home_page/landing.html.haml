@@ -1,11 +1,13 @@
-.px-4.pt-5.text-center
-    %h1 Drop that beat is a music quiz game that allows you to play online with other players or your friends
+.px-4.pt-4.text-center.vh-80.d-flex.flex-column.justify-content-center
+    %span.fs-3 Are you ready to
+    %h1.display-4.fw-bold Drop that Beat?
+    %p.fs-3.col-9.mx-auto.my-4 Test your song knowledge while singing along to your favorite tunes 
     .col-lg-6.mx-auto
-        .d-grid.gap-2.d-sm-flex.justify-content-sm-center.mb-5
+        .d-grid.gap-2.d-sm-flex.justify-content-sm-center.my-2
             = link_to new_user_session_path do
                 %button.btn.btn-primary.btn-lg.px-4.me-sm-3{type: "button"} NEW GAME
     .overflow-hidden
-        .container.px-5.d-flex.justify-content-evenly.mb-4
+        .container.px-5.d-flex.justify-content-evenly.mb-2
             %img.img-fluid.mb-4{alt: "Girl image", loading: "lazy", src: "/girl-listening-music.svg"}/
             %img.img-fluid.mb-4{alt: "Girl image", loading: "lazy", src: "/girl-recording.svg"}/
             %img.img-fluid.mb-4{alt: "Boy image", loading: "lazy", src: "/boy-dj.svg"}/

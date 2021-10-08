@@ -1,11 +1,22 @@
-%h1 All Music Rooms
-%p search for rooms to play
-= form_tag rooms_path, method: :get, role: "search" do
-  %p
-    = text_field_tag :search, params[:search], placeholder: 'Enter artist'
-    = submit_tag "Search"
-%ul
+.container-fluid.text-center.mt-4.col-xl-9
+  %h1 All Game Rooms
+  %p.fs-4 search for rooms to play
+  = form_tag rooms_path, method: :get, role: "search" do
+    .input-group
+      = text_field_tag :search, params[:search], placeholder: 'Enter artist', class: 'form-control shadow', ariadescribedby: "search-artist"
+      = button_tag :submit, class: 'btn-dark mt-3', id: 'search-artist' do
+        %i.fas.fa-search
   - if @rooms
-    - @rooms.each do |room|
-      %li 
-        = link_to room.name, room_path(room)
+    .row.row-cols-1.row-cols-md-2.row-cols-lg-3.align-items-stretch.g-4.py-5.mx-4
+      - @rooms.each do |room|
+        .col
+          = link_to room_path(room) do
+            .btn-primary.rounded-3.p-2
+              %span.fs-5.text-primary.mx-2.pt-2= room.name
+              %div.d-flex.justify-content-between
+                .text-dark
+                  = image_tag '/music-note-list.svg', alt: 'music-note-list'
+                  %span= room.tracks.count
+                .d-flex.text-secondary
+                  = image_tag '/user-with-note.svg', alt: 'user-with-note', height: '20', width: '20', class: 'mx-1'
+                  %span= room.users.first.username
